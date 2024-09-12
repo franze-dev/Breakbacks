@@ -1,8 +1,9 @@
 #pragma once
+#include "Utils.h"
+
 struct Rect
 {
-	int x;
-	int y;
+	Vector2 pos;
 	int height;
 	int width;
 	float speed;

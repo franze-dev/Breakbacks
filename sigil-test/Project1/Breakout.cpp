@@ -1,3 +1,5 @@
+#include "sl.h"
+#include "Utils.h"
 #include "Breakout.h"
 #include "SceneManager.h"
 #include "GameplayScene.h"
@@ -7,6 +9,7 @@ namespace Breakout
 	void Init();
 	void Update();
 	void Draw();
+	void Close();
 }
 
 void Play()
@@ -20,7 +23,7 @@ void Play()
 
 		slRender();
 	}
-	slClose();
+	Breakout::Close();
 }
 
 void Breakout::Init()
@@ -41,5 +44,10 @@ void Breakout::Draw()
 {
 	if (SceneManager::GetCurrentScene() == SceneManager::Gameplay)
 		GameplayScene::Draw();
+}
+
+void Breakout::Close()
+{
+	slClose();
 }
 

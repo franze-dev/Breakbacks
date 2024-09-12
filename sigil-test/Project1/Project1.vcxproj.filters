@@ -13,45 +13,66 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Archivos de encabezado\Objects">
+      <UniqueIdentifier>{a4006bd5-e063-49a3-8ef8-15b733792121}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Scenes">
+      <UniqueIdentifier>{3053a52e-9d6f-4f0f-b036-f333be9378a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Objects">
+      <UniqueIdentifier>{dc68b1a1-5fee-41a5-b1f9-0eb2815119d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Scenes">
+      <UniqueIdentifier>{ee0ae5e8-89cb-411a-a5f9-e64fba774b04}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Rect.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="KeyManager.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Breakout.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="SceneManager.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="GameplayScene.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Rect.cpp">
+      <Filter>Archivos de origen\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyManager.cpp">
+      <Filter>Archivos de origen\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Breakout.cpp">
+      <Filter>Archivos de origen\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Ball.cpp">
+      <Filter>Archivos de origen\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Archivos de origen\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Rect.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="KeyManager.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="Constants.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Ball.h">
+      <Filter>Archivos de encabezado\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Breakout.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="SceneManager.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Utils.h">
+      <Filter>Archivos de encabezado\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyManager.h">
+      <Filter>Archivos de encabezado\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Rect.h">
+      <Filter>Archivos de encabezado\Objects</Filter>
     </ClInclude>
     <ClInclude Include="GameplayScene.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Archivos de origen\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

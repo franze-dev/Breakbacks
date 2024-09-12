@@ -130,16 +130,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Breakout.cpp" />
     <ClCompile Include="GameplayScene.cpp" />
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ball.h" />
     <ClInclude Include="Breakout.h" />
-    <ClInclude Include="Constants.h" />
+    <ClInclude Include="Utils.h" />
     <ClInclude Include="GameplayScene.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="Rect.h" />
