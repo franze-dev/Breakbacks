@@ -11,5 +11,6 @@ enum KeyStates
 	//if it was released and NOW IT'S RELEASED, then it's NONE.
 };
 
+void UpdateStates();
 bool IsKeyPressed();
 bool IsKeyReleased();

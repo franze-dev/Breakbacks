@@ -5,7 +5,13 @@ struct Rect
 	int y;
 	int height;
 	int width;
+	float speed;
 };
 
-Rect GetDefaultRect();
+namespace RectSpace
+{
+	Rect GetDefaultRect();
+	void DrawRect(Rect myRect);
+	void MoveRect(Rect& myRect);
+};
 
