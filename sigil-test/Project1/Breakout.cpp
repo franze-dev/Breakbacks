@@ -1,8 +1,6 @@
 #include "Breakout.h"
-#include "Rect.h"
-#include "KeyManager.h"
-
-static Rect mainRect;
+#include "SceneManager.h"
+#include "GameplayScene.h"
 
 namespace Breakout
 {
@@ -29,16 +27,19 @@ void Breakout::Init()
 {
 	slWindow(screenWidth, screenHeight, "BREAKBACKS", 0);
 
-	mainRect = RectSpace::GetDefaultRect();
+	if (SceneManager::GetCurrentScene() == SceneManager::Gameplay)
+		GameplayScene::Init();
 }
 
 void Breakout::Update()
 {
-	RectSpace::MoveRect(mainRect);
+	if (SceneManager::GetCurrentScene() == SceneManager::Gameplay)
+		GameplayScene::Update();
 }
 
 void Breakout::Draw()
 {
-	RectSpace::DrawRect(mainRect);
+	if (SceneManager::GetCurrentScene() == SceneManager::Gameplay)
+		GameplayScene::Draw();
 }
 

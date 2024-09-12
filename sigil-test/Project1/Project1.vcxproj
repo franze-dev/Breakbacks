@@ -131,15 +131,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Breakout.cpp" />
+    <ClCompile Include="GameplayScene.cpp" />
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Rect.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Breakout.h" />
     <ClInclude Include="Constants.h" />
+    <ClInclude Include="GameplayScene.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="Rect.h" />
+    <ClInclude Include="SceneManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
