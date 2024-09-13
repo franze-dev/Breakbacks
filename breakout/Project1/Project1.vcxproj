@@ -18,6 +18,29 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\Ball.cpp" />
+    <ClCompile Include="..\src\Block.cpp" />
+    <ClCompile Include="..\src\Breakout.cpp" />
+    <ClCompile Include="..\src\ColorManager.cpp" />
+    <ClCompile Include="..\src\GameplayScene.cpp" />
+    <ClCompile Include="..\src\KeyManager.cpp" />
+    <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\Rect.cpp" />
+    <ClCompile Include="..\src\SceneManager.cpp" />
+    <ClCompile Include="..\src\Utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\Ball.h" />
+    <ClInclude Include="..\src\Block.h" />
+    <ClInclude Include="..\src\Breakout.h" />
+    <ClInclude Include="..\src\ColorManager.h" />
+    <ClInclude Include="..\src\GameplayScene.h" />
+    <ClInclude Include="..\src\KeyManager.h" />
+    <ClInclude Include="..\src\Paddle.h" />
+    <ClInclude Include="..\src\SceneManager.h" />
+    <ClInclude Include="..\src\Utils.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -133,29 +156,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Ball.cpp" />
-    <ClCompile Include="Block.cpp" />
-    <ClCompile Include="Breakout.cpp" />
-    <ClCompile Include="ColorManager.cpp" />
-    <ClCompile Include="GameplayScene.cpp" />
-    <ClCompile Include="KeyManager.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Rect.cpp" />
-    <ClCompile Include="SceneManager.cpp" />
-    <ClCompile Include="Utils.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Ball.h" />
-    <ClInclude Include="Block.h" />
-    <ClInclude Include="Breakout.h" />
-    <ClInclude Include="ColorManager.h" />
-    <ClInclude Include="Utils.h" />
-    <ClInclude Include="GameplayScene.h" />
-    <ClInclude Include="KeyManager.h" />
-    <ClInclude Include="Paddle.h" />
-    <ClInclude Include="SceneManager.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

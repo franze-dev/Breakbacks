@@ -1,7 +1,6 @@
 #pragma once
 #include "Utils.h"
 
-
 struct Block
 {
 	Vector2 offSet; //refers to a corner
@@ -11,6 +10,9 @@ struct Block
 	bool dead;
 };
 
-void CreateBlocks();
-void DrawBlocks();
-void DrawBlock(Block block);
+namespace BlockSpace
+{
+	void CreateBlocks();
+	void DrawBlocks();
+	void DrawBlock(Block block);
+}

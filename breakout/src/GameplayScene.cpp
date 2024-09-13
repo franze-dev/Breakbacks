@@ -4,6 +4,7 @@
 #include "Ball.h"
 #include "KeyManager.h"
 #include "math.h"
+#include "Block.h"
 
 //To calculate the distance between the ball and the rect
 struct Distances
@@ -24,6 +25,7 @@ void GameplayScene::Init()
 {
 	mainRect = PaddleSpace::GetDefaultPaddle();
 	mainBall = BallSpace::GetDefaultBall();
+	BlockSpace::CreateBlocks();
 }
 
 void GameplayScene::Update()
@@ -45,6 +47,7 @@ void GameplayScene::Draw()
 {
 	PaddleSpace::DrawPaddle(mainRect);
 	BallSpace::DrawBall(mainBall);
+	BlockSpace::DrawBlocks();
 }
 
 void BallRectCollision(Ball& ball, Paddle& square)
