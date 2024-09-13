@@ -74,11 +74,11 @@
     <ClInclude Include="GameplayScene.h">
       <Filter>Archivos de encabezado\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="SceneManager.h">
-      <Filter>Archivos de origen\Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="ColorManager.h">
       <Filter>Archivos de encabezado\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Archivos de encabezado\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

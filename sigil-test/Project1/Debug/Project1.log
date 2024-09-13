@@ -1,14 +1,23 @@
 ﻿  Ball.cpp
-D:\Image\projects\c++\Desarrollo 1 (2024)\breakout\sigil-test\Project1\Ball.cpp(40,19): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-D:\Image\projects\c++\Desarrollo 1 (2024)\breakout\sigil-test\Project1\Ball.cpp(41,19): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-D:\Image\projects\c++\Desarrollo 1 (2024)\breakout\sigil-test\Project1\Ball.cpp(44,18): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-D:\Image\projects\c++\Desarrollo 1 (2024)\breakout\sigil-test\Project1\Ball.cpp(67,19): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-D:\Image\projects\c++\Desarrollo 1 (2024)\breakout\sigil-test\Project1\Ball.cpp(69,19): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-D:\Image\projects\c++\Desarrollo 1 (2024)\breakout\sigil-test\Project1\Ball.cpp(71,18): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-D:\Image\projects\c++\Desarrollo 1 (2024)\breakout\sigil-test\Project1\Ball.cpp(97,29): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
-D:\Image\projects\c++\Desarrollo 1 (2024)\breakout\sigil-test\Project1\Ball.cpp(98,29): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
-D:\Image\projects\c++\Desarrollo 1 (2024)\breakout\sigil-test\Project1\Ball.cpp(120,29): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-D:\Image\projects\c++\Desarrollo 1 (2024)\breakout\sigil-test\Project1\Ball.cpp(122,21): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-D:\Image\projects\c++\Desarrollo 1 (2024)\breakout\sigil-test\Project1\Ball.cpp(134,30): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-D:\Image\projects\c++\Desarrollo 1 (2024)\breakout\sigil-test\Project1\Ball.cpp(105,10): warning C4101: 'direction': variable local sin referencia
-  Project1.vcxproj -> D:\Image\projects\c++\Desarrollo 1 (2024)\breakout\sigil-test\Debug\Project1.exe
+C:\Users\Aula 1\Downloads\breakout\sigil-test\Project1\Ball.cpp(40,19): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Aula 1\Downloads\breakout\sigil-test\Project1\Ball.cpp(41,19): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Aula 1\Downloads\breakout\sigil-test\Project1\Ball.cpp(44,18): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Aula 1\Downloads\breakout\sigil-test\Project1\Ball.cpp(67,19): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Aula 1\Downloads\breakout\sigil-test\Project1\Ball.cpp(69,19): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Aula 1\Downloads\breakout\sigil-test\Project1\Ball.cpp(71,18): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Aula 1\Downloads\breakout\sigil-test\Project1\Ball.cpp(97,29): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Aula 1\Downloads\breakout\sigil-test\Project1\Ball.cpp(98,29): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Aula 1\Downloads\breakout\sigil-test\Project1\Ball.cpp(120,29): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Aula 1\Downloads\breakout\sigil-test\Project1\Ball.cpp(122,21): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Aula 1\Downloads\breakout\sigil-test\Project1\Ball.cpp(134,30): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Aula 1\Downloads\breakout\sigil-test\Project1\Ball.cpp(105,10): warning C4101: 'direction': variable local sin referencia
+  Breakout.cpp
+  GameplayScene.cpp
+C:\Users\Aula 1\Downloads\breakout\sigil-test\Project1\GameplayScene.cpp(52,20): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Aula 1\Downloads\breakout\sigil-test\Project1\GameplayScene.cpp(101,30): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+  Rect.cpp
+C:\Users\Aula 1\Downloads\breakout\sigil-test\Project1\Rect.cpp(12,19): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Aula 1\Downloads\breakout\sigil-test\Project1\Rect.cpp(25,21): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+  Utils.cpp
+  Generando código...
+  Project1.vcxproj -> C:\Users\Aula 1\Downloads\breakout\sigil-test\Debug\Project1.exe

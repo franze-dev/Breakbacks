@@ -7,10 +7,10 @@ Rect RectSpace::GetDefaultRect()
 {
 	Rect myRect;
 	myRect.width = 200;
-	myRect.height = 10;
+	myRect.height = 15;
 	myRect.pos.x = screenHalfWidth;
 	myRect.pos.y = 0 + myRect.height;
-	myRect.speed = 250.0f;
+	myRect.speed = 500.0f;
 	return myRect;
 }
 
@@ -24,8 +24,8 @@ void RectSpace::MoveRect(Rect& myRect)
 {
 	float currentSpeed = myRect.speed * slGetDeltaTime();
 
-	if (slGetKey(SL_KEY_LEFT))
+	if (slGetKey(SL_KEY_LEFT) && myRect.pos.x - myRect.width/2 > 0)
 		myRect.pos.x -= currentSpeed;
-	else if (slGetKey(SL_KEY_RIGHT))
+	else if (slGetKey(SL_KEY_RIGHT) && myRect.pos.x + myRect.width / 2 < screenWidth)
 		myRect.pos.x += currentSpeed;
 }

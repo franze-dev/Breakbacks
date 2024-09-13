@@ -1,10 +1,24 @@
+#include <iostream>
 #include "GameplayScene.h"
 #include "Rect.h"
 #include "Ball.h"
 #include "KeyManager.h"
+#include "math.h"
+
+//To calculate the distance between the ball and the rect
+struct Distances
+{
+	int pinPointX;
+	int pinPointY;
+	int distX;
+	int distY;
+	int distance;
+};
 
 static Rect mainRect;
 static Ball mainBall;
+
+void BallRectCollision(Ball& ball, Rect& square);
 
 void GameplayScene::Init()
 {
@@ -23,6 +37,7 @@ void GameplayScene::Update()
 	else
 		BallSpace::ResetBall(mainBall, mainRect);
 
+	BallRectCollision(mainBall, mainRect);
 	BallSpace::BallEdgeCollision(mainBall);
 }
 
@@ -30,4 +45,102 @@ void GameplayScene::Draw()
 {
 	RectSpace::DrawRect(mainRect);
 	BallSpace::DrawBall(mainBall);
+}
+
+void BallRectCollision(Ball& ball, Rect& square)
+{
+	int rectCenterPos = square.pos.x;
+	int topOrBottomRand = 0;
+
+	//ANGLES
+	//vertical
+	int minAngleV = 250;
+	int maxAngleV = 290;
+	//horizontal
+	int minAngleH = 330;
+	int maxAngleH = 340;
+
+	//SQUARE CORNERS		//	c1----------------c3
+	Vector2 sCorner1; 		//	|				   |  
+	Vector2 sCorner2;		//	|		center	   |  
+	Vector2 sCorner3;		//	|				   |  
+	Vector2 sCorner4;		//	c2----------------c4  
+
+	//pos x and pos y of square is the center, thanks to sigil.
+	sCorner1.x = square.pos.x - square.width / 2;
+	sCorner1.y = square.pos.y + square.height / 2;
+
+	sCorner2.x = sCorner1.x;
+	sCorner2.y = square.pos.y - square.height / 2;
+
+	sCorner3.x = square.pos.x + square.width / 2;
+	sCorner3.y = sCorner1.y;
+
+	sCorner4.x = sCorner3.x;
+	sCorner4.y = sCorner2.y;
+
+	Distances calculations;
+
+	calculations.pinPointX = (int)ball.pos.x;
+	calculations.pinPointY = (int)ball.pos.y;
+
+
+	if ((int)ball.pos.x <= (int)sCorner1.x)
+		calculations.pinPointX = (int)sCorner1.x; //left
+
+	else if ((int)ball.pos.x >= (int)sCorner3.x)
+		calculations.pinPointX = (int)sCorner3.x; //right
+
+	if ((int)ball.pos.y >= (int)sCorner1.y)
+		calculations.pinPointY = (int)sCorner1.y; //top
+
+	calculations.distX = (int)ball.pos.x - calculations.pinPointX;
+	calculations.distY = (int)ball.pos.y - calculations.pinPointY;
+	calculations.distance = sqrt((calculations.distX * calculations.distX) + (calculations.distY * calculations.distY));
+
+	if (calculations.distance <= ball.radius)
+	{
+		//Is it completely inside the rect? 
+		if (ball.pos.y > sCorner2.y &&
+			ball.pos.y < sCorner1.y &&
+			ball.pos.x < sCorner3.x &&
+			ball.pos.x > sCorner1.x)
+			ball.pos.y = sCorner1.y + ball.radius * 2;
+
+		//Where does it come from? Is it partially inside the rect?
+		//VERTICAL
+		if (calculations.pinPointY == (int)sCorner1.y ||
+			calculations.pinPointY == (int)sCorner2.y)
+		{
+			//top
+			if (calculations.pinPointY == (int)sCorner1.y)
+			{
+				ball.pos.y = sCorner1.y + ball.radius * 2;
+				BallSpace::Normalize360Angle(ball, GetRandomNum(maxAngleV - minAngleV, minAngleV));
+
+				/*if ()
+				{
+
+				}*/
+
+				if (ball.speed.y < 0)
+					ball.speed.y *= -1;
+
+			}
+		}
+		//HORIZONTAL
+		else
+		{
+			//left
+			if (calculations.pinPointX == (int)sCorner1.x)
+				ball.pos.x = sCorner1.x - ball.radius * 2;
+			//right
+			else if (calculations.pinPointX == (int)sCorner3.x)
+				ball.pos.x = sCorner3.x + ball.radius * 2;
+
+			if ((ball.pos.x == sCorner1.x - ball.radius * 2 && ball.speed.x > 0) || 
+				(ball.pos.x == sCorner3.x + ball.radius * 2 && ball.speed.x < 0 ))
+				ball.speed.x *= -1;
+		}
+	}
 }
