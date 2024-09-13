@@ -118,10 +118,10 @@ void BallRectCollision(Ball& ball, Rect& square)
 				ball.pos.y = sCorner1.y + ball.radius * 2;
 				BallSpace::Normalize360Angle(ball, GetRandomNum(maxAngleV - minAngleV, minAngleV));
 
-				/*if ()
-				{
-
-				}*/
+				if (ball.pos.x < rectCenterPos && ball.speed.x > 0)
+					ball.speed.x *= -1;
+				else if (ball.pos.x > rectCenterPos && ball.speed.x < 0)
+					ball.speed.x *= -1;
 
 				if (ball.speed.y < 0)
 					ball.speed.y *= -1;
