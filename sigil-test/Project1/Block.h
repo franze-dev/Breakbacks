@@ -12,3 +12,5 @@ struct Block
 };
 
 void CreateBlocks();
+void DrawBlocks();
+void DrawBlock(Block block);
