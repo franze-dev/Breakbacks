@@ -131,6 +131,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="Block.cpp" />
     <ClCompile Include="Breakout.cpp" />
     <ClCompile Include="ColorManager.cpp" />
     <ClCompile Include="GameplayScene.cpp" />
@@ -142,12 +143,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
+    <ClInclude Include="Block.h" />
     <ClInclude Include="Breakout.h" />
     <ClInclude Include="ColorManager.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="GameplayScene.h" />
     <ClInclude Include="KeyManager.h" />
-    <ClInclude Include="Rect.h" />
+    <ClInclude Include="Paddle.h" />
     <ClInclude Include="SceneManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

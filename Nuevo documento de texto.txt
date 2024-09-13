@@ -1,0 +1,3 @@
+sigil-test/.vs/
+sigil-test/bin/
+sigil-test/obj/

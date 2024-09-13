@@ -1,6 +1,6 @@
 #include <iostream>
 #include "GameplayScene.h"
-#include "Rect.h"
+#include "Paddle.h"
 #include "Ball.h"
 #include "KeyManager.h"
 #include "math.h"
@@ -15,20 +15,20 @@ struct Distances
 	int distance;
 };
 
-static Rect mainRect;
+static Paddle mainRect;
 static Ball mainBall;
 
-void BallRectCollision(Ball& ball, Rect& square);
+void BallRectCollision(Ball& ball, Paddle& square);
 
 void GameplayScene::Init()
 {
-	mainRect = RectSpace::GetDefaultRect();
+	mainRect = PaddleSpace::GetDefaultPaddle();
 	mainBall = BallSpace::GetDefaultBall();
 }
 
 void GameplayScene::Update()
 {
-	RectSpace::MoveRect(mainRect);
+	PaddleSpace::MovePaddle(mainRect);
 	BallSpace::CheckPlay(mainBall);
 	if (!mainBall.reset)
 	{
@@ -43,11 +43,11 @@ void GameplayScene::Update()
 
 void GameplayScene::Draw()
 {
-	RectSpace::DrawRect(mainRect);
+	PaddleSpace::DrawPaddle(mainRect);
 	BallSpace::DrawBall(mainBall);
 }
 
-void BallRectCollision(Ball& ball, Rect& square)
+void BallRectCollision(Ball& ball, Paddle& square)
 {
 	int rectCenterPos = square.pos.x;
 	int topOrBottomRand = 0;

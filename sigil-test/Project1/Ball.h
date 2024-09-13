@@ -1,7 +1,7 @@
 #pragma once
 #include "sl.h"
 #include "Utils.h"
-#include "Rect.h"
+#include "Paddle.h"
 
 
 struct Ball
@@ -31,7 +31,7 @@ namespace BallSpace
 	//The ball collides with the edges. 
 	void BallEdgeCollision(Ball& ball);
 	//Resets the ball to start position.
-	void ResetBall(Ball& ball, Rect myRect);
+	void ResetBall(Ball& ball, Paddle myRect);
 	//Checks if the player pressed the play key
 	void CheckPlay(Ball& ball);
 }

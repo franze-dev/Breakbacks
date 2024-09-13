@@ -145,7 +145,7 @@ void BallSpace::BallEdgeCollision(Ball& ball)
 	}
 }
 
-void BallSpace::ResetBall(Ball& ball, Rect myRect)
+void BallSpace::ResetBall(Ball& ball, Paddle myRect)
 {
 	ball.pos.x = myRect.pos.x;
 	ball.pos.y = myRect.pos.y + ball.radius*2;

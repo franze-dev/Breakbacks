@@ -18,9 +18,7 @@ struct Color
 	double a;
 };
 
-
 void InitColors();
-Color GetColor(int r, int g, int b);
 Color GetColor(Colors color);
 void SetForeColor(Colors color);
 

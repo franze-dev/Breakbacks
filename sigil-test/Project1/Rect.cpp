@@ -1,11 +1,11 @@
 #include "sl.h"
-#include "Rect.h"
+#include "Paddle.h"
 #include "Utils.h"
 #include "ColorManager.h"
 
-Rect RectSpace::GetDefaultRect()
+Paddle PaddleSpace::GetDefaultPaddle()
 {
-	Rect myRect;
+	Paddle myRect;
 	myRect.width = 200;
 	myRect.height = 15;
 	myRect.pos.x = screenHalfWidth;
@@ -14,13 +14,13 @@ Rect RectSpace::GetDefaultRect()
 	return myRect;
 }
 
-void RectSpace::DrawRect(Rect myRect)
+void PaddleSpace::DrawPaddle(Paddle myRect)
 {
 	SetForeColor(PURPLE);
 	slRectangleFill(myRect.pos.x, myRect.pos.y, myRect.width, myRect.height);
 }
 
-void RectSpace::MoveRect(Rect& myRect)
+void PaddleSpace::MovePaddle(Paddle& myRect)
 {
 	float currentSpeed = myRect.speed * slGetDeltaTime();
 

@@ -9,17 +9,9 @@ static Color green;
 static Color blue;
 static Color purple;
 
-void InitColors()
-{
-	white = GetColor(1.0, 1.0, 1.0);
-	red = GetColor(1.0, 0.0, 0.0);
-	yellow = GetColor(1.0, 1.0, 0.0);
-	green = GetColor(0.0, 1.0, 0.0);
-	blue = GetColor(0.0, 0.0, 1.0);
-	purple = GetColor(1.0, 0.0, 1.0);
-}
+static Color GetColor(int r, int g, int b);
 
-Color GetColor(int r, int g, int b)
+static Color GetColor(int r, int g, int b)
 {
 	Color myColor;
 	myColor.a = 1.0;
@@ -30,9 +22,19 @@ Color GetColor(int r, int g, int b)
 	return myColor;
 }
 
+void InitColors()
+{
+	white = GetColor(1.0, 1.0, 1.0);
+	red = GetColor(1.0, 0.0, 0.0);
+	yellow = GetColor(1.0, 1.0, 0.0);
+	green = GetColor(0.0, 1.0, 0.0);
+	blue = GetColor(0.0, 0.0, 1.0);
+	purple = GetColor(1.0, 0.0, 1.0);
+}
+
 Color GetColor(Colors color)
 {
-	Color myColor;
+	Color myColor = white;
 
 	switch (color)
 	{
