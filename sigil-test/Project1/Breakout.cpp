@@ -3,6 +3,7 @@
 #include "Breakout.h"
 #include "SceneManager.h"
 #include "GameplayScene.h"
+#include "ColorManager.h"
 
 namespace Breakout
 {
@@ -29,6 +30,8 @@ void Play()
 void Breakout::Init()
 {
 	slWindow(screenWidth, screenHeight, "BREAKBACKS", 0);
+
+	InitColors();
 
 	if (SceneManager::GetCurrentScene() == SceneManager::Gameplay)
 		GameplayScene::Init();

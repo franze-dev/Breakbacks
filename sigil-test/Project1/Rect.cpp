@@ -1,6 +1,7 @@
 #include "sl.h"
 #include "Rect.h"
 #include "Utils.h"
+#include "ColorManager.h"
 
 Rect RectSpace::GetDefaultRect()
 {
@@ -15,7 +16,7 @@ Rect RectSpace::GetDefaultRect()
 
 void RectSpace::DrawRect(Rect myRect)
 {
-	slSetForeColor(0.8, 0.0, 0.2, 1.0);
+	SetForeColor(PURPLE);
 	slRectangleFill(myRect.pos.x, myRect.pos.y, myRect.width, myRect.height);
 }
 

@@ -51,6 +51,9 @@
     <ClCompile Include="Utils.cpp">
       <Filter>Archivos de origen\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="ColorManager.cpp">
+      <Filter>Archivos de origen\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h">
@@ -73,6 +76,9 @@
     </ClInclude>
     <ClInclude Include="SceneManager.h">
       <Filter>Archivos de origen\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorManager.h">
+      <Filter>Archivos de encabezado\Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

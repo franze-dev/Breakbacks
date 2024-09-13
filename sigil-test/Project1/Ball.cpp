@@ -1,4 +1,5 @@
 #include "Ball.h"
+#include "ColorManager.h"
 #include <iostream>
 #include <ctime>
 
@@ -20,6 +21,7 @@ Ball BallSpace::GetDefaultBall()
 
 void BallSpace::DrawBall(Ball& ball)
 {
+	SetForeColor(WHITE);
 	slCircleFill(ball.pos.x, ball.pos.y, ball.radius, ball.vertices);
 }
 
