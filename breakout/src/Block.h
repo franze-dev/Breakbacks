@@ -8,7 +8,8 @@ struct Block
 	Vector2 pos;
 	int height;
 	int width;
-	int lives;
+	//int lives;
+	bool dead;
 };
 
 namespace BlockSpace

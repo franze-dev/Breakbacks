@@ -9,7 +9,6 @@ static Block blocks[rows][cols];
 
 Block GetBlock(Vector2 offSet);
 void BlockBallCollision(Ball& ball, Block& square);
-bool IsBlockAlive(Block square);
 
 Block GetBlock(Vector2 offSet)
 {
@@ -19,7 +18,7 @@ Block GetBlock(Vector2 offSet)
 	myBlock.pos.x = 0;
 	myBlock.pos.y = 0;
 	myBlock.offSet = offSet;
-	myBlock.lives = 3;
+	myBlock.dead = false;
 	return myBlock;
 }
 
@@ -120,18 +119,8 @@ void BlockBallCollision(Ball& ball, Block& square)
 				ball.speed.x *= -1;
 		}
 
-		square.lives--;
+		square.dead = true;
 	}
-}
-
-bool IsBlockAlive(Block block)
-{
-	if (block.lives <= 0)
-	{
-		block.lives = 0;
-		return false;
-	}
-	return true;
 }
 
 void BlockSpace::CreateBlocks()
@@ -158,7 +147,7 @@ void BlockSpace::UpdateBlocks(Ball& ball)
 {
 	for (int y = rows-1; y >= 0; y--)
 		for (int x = 0; x < cols; x++)
-			if (IsBlockAlive(blocks[y][x]))
+			if (!blocks[y][x].dead)
 				BlockBallCollision(ball, blocks[y][x]);
 				
 }
@@ -167,13 +156,13 @@ void BlockSpace::DrawBlocks()
 {
 	for (int y = 0; y < rows; y++)
 		for (int x = 0; x < cols; x++)
-			if (IsBlockAlive(blocks[y][x]))
+			if (!blocks[y][x].dead)
 				BlockSpace::DrawBlock(blocks[y][x]);
 }
 
 void BlockSpace::DrawBlock(Block block)
 {
-	SetForeColor((Colors)block.lives);
+	SetForeColor(GREEN);
 	slRectangleFill(block.pos.x, block.pos.y, block.width, block.height);
 	SetForeColor(PURPLE);
 	slRectangleOutline(block.pos.x, block.pos.y, block.width, block.height);
