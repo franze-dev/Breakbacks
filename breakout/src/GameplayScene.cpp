@@ -6,16 +6,6 @@
 #include "math.h"
 #include "Block.h"
 
-//To calculate the distance between the ball and the rect
-struct Distances
-{
-	int pinPointX;
-	int pinPointY;
-	int distX;
-	int distY;
-	int distance;
-};
-
 static Paddle mainRect;
 static Ball mainBall;
 
@@ -39,6 +29,7 @@ void GameplayScene::Update()
 	else
 		BallSpace::ResetBall(mainBall, mainRect);
 
+	BlockSpace::UpdateBlocks(mainBall);
 	BallRectCollision(mainBall, mainRect);
 	BallSpace::BallEdgeCollision(mainBall);
 }

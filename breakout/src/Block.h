@@ -1,5 +1,6 @@
 #pragma once
 #include "Utils.h"
+#include "Ball.h"
 
 struct Block
 {
@@ -7,12 +8,13 @@ struct Block
 	Vector2 pos;
 	int height;
 	int width;
-	bool dead;
+	int lives;
 };
 
 namespace BlockSpace
 {
 	void CreateBlocks();
+	void UpdateBlocks(Ball& ball);
 	void DrawBlocks();
 	void DrawBlock(Block block);
 }

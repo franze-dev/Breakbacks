@@ -3,6 +3,15 @@
 #include "Utils.h"
 #include "Paddle.h"
 
+//To calculate the distance between the ball and a square (block or rect)
+struct Distances
+{
+	int pinPointX;
+	int pinPointY;
+	int distX;
+	int distY;
+	int distance;
+};
 
 struct Ball
 {
