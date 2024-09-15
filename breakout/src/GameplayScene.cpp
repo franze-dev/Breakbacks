@@ -48,8 +48,8 @@ void BallRectCollision(Ball& ball, Paddle& square)
 
 	//ANGLES
 	//vertical
-	int minAngleV = 250;
-	int maxAngleV = 290;
+	int minAngleV = 260;
+	int maxAngleV = 280;
 	//horizontal
 	int minAngleH = 330;
 	int maxAngleH = 340;

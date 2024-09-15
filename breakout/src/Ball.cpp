@@ -100,8 +100,8 @@ void BallSpace::Normalize360Angle(Ball& ball, int angle)
 
 void BallSpace::MoveBall(Ball& ball)
 {
-	int minAngle = 30;
-	int maxAngle = 100;
+	int minAngle = 20;
+	int maxAngle = 80;
 
 	if (ball.randomizeDirection)
 	{
