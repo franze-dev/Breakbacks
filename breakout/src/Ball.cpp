@@ -9,7 +9,7 @@ Ball BallSpace::GetDefaultBall()
 
 	ball.vertices = 1000;
 	ball.radius = 10;
-	ball.generalSpeed = 600.0f;
+	ball.generalSpeed = 300.0f;
 	ball.pos = { (float)screenHalfWidth + ball.radius, (float)screenHalfHeight + ball.radius };
 	ball.speed = { ball.generalSpeed, ball.generalSpeed };
 	ball.defaultSpeed = ball.speed;
