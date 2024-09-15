@@ -18,6 +18,8 @@ struct Ball
 	int vertices;
 	int radius;
 	float generalSpeed;
+	float increasePercentage;
+	float speedIncrease;
 	Vector2 pos;
 	Vector2 speed;
 	Vector2 defaultSpeed;
@@ -29,6 +31,8 @@ namespace BallSpace
 {
 	//Initializes a ball
 	Ball GetDefaultBall();
+	//increases the speed to a percentage
+	void IncreaseSpeed(Ball& ball);
 	//Draw a ball
 	void DrawBall(Ball& ball);
 	/// Sets a random angle to the ball and normalizes the speed

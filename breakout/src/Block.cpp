@@ -2,7 +2,7 @@
 #include "ColorManager.h"
 #include "sl.h"
 #include <math.h>
-const int rows = 8;
+const int rows = 5;
 const int cols = 20;
 
 static Block blocks[rows][cols];
@@ -120,12 +120,15 @@ void BlockBallCollision(Ball& ball, Block& square)
 		}
 
 		square.dead = true;
+		BallSpace::IncreaseSpeed(ball);
 	}
 }
 
 void BlockSpace::CreateBlocks()
 {
-	Vector2 thisOffSet = { 0,screenHeight };
+	int offSetX = 0;
+	int offSetY = screenHeight * 4 / 5;
+	Vector2 thisOffSet = { offSetX,offSetY };
 
 	for (int y = 0; y < rows; y++)
 	{
@@ -145,11 +148,11 @@ void BlockSpace::CreateBlocks()
 
 void BlockSpace::UpdateBlocks(Ball& ball)
 {
-	for (int y = rows-1; y >= 0; y--)
+	for (int y = rows - 1; y >= 0; y--)
 		for (int x = 0; x < cols; x++)
 			if (!blocks[y][x].dead)
 				BlockBallCollision(ball, blocks[y][x]);
-				
+
 }
 
 void BlockSpace::DrawBlocks()

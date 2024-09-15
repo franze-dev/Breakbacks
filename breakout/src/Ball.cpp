@@ -3,13 +3,23 @@
 #include <iostream>
 #include <ctime>
 
+void ResetSpeed(Ball& ball);
+
+void ResetSpeed(Ball& ball)
+{
+	ball.speed = ball.defaultSpeed;
+	ball.generalSpeed = ball.defaultSpeed.x;
+}
+
 Ball BallSpace::GetDefaultBall()
 {
 	Ball ball;
 
 	ball.vertices = 1000;
 	ball.radius = 10;
-	ball.generalSpeed = 300.0f;
+	ball.generalSpeed = 350.0f;
+	ball.increasePercentage = 2.0f;
+	ball.speedIncrease = ball.generalSpeed * ball.increasePercentage / 100;
 	ball.pos = { (float)screenHalfWidth + ball.radius, (float)screenHalfHeight + ball.radius };
 	ball.speed = { ball.generalSpeed, ball.generalSpeed };
 	ball.defaultSpeed = ball.speed;
@@ -17,6 +27,13 @@ Ball BallSpace::GetDefaultBall()
 	ball.randomizeDirection = false;
 
 	return ball;
+}
+
+void BallSpace::IncreaseSpeed(Ball& ball)
+{
+	ball.speed.x += ball.increasePercentage;
+	ball.speed.y += ball.increasePercentage;
+	ball.generalSpeed += ball.increasePercentage;
 }
 
 void BallSpace::DrawBall(Ball& ball)
@@ -62,7 +79,8 @@ void BallSpace::Normalize360Angle(Ball& ball, int angle)
 	int magnitude = 0;
 	Vector2 direction;
 
-	ball.speed = ball.defaultSpeed;
+	ball.speed.x = ball.generalSpeed;
+	ball.speed.y = ball.generalSpeed;
 
 	direction.x = cos(angle);
 
@@ -112,7 +130,7 @@ void BallSpace::BallEdgeCollision(Ball& ball)
 	float minimumPosSpeed = ball.generalSpeed / 3;
 	float minimumNegSpeed = minimumPosSpeed * -1;
 
-	//sides
+	// sides
 	if ((ball.pos.x >= (screenWidth - ball.radius)) || (ball.pos.x <= ball.radius))
 	{
 		//When a player scores a point, the ball goes back to the center.
@@ -125,7 +143,7 @@ void BallSpace::BallEdgeCollision(Ball& ball)
 
 	}
 
-	//top / bottom
+	// top / bottom
 	if ((ball.pos.y >= (screenHeight - ball.radius)) || (ball.pos.y <= ball.radius))
 	{
 		//Teleports the ball inside the wall bounds to prevent it from glitching outside of the screen.
@@ -135,13 +153,7 @@ void BallSpace::BallEdgeCollision(Ball& ball)
 			ball.speed.y *= -1.0f;
 		}
 		else
-		{
 			ball.reset = true;
-
-		}
-
-		
-
 	}
 }
 
@@ -151,6 +163,7 @@ void BallSpace::ResetBall(Ball& ball, Paddle myRect)
 	ball.pos.y = myRect.pos.y + ball.radius*2;
 	ball.reset = true;
 	ball.randomizeDirection = true;
+	ResetSpeed(ball);
 }
 
 void BallSpace::CheckPlay(Ball& ball)
