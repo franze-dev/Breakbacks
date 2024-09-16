@@ -1,4 +1,7 @@
 #pragma once
 
-void Play();
+namespace Breakout
+{
+	void Play();
+}
 

@@ -3,171 +3,176 @@
 #include <iostream>
 #include <ctime>
 
-void ResetSpeed(Ball& ball);
-
-void ResetSpeed(Ball& ball)
+namespace BallSpace
 {
-	ball.speed = ball.defaultSpeed;
-	ball.generalSpeed = ball.defaultSpeed.x;
-}
+	void ResetSpeed(Ball& ball);
 
-Ball BallSpace::GetDefaultBall()
-{
-	Ball ball;
-
-	ball.vertices = 1000;
-	ball.radius = 10;
-	ball.generalSpeed = 350.0f;
-	ball.increasePercentage = 2.0f;
-	ball.speedIncrease = ball.generalSpeed * ball.increasePercentage / 100;
-	ball.pos = { (float)screenHalfWidth + ball.radius, (float)screenHalfHeight + ball.radius };
-	ball.speed = { ball.generalSpeed, ball.generalSpeed };
-	ball.defaultSpeed = ball.speed;
-	ball.reset = true;
-	ball.randomizeDirection = false;
-
-	return ball;
-}
-
-void BallSpace::IncreaseSpeed(Ball& ball)
-{
-	ball.speed.x += ball.increasePercentage;
-	ball.speed.y += ball.increasePercentage;
-	ball.generalSpeed += ball.increasePercentage;
-}
-
-void BallSpace::DrawBall(Ball& ball)
-{
-	SetForeColor(WHITE);
-	slCircleFill(ball.pos.x, ball.pos.y, ball.radius, ball.vertices);
-}
-
-void BallSpace::Normalize360Angle(Ball& ball)
-{
-	int angle = 0;
-	int magnitude = 0;
-	Vector2 direction;
-
-	angle = GetRandomNum(360, 0);
-
-	//To make sure the speed is not zero or a number I cannot work with, I set it to default to be safe.
-	ball.speed = ball.defaultSpeed;
-
-	//I calculate the directions the ball will go to (depending on the angles)
-	direction.x = cos(angle);
-	direction.y = sin(angle);
-
-	//The magnitude helps me normalize it so when it multiplies with the speed, the speed itself will not be too visibly modified in the game.
-	magnitude = sqrt(direction.x * direction.x + direction.y * direction.y);
-
-	if (magnitude > 0)
+	void ResetSpeed(Ball& ball)
 	{
-		direction.x /= magnitude;
-		direction.y /= magnitude;
+		ball.speed = ball.defaultSpeed;
+		ball.generalSpeed = ball.defaultSpeed.x;
 	}
 
-	ball.speed.y *= direction.y;
-	ball.speed.x *= direction.x;
-}
-
-void BallSpace::Normalize360Angle(Ball& ball, int angle)
-{
-	//Explained this in the other version of the function.
-
-	std::cout << angle << std::endl;
-
-	int magnitude = 0;
-	Vector2 direction;
-
-	ball.speed.x = ball.generalSpeed;
-	ball.speed.y = ball.generalSpeed;
-
-	direction.x = cos(angle);
-
-	direction.y = sin(angle);
-
-	magnitude = sqrt(direction.x * direction.x + direction.y * direction.y);
-
-	if (magnitude > 0)
+	Ball GetDefaultBall()
 	{
-		direction.x /= magnitude;
-		direction.y /= magnitude;
-	}
+		Ball ball;
 
-	ball.speed.y *= direction.y;
-	ball.speed.x *= direction.x;
-}
-
-void BallSpace::MoveBall(Ball& ball)
-{
-	int minAngle = 20;
-	int maxAngle = 80;
-
-	if (ball.randomizeDirection)
-	{
-		BallSpace::Normalize360Angle(ball, GetRandomNum(maxAngle-minAngle, minAngle));
-		if (ball.speed.y < 0)
-			ball.speed.y *= -1;
-
+		ball.vertices = 1000;
+		ball.radius = 10;
+		ball.generalSpeed = 350.0f;
+		ball.increasePercentage = 2.0f;
+		ball.speedIncrease = ball.generalSpeed * ball.increasePercentage / 100;
+		ball.pos = { (float)screenHalfWidth + ball.radius, (float)screenHalfHeight + ball.radius };
+		ball.speed = { ball.generalSpeed, ball.generalSpeed };
+		ball.defaultSpeed = ball.speed;
+		ball.reset = true;
 		ball.randomizeDirection = false;
+
+		return ball;
 	}
 
-	ball.pos.x += ball.speed.x * slGetDeltaTime();
-	ball.pos.y += ball.speed.y * slGetDeltaTime();
-}
-
-void BallSpace::BallEdgeCollision(Ball& ball)
-{
-	int angle = 0;
-	int magnitude = 0;
-	Vector2 direction;
-
-	//I made a range in which the ball could go a bit too slow / make an infinite bounce from the top and bottom of the screen.
-	int centerRange1 = screenHalfWidth - 50;
-	int centerRange2 = screenHalfWidth + 50;
-
-	//This is so it detects if the ball is going a bit too slow in that range
-	float minimumPosSpeed = ball.generalSpeed / 3;
-	float minimumNegSpeed = minimumPosSpeed * -1;
-
-	// sides
-	if ((ball.pos.x >= (screenWidth - ball.radius)) || (ball.pos.x <= ball.radius))
+	void IncreaseSpeed(Ball& ball)
 	{
-		//When a player scores a point, the ball goes back to the center.
-		if ((int)ball.pos.x >= (screenWidth - ball.radius))
-			ball.pos.x = screenWidth - ball.radius;
-		else
-			ball.pos.x = ball.radius;
-
-		ball.speed.x *= -1.0f;
-
+		ball.speed.x += ball.increasePercentage;
+		ball.speed.y += ball.increasePercentage;
+		ball.generalSpeed += ball.increasePercentage;
 	}
 
-	// top / bottom
-	if ((ball.pos.y >= (screenHeight - ball.radius)) || (ball.pos.y <= ball.radius))
+	void DrawBall(Ball& ball)
 	{
-		//Teleports the ball inside the wall bounds to prevent it from glitching outside of the screen.
-		if ((int)ball.pos.y >= (screenHeight - ball.radius))
+		SetForeColor(WHITE);
+		slCircleFill(ball.pos.x, ball.pos.y, ball.radius, ball.vertices);
+	}
+
+	void Normalize360Angle(Ball& ball)
+	{
+		int angle = 0;
+		int magnitude = 0;
+		Vector2 direction;
+
+		angle = GetRandomNum(360, 0);
+
+		//To make sure the speed is not zero or a number I cannot work with, I set it to default to be safe.
+		ball.speed = ball.defaultSpeed;
+
+		//I calculate the directions the ball will go to (depending on the angles)
+		direction.x = cos(angle);
+		direction.y = sin(angle);
+
+		//The magnitude helps me normalize it so when it multiplies with the speed, the speed itself will not be too visibly modified in the game.
+		magnitude = sqrt(direction.x * direction.x + direction.y * direction.y);
+
+		if (magnitude > 0)
 		{
-			ball.pos.y = screenHeight - ball.radius;
-			ball.speed.y *= -1.0f;
+			direction.x /= magnitude;
+			direction.y /= magnitude;
 		}
-		else
-			ball.reset = true;
+
+		ball.speed.y *= direction.y;
+		ball.speed.x *= direction.x;
 	}
+
+	void Normalize360Angle(Ball& ball, int angle)
+	{
+		//Explained this in the other version of the function.
+
+		std::cout << angle << std::endl;
+
+		int magnitude = 0;
+		Vector2 direction;
+
+		ball.speed.x = ball.generalSpeed;
+		ball.speed.y = ball.generalSpeed;
+
+		direction.x = cos(angle);
+
+		direction.y = sin(angle);
+
+		magnitude = sqrt(direction.x * direction.x + direction.y * direction.y);
+
+		if (magnitude > 0)
+		{
+			direction.x /= magnitude;
+			direction.y /= magnitude;
+		}
+
+		ball.speed.y *= direction.y;
+		ball.speed.x *= direction.x;
+	}
+
+	void MoveBall(Ball& ball)
+	{
+		int minAngle = 50;
+		int maxAngle = 80;
+
+		if (ball.randomizeDirection)
+		{
+			Normalize360Angle(ball, GetRandomNum(maxAngle - minAngle, minAngle));
+			if (ball.speed.y < 0)
+				ball.speed.y *= -1;
+
+			ball.randomizeDirection = false;
+		}
+
+		ball.pos.x += ball.speed.x * slGetDeltaTime();
+		ball.pos.y += ball.speed.y * slGetDeltaTime();
+	}
+
+	void BallEdgeCollision(Ball& ball)
+	{
+		int angle = 0;
+		int magnitude = 0;
+		Vector2 direction;
+
+		//I made a range in which the ball could go a bit too slow / make an infinite bounce from the top and bottom of the screen.
+		int centerRange1 = screenHalfWidth - 50;
+		int centerRange2 = screenHalfWidth + 50;
+
+		//This is so it detects if the ball is going a bit too slow in that range
+		float minimumPosSpeed = ball.generalSpeed / 3;
+		float minimumNegSpeed = minimumPosSpeed * -1;
+
+		// sides
+		if ((ball.pos.x >= (screenWidth - ball.radius)) || (ball.pos.x <= ball.radius))
+		{
+			//When a player scores a point, the ball goes back to the center.
+			if ((int)ball.pos.x >= (screenWidth - ball.radius))
+				ball.pos.x = screenWidth - ball.radius;
+			else
+				ball.pos.x = ball.radius;
+
+			ball.speed.x *= -1.0f;
+
+		}
+
+		// top / bottom
+		if ((ball.pos.y >= (screenHeight - ball.radius)) || (ball.pos.y <= ball.radius))
+		{
+			//Teleports the ball inside the wall bounds to prevent it from glitching outside of the screen.
+			if ((int)ball.pos.y >= (screenHeight - ball.radius))
+			{
+				ball.pos.y = screenHeight - ball.radius;
+				ball.speed.y *= -1.0f;
+			}
+			else
+				ball.reset = true;
+		}
+	}
+
+	void ResetBall(Ball& ball, Paddle myRect)
+	{
+		ball.pos.x = myRect.pos.x;
+		ball.pos.y = myRect.pos.y + ball.radius * 2;
+		ball.reset = true;
+		ball.randomizeDirection = true;
+		ResetSpeed(ball);
+	}
+
+	void CheckPlay(Ball& ball)
+	{
+		if (slGetKey(' '))
+			ball.reset = false;
+	}
+
 }
 
-void BallSpace::ResetBall(Ball& ball, Paddle myRect)
-{
-	ball.pos.x = myRect.pos.x;
-	ball.pos.y = myRect.pos.y + ball.radius*2;
-	ball.reset = true;
-	ball.randomizeDirection = true;
-	ResetSpeed(ball);
-}
-
-void BallSpace::CheckPlay(Ball& ball)
-{
-	if (slGetKey(' '))
-		ball.reset = false;
-}

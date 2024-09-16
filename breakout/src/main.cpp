@@ -2,5 +2,5 @@
 
 int main()
 {
-	Play();
+	Breakout::Play();
 }

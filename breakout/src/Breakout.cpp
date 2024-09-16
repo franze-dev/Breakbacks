@@ -11,46 +11,46 @@ namespace Breakout
 	void Update();
 	void Draw();
 	void Close();
-}
 
-void Play()
-{
-	Breakout::Init();
-
-	while (!slShouldClose() && !slGetKey(SL_KEY_ESCAPE))
+	void Play()
 	{
-		Breakout::Update();
-		Breakout::Draw();
+		Breakout::Init();
 
-		slRender();
+		while (!slShouldClose() && !slGetKey(SL_KEY_ESCAPE))
+		{
+			Breakout::Update();
+			Breakout::Draw();
+
+			slRender();
+		}
+		Breakout::Close();
 	}
-	Breakout::Close();
+
+	void Init()
+	{
+		slWindow(screenWidth, screenHeight, "BREAKBACKS", 0);
+
+		InitColors();
+
+		if (SceneManager::GetCurrentScene() == SceneManager::Gameplay)
+			GameplayScene::Init();
+	}
+
+	void Update()
+	{
+		if (SceneManager::GetCurrentScene() == SceneManager::Gameplay)
+			GameplayScene::Update();
+	}
+
+	void Draw()
+	{
+		if (SceneManager::GetCurrentScene() == SceneManager::Gameplay)
+			GameplayScene::Draw();
+	}
+
+	void Close()
+	{
+		slClose();
+	}
+
 }
-
-void Breakout::Init()
-{
-	slWindow(screenWidth, screenHeight, "BREAKBACKS", 0);
-
-	InitColors();
-
-	if (SceneManager::GetCurrentScene() == SceneManager::Gameplay)
-		GameplayScene::Init();
-}
-
-void Breakout::Update()
-{
-	if (SceneManager::GetCurrentScene() == SceneManager::Gameplay)
-		GameplayScene::Update();
-}
-
-void Breakout::Draw()
-{
-	if (SceneManager::GetCurrentScene() == SceneManager::Gameplay)
-		GameplayScene::Draw();
-}
-
-void Breakout::Close()
-{
-	slClose();
-}
-

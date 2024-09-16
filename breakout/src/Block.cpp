@@ -69,12 +69,6 @@ void BlockBallCollision(Ball& ball, Block& square)
 
 	if (calculations.distance <= ball.radius)
 	{
-		//Is it completely inside the rect? 
-		if (ball.pos.y > sCorner2.y &&
-			ball.pos.y < sCorner1.y &&
-			ball.pos.x < sCorner3.x &&
-			ball.pos.x > sCorner1.x)
-			ball.pos.y = sCorner2.y - ball.radius * 2;
 
 		//Where does it come from? Is it partially inside the rect?
 		//VERTICAL
@@ -118,6 +112,13 @@ void BlockBallCollision(Ball& ball, Block& square)
 				(ball.pos.x == sCorner3.x + ball.radius * 2 && ball.speed.x < 0))
 				ball.speed.x *= -1;
 		}
+
+		//Is it completely inside the rect? 
+		if (ball.pos.y > sCorner2.y &&
+			ball.pos.y < sCorner1.y &&
+			ball.pos.x < sCorner3.x &&
+			ball.pos.x > sCorner1.x)
+			ball.pos.y = sCorner2.y - ball.radius * 2;
 
 		square.dead = true;
 		BallSpace::IncreaseSpeed(ball);
