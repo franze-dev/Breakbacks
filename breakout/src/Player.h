@@ -6,5 +6,5 @@ struct Player
 };
 
 Player InitDefaultPlayer();
-bool IsAlive();
-void CheckWin();
+void LooseLife(Player player);
+bool IsAlive(Player player);

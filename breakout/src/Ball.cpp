@@ -2,6 +2,7 @@
 #include "ColorManager.h"
 #include <iostream>
 #include <ctime>
+#include "Player.h"
 
 namespace BallSpace
 {
@@ -130,7 +131,7 @@ namespace BallSpace
 		ball.pos.y += ball.speed.y * slGetDeltaTime();
 	}
 
-	void BallEdgeCollision(Ball& ball)
+	void BallEdgeCollision(Ball& ball, Player& player)
 	{
 		int angle = 0;
 		int magnitude = 0;
@@ -167,7 +168,11 @@ namespace BallSpace
 				ball.speed.y *= -1.0f;
 			}
 			else
+			{
+				if (IsAlive(player))
+					LooseLife(player);
 				ball.reset = true;
+			}
 		}
 	}
 

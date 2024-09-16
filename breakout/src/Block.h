@@ -14,6 +14,7 @@ struct Block
 
 namespace BlockSpace
 {
+	bool AreBlocksGone();
 	void CreateBlocks();
 	void UpdateBlocks(Ball& ball);
 	void DrawBlocks();

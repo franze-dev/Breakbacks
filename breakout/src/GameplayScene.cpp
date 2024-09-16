@@ -22,18 +22,22 @@ void GameplayScene::Init()
 
 void GameplayScene::Update()
 {
-	PaddleSpace::MovePaddle(mainRect);
-	BallSpace::CheckPlay(mainBall);
-	if (!mainBall.reset)
+	if (!BlockSpace::AreBlocksGone() && IsAlive(player))
 	{
-		BallSpace::MoveBall(mainBall);
-	}
-	else
-		BallSpace::ResetBall(mainBall, mainRect);
+		PaddleSpace::MovePaddle(mainRect);
+		BallSpace::CheckPlay(mainBall);
+		if (!mainBall.reset)
+		{
+			BallSpace::MoveBall(mainBall);
+		}
+		else
+			BallSpace::ResetBall(mainBall, mainRect);
 
-	BlockSpace::UpdateBlocks(mainBall);
-	BallRectCollision(mainBall, mainRect);
-	BallSpace::BallEdgeCollision(mainBall);
+		BlockSpace::UpdateBlocks(mainBall);
+		BallRectCollision(mainBall, mainRect);
+		BallSpace::BallEdgeCollision(mainBall);
+	}
+	
 }
 
 void GameplayScene::Draw()

@@ -60,6 +60,12 @@
     <ClCompile Include="..\src\Player.cpp">
       <Filter>Archivos de origen\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\ResultScene.cpp">
+      <Filter>Archivos de origen\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="UIManager.cpp">
+      <Filter>Archivos de origen\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Ball.h">
@@ -90,6 +96,12 @@
       <Filter>Archivos de encabezado\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Player.h">
+      <Filter>Archivos de encabezado\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ResultScene.h">
+      <Filter>Archivos de encabezado\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="UIManager.h">
       <Filter>Archivos de encabezado\Objects</Filter>
     </ClInclude>
   </ItemGroup>
