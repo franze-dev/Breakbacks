@@ -1,5 +1,6 @@
 #include "Block.h"
 #include "ColorManager.h"
+#include <iostream>
 #include "sl.h"
 #include <math.h>
 const int rows = 5;
@@ -60,14 +61,14 @@ void BlockBallCollision(Ball& ball, Block& square)
 	if ((int)ball.pos.y >= (int)sCorner1.y)
 		calculations.pinPointY = (int)sCorner1.y; //top
 
-	if ((int)ball.pos.y <= (int)sCorner2.y)
+	else if ((int)ball.pos.y <= (int)sCorner2.y)
 		calculations.pinPointY = (int)sCorner2.y; //bottom
 
 	calculations.distX = (int)ball.pos.x - calculations.pinPointX;
 	calculations.distY = (int)ball.pos.y - calculations.pinPointY;
 	calculations.distance = sqrt((calculations.distX * calculations.distX) + (calculations.distY * calculations.distY));
 
-	if (calculations.distance <= ball.radius)
+	if (calculations.distance < ball.radius)
 	{
 
 		//Where does it come from? Is it partially inside the rect?
@@ -80,8 +81,10 @@ void BlockBallCollision(Ball& ball, Block& square)
 			{
 				ball.pos.y = sCorner1.y + ball.radius * 2;
 
-				if (ball.speed.y < 0)
+				/*if (ball.speed.y < 0)
+				{*/
 					ball.speed.y *= -1;
+				//}
 			}
 
 			//bottom
@@ -89,17 +92,15 @@ void BlockBallCollision(Ball& ball, Block& square)
 			{
 				ball.pos.y = sCorner2.y - ball.radius * 2;
 
-				if (ball.speed.y > 0)
+				/*if (ball.speed.y > 0)
+				{*/
 					ball.speed.y *= -1;
+				//}
 			}
-
-			if (ball.pos.x < blockCenterPos && ball.speed.x > 0)
-				ball.speed.x *= -1;
-			else if (ball.pos.x > blockCenterPos && ball.speed.x < 0)
-				ball.speed.x *= -1;
 		}
 		//HORIZONTAL
-		else
+		else if(calculations.pinPointX == (int)sCorner1.x ||
+				calculations.pinPointX == (int)sCorner3.x)
 		{
 			//left
 			if (calculations.pinPointX == (int)sCorner1.x)
@@ -108,8 +109,8 @@ void BlockBallCollision(Ball& ball, Block& square)
 			else if (calculations.pinPointX == (int)sCorner3.x)
 				ball.pos.x = sCorner3.x + ball.radius * 2;
 
-			if ((ball.pos.x == sCorner1.x - ball.radius * 2 && ball.speed.x > 0) ||
-				(ball.pos.x == sCorner3.x + ball.radius * 2 && ball.speed.x < 0))
+			/*if ((ball.pos.x == sCorner1.x - ball.radius * 2 && ball.speed.x > 0) ||
+				(ball.pos.x == sCorner3.x + ball.radius * 2 && ball.speed.x < 0))*/
 				ball.speed.x *= -1;
 		}
 

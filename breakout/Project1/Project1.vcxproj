@@ -26,6 +26,7 @@
     <ClCompile Include="..\src\GameplayScene.cpp" />
     <ClCompile Include="..\src\KeyManager.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\Player.cpp" />
     <ClCompile Include="..\src\Rect.cpp" />
     <ClCompile Include="..\src\SceneManager.cpp" />
     <ClCompile Include="..\src\Utils.cpp" />
@@ -38,6 +39,7 @@
     <ClInclude Include="..\src\GameplayScene.h" />
     <ClInclude Include="..\src\KeyManager.h" />
     <ClInclude Include="..\src\Paddle.h" />
+    <ClInclude Include="..\src\Player.h" />
     <ClInclude Include="..\src\SceneManager.h" />
     <ClInclude Include="..\src\Utils.h" />
   </ItemGroup>

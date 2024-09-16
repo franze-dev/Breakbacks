@@ -57,6 +57,9 @@
     <ClCompile Include="..\src\GameplayScene.cpp">
       <Filter>Archivos de origen\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Player.cpp">
+      <Filter>Archivos de origen\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Ball.h">
@@ -85,6 +88,9 @@
     </ClInclude>
     <ClInclude Include="..\src\GameplayScene.h">
       <Filter>Archivos de encabezado\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Player.h">
+      <Filter>Archivos de encabezado\Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

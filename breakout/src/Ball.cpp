@@ -20,7 +20,7 @@ namespace BallSpace
 		ball.vertices = 1000;
 		ball.radius = 10;
 		ball.generalSpeed = 350.0f;
-		ball.increasePercentage = 2.0f;
+		ball.increasePercentage = 5.0f;
 		ball.speedIncrease = ball.generalSpeed * ball.increasePercentage / 100;
 		ball.pos = { (float)screenHalfWidth + ball.radius, (float)screenHalfHeight + ball.radius };
 		ball.speed = { ball.generalSpeed, ball.generalSpeed };
@@ -33,9 +33,21 @@ namespace BallSpace
 
 	void IncreaseSpeed(Ball& ball)
 	{
-		ball.speed.x += ball.increasePercentage;
-		ball.speed.y += ball.increasePercentage;
-		ball.generalSpeed += ball.increasePercentage;
+		if (ball.speed.x > 0)
+			ball.speed.x += ball.increasePercentage;
+		else
+			ball.speed.x -= ball.increasePercentage;
+
+		if (ball.speed.y > 0)
+			ball.speed.y += ball.increasePercentage;
+		else
+			ball.speed.y -= ball.increasePercentage;
+
+		if (ball.generalSpeed > 0)
+			ball.generalSpeed += ball.increasePercentage;
+		else
+			ball.generalSpeed -= ball.increasePercentage;
+
 	}
 
 	void DrawBall(Ball& ball)

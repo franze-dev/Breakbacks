@@ -5,9 +5,11 @@
 #include "KeyManager.h"
 #include "math.h"
 #include "Block.h"
+#include "Player.h"
 
 static Paddle mainRect;
 static Ball mainBall;
+static Player player;
 
 void BallRectCollision(Ball& ball, Paddle& square);
 
