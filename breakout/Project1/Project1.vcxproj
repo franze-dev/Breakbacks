@@ -30,8 +30,8 @@
     <ClCompile Include="..\src\Rect.cpp" />
     <ClCompile Include="..\src\ResultScene.cpp" />
     <ClCompile Include="..\src\SceneManager.cpp" />
+    <ClCompile Include="..\src\UIManager.cpp" />
     <ClCompile Include="..\src\Utils.cpp" />
-    <ClCompile Include="UIManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Ball.h" />
@@ -44,8 +44,8 @@
     <ClInclude Include="..\src\Player.h" />
     <ClInclude Include="..\src\ResultScene.h" />
     <ClInclude Include="..\src\SceneManager.h" />
+    <ClInclude Include="..\src\UIManager.h" />
     <ClInclude Include="..\src\Utils.h" />
-    <ClInclude Include="UIManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

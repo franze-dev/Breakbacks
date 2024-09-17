@@ -3,7 +3,7 @@
 
 namespace UIManager
 {
-	bool UIManager::IsMouseOnButton(Button button)
+	bool IsMouseOnButton(Button button)
 	{
 		if (slGetMouseX() > button.shape.pos.x &&
 			slGetMouseY() > button.shape.pos.y &&
@@ -15,24 +15,29 @@ namespace UIManager
 		return false;
 	}
 
-	void UIManager::DrawButtonText(Button button, Color textColor, int fontSize)
+	void DrawButtonText(Button button, Colors textColor, int fontSize)
 	{
-		DrawText(button.textShown.data(), button.shape.pos.x + button.shape.width / 2 - MeasureText(button.textShown.data(), fontSize) / 2, button.shape.pos.y + button.shape.height / 2 - fontSize / 2, fontSize, textColor);
+		SetForeColor(textColor);
+		double posX = button.shape.pos.x + button.shape.width / 2 - slGetTextWidth(button.textShown.data()) / 2;
+		double posY = button.shape.pos.y + button.shape.height / 2 - fontSize / 2;
+		slText(posX, posY, button.textShown.data());
 	}
 
-	void UIManager::DrawButtonRect(Button button)
+	void DrawButtonRect(Button button)
 	{
-		DrawRectangle(button.shape.x, button.shape.y, button.shape.width, button.shape.height, button.currentColor);
+		SetForeColor(button.currentColor);
+		slRectangleFill(button.shape.pos.x, button.shape.pos.y, button.shape.width, button.shape.height);
 	}
 
-	void UIManager::PrintText(Text myText)
+	void PrintText(Text myText)
 	{
-		DrawText(myText.content.data(), myText.location.x, myText.location.y, myText.fontSize, myText.color);
+		SetForeColor(myText.color);
+		slText(myText.location.x, myText.location.y, myText.content.data());
 	}
 
-	void UIManager::PrintText(Text myText, int score)
-	{
-		DrawText(TextFormat(myText.content.data(), score), myText.location.x, myText.location.y, myText.fontSize, myText.color); // PLAYER 1
-	}
+	//void UIManager::PrintText(Text myText, int score)
+	//{
+	//	DrawText(TextFormat(myText.content.data(), score), myText.location.x, myText.location.y, myText.fontSize, myText.color); // PLAYER 1
+	//}
 }
 

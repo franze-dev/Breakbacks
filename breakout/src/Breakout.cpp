@@ -30,6 +30,8 @@ namespace Breakout
 	{
 		slWindow(screenWidth, screenHeight, "BREAKBACKS", 0);
 
+		slLoadFont("fonts/RubikMonoOne-Regular.ttf");
+
 		InitColors();
 
 		if (SceneManager::GetCurrentScene() == SceneManager::Gameplay)

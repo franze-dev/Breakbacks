@@ -7,7 +7,8 @@ enum Colors
 	YELLOW,
 	GREEN,
 	BLUE,
-	PURPLE
+	PURPLE,
+	BLACK
 };
 
 struct Color

@@ -8,6 +8,7 @@ static Color yellow;
 static Color green;
 static Color blue;
 static Color purple;
+static Color black;
 
 static Color GetColor(int r, int g, int b);
 
@@ -30,6 +31,7 @@ void InitColors()
 	green = GetColor(0.0, 1.0, 0.0);
 	blue = GetColor(0.0, 0.0, 1.0);
 	purple = GetColor(1.0, 0.0, 1.0);
+	black = GetColor(0.0, 0.0, 0.0);
 }
 
 Color GetColor(Colors color)
@@ -55,6 +57,9 @@ Color GetColor(Colors color)
 		break;
 	case PURPLE:
 		myColor = purple;
+		break;
+	case BLACK:
+		myColor = black;
 		break;
 	default:
 		break;
