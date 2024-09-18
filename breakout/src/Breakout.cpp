@@ -30,7 +30,7 @@ namespace Breakout
 	{
 		slWindow(screenWidth, screenHeight, "BREAKBACKS", 0);
 
-		slLoadFont("fonts/RubikMonoOne-Regular.ttf");
+		//slLoadFont("fonts/RubikMonoOne-Regular.ttf");
 
 		InitColors();
 

@@ -57,21 +57,11 @@ namespace ResultScene
 
 	void Draw()
 	{
-		string winner = " ";
+		string win = "YOU WON!";
+		string lose = "YOU LOST!";
 
-		if (savedPlayer1.score > savedPlayer2.score)
-			winner = savedPlayer1.name;
-		else
-			winner = savedPlayer2.name;
 
-		winner += " has won!";
-
-		DrawText(winner.data(), GetScreenWidth() / 2 - MeasureText(winner.data(), defaultFontSize) / 2, GetScreenHeight() * 3 / 8, defaultFontSize, YELLOW);
-
-		DrawButtonRect(backToMenuButton);
-		DrawButtonText(backToMenuButton, WHITE, smallerFontSize);
-
-		DrawButtonRect(exitButton);
-		DrawButtonText(exitButton, WHITE, smallerFontSize);
+		UIManager::DrawButtonRect(exitButton);
+		UIManager::DrawButtonText(exitButton, WHITE, smallerFontSize);
 	}
 }

@@ -2,6 +2,7 @@
 #include "sl.h"
 #include "Utils.h"
 #include "Paddle.h"
+#include "Player.h"
 
 //To calculate the distance between the ball and a square (block or rect)
 struct Distances
@@ -42,7 +43,7 @@ namespace BallSpace
 	//Moves the ball and randomizes the angle when it launches.
 	void MoveBall(Ball& ball);
 	//The ball collides with the edges. 
-	void BallEdgeCollision(Ball& ball);
+	void BallEdgeCollision(Ball& ball, Player& player);
 	//Resets the ball to start position.
 	void ResetBall(Ball& ball, Paddle myRect);
 	//Checks if the player pressed the play key
