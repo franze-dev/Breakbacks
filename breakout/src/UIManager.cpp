@@ -1,8 +1,11 @@
 #include "UIManager.h"
 #include "sl.h"
 
+
 namespace UIManager
 {
+	static int mainFont;
+	
 	bool IsMouseOnButton(Button button)
 	{
 		if (slGetMouseX() > button.shape.pos.x &&
@@ -18,7 +21,7 @@ namespace UIManager
 	void DrawButtonText(Button button, Colors textColor, int fontSize)
 	{
 		SetForeColor(textColor);
-		double posX = button.shape.pos.x + button.shape.width / 2 - slGetTextWidth(button.textShown.data()) / 2;
+		double posX = button.shape.pos.x + button.shape.width / 2; //- slGetTextWidth(button.textShown.data()) / 2;
 		double posY = button.shape.pos.y + button.shape.height / 2 - fontSize / 2;
 		slText(posX, posY, button.textShown.data());
 	}
@@ -32,7 +35,13 @@ namespace UIManager
 	void PrintText(Text myText)
 	{
 		SetForeColor(myText.color);
+		slSetFont(mainFont, myText.fontSize);
 		slText(myText.location.x, myText.location.y, myText.content.data());
+	}
+	
+	void InitMainFont()
+	{
+		mainFont = slLoadFont("fonts/RubikMonoOne-Regular.ttf");
 	}
 
 	//void UIManager::PrintText(Text myText, int score)

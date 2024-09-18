@@ -66,11 +66,12 @@ namespace BallSpace
 		angle = GetRandomNum(360, 0);
 
 		//To make sure the speed is not zero or a number I cannot work with, I set it to default to be safe.
-		ball.speed = ball.defaultSpeed;
+		ball.speed.y = ball.generalSpeed;
+		ball.speed.x = ball.generalSpeed;
 
 		//I calculate the directions the ball will go to (depending on the angles)
-		direction.x = cos(angle);
-		direction.y = sin(angle);
+		direction.x = sin(angle);
+		direction.y = -cos(angle);
 
 		//The magnitude helps me normalize it so when it multiplies with the speed, the speed itself will not be too visibly modified in the game.
 		magnitude = sqrt(direction.x * direction.x + direction.y * direction.y);
@@ -97,9 +98,9 @@ namespace BallSpace
 		ball.speed.x = ball.generalSpeed;
 		ball.speed.y = ball.generalSpeed;
 
-		direction.x = cos(angle);
+		direction.x = sin(angle);
 
-		direction.y = sin(angle);
+		direction.y = -cos(angle);
 
 		magnitude = sqrt(direction.x * direction.x + direction.y * direction.y);
 

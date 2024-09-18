@@ -6,11 +6,14 @@
 #include "math.h"
 #include "Block.h"
 #include "Player.h"
+#include "SceneManager.h"
+#include "ResultScene.h"
 
 static Paddle mainRect;
 static Ball mainBall;
 static Player player;
 
+bool CheckWin(Player& player);
 void BallRectCollision(Ball& ball, Paddle& square);
 
 void GameplayScene::Init()
@@ -18,12 +21,13 @@ void GameplayScene::Init()
 	mainRect = PaddleSpace::GetDefaultPaddle();
 	mainBall = BallSpace::GetDefaultBall();
 	BlockSpace::CreateBlocks();
+	player = InitDefaultPlayer();
 }
 
 void GameplayScene::Update()
 {
-	/*if (!BlockSpace::AreBlocksGone() && IsAlive(player))
-	{*/
+	if (!BlockSpace::AreBlocksGone() && IsAlive(player))
+	{
 		PaddleSpace::MovePaddle(mainRect);
 		BallSpace::CheckPlay(mainBall);
 		if (!mainBall.reset)
@@ -36,8 +40,17 @@ void GameplayScene::Update()
 		BlockSpace::UpdateBlocks(mainBall);
 		BallRectCollision(mainBall, mainRect);
 		BallSpace::BallEdgeCollision(mainBall, player);
-	//}
-	
+	}
+	else
+	{
+		if (CheckWin(player))
+			player.won = true;
+		else
+			player.lost = true;
+
+		ResultScene::SavePlayer(player);
+		SceneManager::SetCurrentScene(SceneManager::Result);
+	}
 }
 
 void GameplayScene::Draw()
@@ -45,6 +58,18 @@ void GameplayScene::Draw()
 	PaddleSpace::DrawPaddle(mainRect);
 	BallSpace::DrawBall(mainBall);
 	BlockSpace::DrawBlocks();
+}
+
+bool CheckWin(Player& player)
+{
+	if (!IsAlive(player))
+	{
+		return false;
+	}
+	else if (BlockSpace::AreBlocksGone())
+	{
+		return true;
+	}
 }
 
 void BallRectCollision(Ball& ball, Paddle& square)
@@ -138,8 +163,8 @@ void BallRectCollision(Ball& ball, Paddle& square)
 			else if (calculations.pinPointX == (int)sCorner3.x)
 				ball.pos.x = sCorner3.x + ball.radius * 2;
 
-			if ((ball.pos.x == sCorner1.x - ball.radius * 2 && ball.speed.x > 0) || 
-				(ball.pos.x == sCorner3.x + ball.radius * 2 && ball.speed.x < 0 ))
+			if ((ball.pos.x == sCorner1.x - ball.radius * 2 && ball.speed.x > 0) ||
+				(ball.pos.x == sCorner3.x + ball.radius * 2 && ball.speed.x < 0))
 				ball.speed.x *= -1;
 		}
 	}

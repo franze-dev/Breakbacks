@@ -19,9 +19,6 @@ using namespace std;
 		Colors color;
 	};
 
-	//Prints a text
-	void PrintText(Text myText);
-
 	struct Button
 	{
 		Rectangle shape;
@@ -46,4 +43,8 @@ namespace UIManager
 	void DrawButtonText(Button button, Colors color, int fontSize);
 	//Draws the square of the button
 	void DrawButtonRect(Button button);
+	//Prints a text
+	void PrintText(Text myText);
+	//Inits the font
+	void InitMainFont();
 }

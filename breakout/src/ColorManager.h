@@ -22,4 +22,5 @@ struct Color
 void InitColors();
 Color GetColor(Colors color);
 void SetForeColor(Colors color);
+void SetTextColor(Colors color);
 

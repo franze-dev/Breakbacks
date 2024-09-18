@@ -45,7 +45,7 @@
     <ClCompile Include="..\src\KeyManager.cpp">
       <Filter>Archivos de origen\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Rect.cpp">
+    <ClCompile Include="..\src\Paddle.cpp">
       <Filter>Archivos de origen\Objects</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Utils.cpp">

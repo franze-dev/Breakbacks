@@ -3,11 +3,13 @@
 Player InitDefaultPlayer()
 {
 	Player myPlayer;
-	myPlayer.lives = 3;
+	myPlayer.lives = 1;
+	myPlayer.won = false;
+	myPlayer.lost = false;
 	return myPlayer;
 }
 
-void LooseLife(Player player)
+void LooseLife(Player& player)
 {
 	player.lives--;
 }

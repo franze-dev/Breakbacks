@@ -27,7 +27,7 @@
     <ClCompile Include="..\src\KeyManager.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\Player.cpp" />
-    <ClCompile Include="..\src\Rect.cpp" />
+    <ClCompile Include="..\src\Paddle.cpp" />
     <ClCompile Include="..\src\ResultScene.cpp" />
     <ClCompile Include="..\src\SceneManager.cpp" />
     <ClCompile Include="..\src\UIManager.cpp" />

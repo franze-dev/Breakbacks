@@ -3,6 +3,8 @@
 #include "Utils.h"
 #include "ColorManager.h"
 
+
+
 Paddle PaddleSpace::GetDefaultPaddle()
 {
 	Paddle myRect;

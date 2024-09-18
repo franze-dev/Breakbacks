@@ -4,6 +4,8 @@
 #include "SceneManager.h"
 #include "GameplayScene.h"
 #include "ColorManager.h"
+#include "ResultScene.h"
+#include "UIManager.h"
 
 namespace Breakout
 {
@@ -30,24 +32,30 @@ namespace Breakout
 	{
 		slWindow(screenWidth, screenHeight, "BREAKBACKS", 0);
 
-		//slLoadFont("fonts/RubikMonoOne-Regular.ttf");
+		UIManager::InitMainFont();
 
 		InitColors();
 
-		if (SceneManager::GetCurrentScene() == SceneManager::Gameplay)
-			GameplayScene::Init();
+		GameplayScene::Init();
+		ResultScene::Init();
 	}
 
 	void Update()
 	{
 		if (SceneManager::GetCurrentScene() == SceneManager::Gameplay)
 			GameplayScene::Update();
+
+		if (SceneManager::GetCurrentScene() == SceneManager::Result)
+			ResultScene::Update();
 	}
 
 	void Draw()
 	{
 		if (SceneManager::GetCurrentScene() == SceneManager::Gameplay)
 			GameplayScene::Draw();
+
+		if (SceneManager::GetCurrentScene() == SceneManager::Result)
+			ResultScene::Draw();
 	}
 
 	void Close()
