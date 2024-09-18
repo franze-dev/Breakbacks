@@ -21,21 +21,23 @@ namespace UIManager
 	void DrawButtonText(Button button, Colors textColor, int fontSize)
 	{
 		SetForeColor(textColor);
-		double posX = button.shape.pos.x + button.shape.width / 2; //- slGetTextWidth(button.textShown.data()) / 2;
-		double posY = button.shape.pos.y + button.shape.height / 2 - fontSize / 2;
+		slSetFont(mainFont, fontSize);
+		double posX = button.shape.pos.x + button.shape.width / 2;
+		double posY = button.shape.pos.y + button.shape.height / 2 - fontSize * 2/5;
 		slText(posX, posY, button.textShown.data());
 	}
 
 	void DrawButtonRect(Button button)
 	{
 		SetForeColor(button.currentColor);
-		slRectangleFill(button.shape.pos.x, button.shape.pos.y, button.shape.width, button.shape.height);
+		slRectangleFill(button.shape.pos.x+button.shape.width/2, button.shape.pos.y + button.shape.height/2, button.shape.width, button.shape.height);
 	}
 
 	void PrintText(Text myText)
 	{
 		SetForeColor(myText.color);
 		slSetFont(mainFont, myText.fontSize);
+		slSetTextAlign(SL_ALIGN_CENTER);
 		slText(myText.location.x, myText.location.y, myText.content.data());
 	}
 	

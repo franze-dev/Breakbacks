@@ -13,12 +13,13 @@ namespace Breakout
 	void Update();
 	void Draw();
 	void Close();
+	bool ShouldWindowClose();
 
 	void Play()
 	{
 		Breakout::Init();
 
-		while (!slShouldClose() && !slGetKey(SL_KEY_ESCAPE))
+		while (!ShouldWindowClose())
 		{
 			Breakout::Update();
 			Breakout::Draw();
@@ -63,4 +64,10 @@ namespace Breakout
 		slClose();
 	}
 
+	bool ShouldWindowClose()
+	{
+		if (slShouldClose() || slGetKey(SL_KEY_ESCAPE) || SceneManager::GetCurrentScene() == SceneManager::None)
+			return true;
+		return false;
+	}
 }

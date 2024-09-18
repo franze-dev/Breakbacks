@@ -26,11 +26,11 @@ namespace ResultScene
 	void Init()
 	{
 #pragma region EXIT_BUTTON
-		exitButton.shape.width = 150;
-		exitButton.shape.height = 30;
 		exitButton.defaultColor = BLACK;
+		exitButton.shape.width = 150;
+		exitButton.shape.height = 50;
 		exitButton.currentColor = exitButton.defaultColor;
-		exitButton.shape.pos.x = screenWidth * 3 / 8;
+		exitButton.shape.pos.x = screenWidth /2 - exitButton.shape.width/2;
 		exitButton.shape.pos.y += exitButton.shape.height + buttonsPadding;
 		exitButton.textShown = "EXIT";
 		exitButton.highlightColor = RED;
@@ -40,8 +40,8 @@ namespace ResultScene
 		resultText.color = RED;
 		resultText.content = "YOU ";
 		resultText.fontSize = 50;
-		resultText.location.x = screenWidth / 2;//- slGetTextWidth(resultText.content.c_str()) / 2;
-		resultText.location.y = screenHeight / 2;// - slGetTextHeight(resultText.content.c_str()) / 2;
+		resultText.location.x = screenWidth / 2;
+		resultText.location.y = screenHeight / 2;
 #pragma endregion
 
 
@@ -70,21 +70,21 @@ namespace ResultScene
 			exitButton.currentColor = exitButton.defaultColor;
 
 		if (savedPlayer.won)
+		{
 			resultText.content += win;
+			savedPlayer.won = false;
+		}
 		else if (savedPlayer.lost)
+		{
 			resultText.content += lose;
+			savedPlayer.lost = false;
+		}
 	}
 
 	void Draw()
 	{
-
-		if (savedPlayer.won)
-			resultText.content += win;
-		else if (savedPlayer.lost)
-			resultText.content += lose;
-
 		UIManager::DrawButtonRect(exitButton);
-		UIManager::DrawButtonText(exitButton, WHITE, smallerFontSize);
+		UIManager::DrawButtonText(exitButton, WHITE, defaultFontSize);
 		UIManager::PrintText(resultText);
 	}
 }
