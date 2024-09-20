@@ -35,7 +35,7 @@ namespace UIManager
 
 	void PrintText(Text myText)
 	{
-		SetForeColor(myText.color);
+		SetForeColor(myText.alt1Color);
 		slSetFont(mainFont, myText.fontSize);
 		slSetTextAlign(SL_ALIGN_CENTER);
 		slText(myText.location.x, myText.location.y, myText.content.data());

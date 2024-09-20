@@ -3,7 +3,7 @@
 Player InitDefaultPlayer()
 {
 	Player myPlayer;
-	myPlayer.lives = 1;
+	myPlayer.lives = 3;
 	myPlayer.won = false;
 	myPlayer.lost = false;
 	return myPlayer;

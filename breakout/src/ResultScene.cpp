@@ -37,7 +37,9 @@ namespace ResultScene
 #pragma endregion
 
 #pragma region RESULT_TEXT
-		resultText.color = RED;
+		resultText.alt1Color = RED;
+		resultText.alt2Color = YELLOW;
+		resultText.currentColor = resultText.alt1Color;
 		resultText.content = "YOU ";
 		resultText.fontSize = 50;
 		resultText.location.x = screenWidth / 2;
@@ -71,11 +73,13 @@ namespace ResultScene
 
 		if (savedPlayer.won)
 		{
+			resultText.currentColor = resultText.alt2Color;
 			resultText.content += win;
 			savedPlayer.won = false;
 		}
 		else if (savedPlayer.lost)
 		{
+			resultText.currentColor = resultText.alt1Color;
 			resultText.content += lose;
 			savedPlayer.lost = false;
 		}

@@ -16,7 +16,9 @@ using namespace std;
 		string content = " ";
 		int fontSize = 0;
 		Vector2 location;
-		Colors color;
+		Colors currentColor;
+		Colors alt1Color;
+		Colors alt2Color;
 	};
 
 	struct Button
