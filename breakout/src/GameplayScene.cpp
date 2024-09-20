@@ -8,6 +8,7 @@
 #include "Player.h"
 #include "SceneManager.h"
 #include "ResultScene.h"
+#include "UIManager.h"
 
 static Paddle mainRect;
 static Ball mainBall;
@@ -15,6 +16,7 @@ static Player player;
 
 bool CheckWin(Player& player);
 void BallRectCollision(Ball& ball, Paddle& square);
+void DrawUI();
 
 void GameplayScene::Init()
 {
@@ -58,6 +60,7 @@ void GameplayScene::Draw()
 	PaddleSpace::DrawPaddle(mainRect);
 	BallSpace::DrawBall(mainBall);
 	BlockSpace::DrawBlocks();
+	DrawUI();
 }
 
 bool CheckWin(Player& player)
@@ -168,4 +171,9 @@ void BallRectCollision(Ball& ball, Paddle& square)
 				ball.speed.x *= -1;
 		}
 	}
+}
+
+void DrawUI()
+{
+
 }

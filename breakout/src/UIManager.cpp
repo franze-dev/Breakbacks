@@ -43,12 +43,7 @@ namespace UIManager
 	
 	void InitMainFont()
 	{
-		mainFont = slLoadFont("fonts/RubikMonoOne-Regular.ttf");
+		mainFont = slLoadFont("res/fonts/RubikMonoOne-Regular.ttf");
 	}
-
-	//void UIManager::PrintText(Text myText, int score)
-	//{
-	//	DrawText(TextFormat(myText.content.data(), score), myText.location.x, myText.location.y, myText.fontSize, myText.color); // PLAYER 1
-	//}
 }
 

@@ -34,18 +34,18 @@
     <ClCompile Include="src\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\Ball.h" />
-    <ClInclude Include="..\src\Block.h" />
-    <ClInclude Include="..\src\Breakout.h" />
-    <ClInclude Include="..\src\ColorManager.h" />
-    <ClInclude Include="..\src\GameplayScene.h" />
-    <ClInclude Include="..\src\KeyManager.h" />
-    <ClInclude Include="..\src\Paddle.h" />
-    <ClInclude Include="..\src\Player.h" />
-    <ClInclude Include="..\src\ResultScene.h" />
-    <ClInclude Include="..\src\SceneManager.h" />
-    <ClInclude Include="..\src\UIManager.h" />
-    <ClInclude Include="..\src\Utils.h" />
+    <ClInclude Include="src\Ball.h" />
+    <ClInclude Include="src\Block.h" />
+    <ClInclude Include="src\Breakout.h" />
+    <ClInclude Include="src\ColorManager.h" />
+    <ClInclude Include="src\GameplayScene.h" />
+    <ClInclude Include="src\KeyManager.h" />
+    <ClInclude Include="src\Paddle.h" />
+    <ClInclude Include="src\Player.h" />
+    <ClInclude Include="src\ResultScene.h" />
+    <ClInclude Include="src\SceneManager.h" />
+    <ClInclude Include="src\UIManager.h" />
+    <ClInclude Include="src\Utils.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -122,10 +122,11 @@
       <AdditionalDependencies>sigil.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)lib\*.dll"  "$(OutDir)"</Command>
+      <Command>copy "$(SolutionDir)lib\*.dll"  "$(OutDir)" /y 
+xcopy "$(SolutionDir)res" "$(OutDir)res" /i /y</Command>
     </PostBuildEvent>
     <PostBuildEvent>
-      <Message>Copiando DLLs...</Message>
+      <Message>Copiando recursos y DLLs...</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -148,8 +149,9 @@
       <AdditionalDependencies>sigil.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)lib\*.dll"  "$(OutDir)"</Command>
-      <Message>Copiando DLLs...</Message>
+      <Command>copy "$(SolutionDir)lib\*.dll"  "$(OutDir)" /y 
+xcopy "$(SolutionDir)res" "$(OutDir)res" /i /y</Command>
+      <Message>Copiando recursos y DLLs...</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

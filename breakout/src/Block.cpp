@@ -6,8 +6,8 @@
 
 namespace BlockSpace
 {
-	const int rows = 5;
-	const int cols = 20;
+	const int rows = 6;
+	const int cols = 10;
 
 	static Block blocks[rows][cols];
 
@@ -18,7 +18,7 @@ namespace BlockSpace
 	{
 		Block myBlock;
 		myBlock.height = 40;
-		myBlock.width = myBlock.height;
+		myBlock.width = screenWidth/cols;
 		myBlock.pos.x = 0;
 		myBlock.pos.y = 0;
 		myBlock.offSet = offSet;
