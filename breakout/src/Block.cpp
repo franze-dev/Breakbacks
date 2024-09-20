@@ -122,7 +122,19 @@ namespace BlockSpace
 				ball.pos.y < sCorner1.y &&
 				ball.pos.x < sCorner3.x &&
 				ball.pos.x > sCorner1.x)
-				ball.pos.y = sCorner2.y - ball.radius * 2;
+			{
+				if (ball.speed.y < 0)
+					ball.pos.y = sCorner1.y + ball.radius * 2;
+				else if (ball.speed.y > 0)
+					ball.pos.y = sCorner2.y - ball.radius * 2;
+				ball.speed.y *= -1;
+
+				if (ball.speed.x < 0)
+					ball.pos.x = sCorner4.x + ball.radius * 2;
+				else if (ball.speed.x > 0)
+					ball.pos.x = sCorner2.x - ball.radius * 2;
+				ball.speed.x *= -1;
+			}
 
 			square.dead = true;
 			BallSpace::IncreaseSpeed(ball);
