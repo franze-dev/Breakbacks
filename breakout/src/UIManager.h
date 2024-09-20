@@ -48,7 +48,7 @@ namespace UIManager
 	//Draws the square of the button
 	void DrawButtonRect(Button button);
 	//Prints a text
-	void PrintText(Text myText);
+	void PrintText(Text myText, int align);
 	//Inits the font
 	void InitMainFont();
 }

@@ -18,6 +18,8 @@ namespace GameplayScene
 	static Player player;
 	static Text lives;
 	static Text credits;
+	static int textPadding = 20;
+	static int defaultFontSize = 30;
 
 	bool CheckWin(Player& player);
 	void BallPaddleCollision(Ball& ball, Paddle& square);
@@ -38,6 +40,7 @@ namespace GameplayScene
 	{
 		if (!BlockSpace::AreBlocksGone() && IsAlive(player))
 		{
+			UpdateUI();
 			PaddleSpace::MovePaddle(mainPaddle);
 			BallSpace::CheckPlay(mainBall);
 			if (!mainBall.reset)
@@ -186,13 +189,17 @@ namespace GameplayScene
 #pragma region LIVES_TEXT
 		lives.content = "LIVES: ";
 		lives.currentColor = WHITE;
-		lives.fontSize = 40;
-		lives.location.x = 20;
-		lives.location.y = lives.fontSize + lives.location.x;
+		lives.fontSize = defaultFontSize;
+		lives.location.x = textPadding;
+		lives.location.y = screenHeight -lives.fontSize;
 
 #pragma endregion
 #pragma region CREDITS_TEXT
-
+		credits.content = "By: S.Alvarez :)";
+		credits.currentColor = BLUE;
+		credits.fontSize = defaultFontSize / 2;
+		credits.location.x = screenWidth - textPadding;
+		credits.location.y = screenHeight - credits.fontSize;
 #pragma endregion
 
 	}
@@ -206,8 +213,8 @@ namespace GameplayScene
 
 	void DrawUI()
 	{
-		
-
+		UIManager::PrintText(lives, SL_ALIGN_LEFT);
+		UIManager::PrintText(credits, SL_ALIGN_RIGHT);
 	}
 }
 

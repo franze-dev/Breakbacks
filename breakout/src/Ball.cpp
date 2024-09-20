@@ -9,7 +9,6 @@ const int ballMinAngle = 20;
 
 namespace BallSpace
 {
-
 	void ResetSpeed(Ball& ball);
 
 	void ResetSpeed(Ball& ball)
@@ -141,13 +140,9 @@ namespace BallSpace
 		int magnitude = 0;
 		Vector2 direction;
 
-		//I made a range in which the ball could go a bit too slow / make an infinite bounce from the top and bottom of the screen.
-		int centerRange1 = screenHalfWidth - 50;
-		int centerRange2 = screenHalfWidth + 50;
-
 		//This is so it detects if the ball is going a bit too slow in that range
 		float minimumPosSpeed = ball.generalSpeed / 3;
-		float minimumNegSpeed = minimumPosSpeed * -1;
+		float minimumNegSpeed = minimumPosSpeed * -1.0f;
 
 		// sides
 		if ((ball.pos.x >= (screenWidth - ball.radius)) || (ball.pos.x <= ball.radius))

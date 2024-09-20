@@ -89,6 +89,6 @@ namespace ResultScene
 	{
 		UIManager::DrawButtonRect(exitButton);
 		UIManager::DrawButtonText(exitButton, WHITE, defaultFontSize);
-		UIManager::PrintText(resultText);
+		UIManager::PrintText(resultText, SL_ALIGN_CENTER);
 	}
 }

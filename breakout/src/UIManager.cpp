@@ -33,11 +33,11 @@ namespace UIManager
 		slRectangleFill(button.shape.pos.x+button.shape.width/2, button.shape.pos.y + button.shape.height/2, button.shape.width, button.shape.height);
 	}
 
-	void PrintText(Text myText)
+	void PrintText(Text myText, int align)
 	{
-		SetForeColor(myText.alt1Color);
+		SetForeColor(myText.currentColor);
 		slSetFont(mainFont, myText.fontSize);
-		slSetTextAlign(SL_ALIGN_CENTER);
+		slSetTextAlign(align);
 		slText(myText.location.x, myText.location.y, myText.content.data());
 	}
 	
