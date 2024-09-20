@@ -7,30 +7,30 @@
 
 Paddle PaddleSpace::GetDefaultPaddle()
 {
-	Paddle myRect;
-	myRect.width = 200;
-	myRect.height = 15;
-	myRect.pos.x = screenHalfWidth;
-	myRect.pos.y = 0 + myRect.height;
-	myRect.speed = 500.0f;
-	return myRect;
+	Paddle myPaddle;
+	myPaddle.width = 200;
+	myPaddle.height = 15;
+	myPaddle.pos.x = screenHalfWidth;
+	myPaddle.pos.y = 0 + myPaddle.height;
+	myPaddle.speed = 500.0f;
+	return myPaddle;
 }
 
-void PaddleSpace::DrawPaddle(Paddle myRect)
+void PaddleSpace::DrawPaddle(Paddle myPaddle)
 {
 	SetForeColor(PURPLE);
-	slRectangleFill(myRect.pos.x, myRect.pos.y, myRect.width, myRect.height);
+	slRectangleFill(myPaddle.pos.x, myPaddle.pos.y, myPaddle.width, myPaddle.height);
 }
 
-void PaddleSpace::MovePaddle(Paddle& myRect)
+void PaddleSpace::MovePaddle(Paddle& myPaddle)
 {
-	float currentSpeed = myRect.speed * slGetDeltaTime();
+	float currentSpeed = myPaddle.speed * slGetDeltaTime();
 
 	int leftKey = 'A';
 	int rightKey = 'D';
 
-	if (slGetKey(leftKey) && myRect.pos.x - myRect.width/2 > 0)
-		myRect.pos.x -= currentSpeed;
-	else if (slGetKey(rightKey) && myRect.pos.x + myRect.width / 2 < screenWidth)
-		myRect.pos.x += currentSpeed;
+	if (slGetKey(leftKey) && myPaddle.pos.x - myPaddle.width/2 > 0)
+		myPaddle.pos.x -= currentSpeed;
+	else if (slGetKey(rightKey) && myPaddle.pos.x + myPaddle.width / 2 < screenWidth)
+		myPaddle.pos.x += currentSpeed;
 }

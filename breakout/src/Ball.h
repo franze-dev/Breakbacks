@@ -4,7 +4,7 @@
 #include "Paddle.h"
 #include "Player.h"
 
-//To calculate the distance between the ball and a square (block or rect)
+//To calculate the distance between the ball and a square (block or paddle)
 struct Distances
 {
 	int pinPointX;

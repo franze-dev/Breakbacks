@@ -4,8 +4,12 @@
 #include <ctime>
 #include "Player.h"
 
+const int ballMaxAngle = 360;
+const int ballMinAngle = 20;
+
 namespace BallSpace
 {
+
 	void ResetSpeed(Ball& ball);
 
 	void ResetSpeed(Ball& ball)
@@ -116,12 +120,11 @@ namespace BallSpace
 
 	void MoveBall(Ball& ball)
 	{
-		int minAngle = 20;
-		int maxAngle = 360 - minAngle;
+		int maxAngle = ballMaxAngle - ballMinAngle;
 
 		if (ball.randomizeDirection)
 		{
-			Normalize360Angle(ball, GetRandomNum(maxAngle - minAngle, minAngle));
+			Normalize360Angle(ball, GetRandomNum(maxAngle - ballMinAngle, ballMinAngle));
 			if (ball.speed.y < 0)
 				ball.speed.y *= -1;
 

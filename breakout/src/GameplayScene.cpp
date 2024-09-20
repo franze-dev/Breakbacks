@@ -13,21 +13,21 @@
 
 namespace GameplayScene
 {
-	static Paddle mainRect;
+	static Paddle mainPaddle;
 	static Ball mainBall;
 	static Player player;
 	static Text lives;
 	static Text credits;
 
 	bool CheckWin(Player& player);
-	void BallRectCollision(Ball& ball, Paddle& square);
+	void BallPaddleCollision(Ball& ball, Paddle& square);
 	void InitUI();
 	void UpdateUI();
 	void DrawUI();
 
 	void Init()
 	{
-		mainRect = PaddleSpace::GetDefaultPaddle();
+		mainPaddle = PaddleSpace::GetDefaultPaddle();
 		mainBall = BallSpace::GetDefaultBall();
 		BlockSpace::CreateBlocks();
 		player = InitDefaultPlayer();
@@ -38,17 +38,17 @@ namespace GameplayScene
 	{
 		if (!BlockSpace::AreBlocksGone() && IsAlive(player))
 		{
-			PaddleSpace::MovePaddle(mainRect);
+			PaddleSpace::MovePaddle(mainPaddle);
 			BallSpace::CheckPlay(mainBall);
 			if (!mainBall.reset)
 			{
 				BallSpace::MoveBall(mainBall);
 			}
 			else
-				BallSpace::ResetBall(mainBall, mainRect);
+				BallSpace::ResetBall(mainBall, mainPaddle);
 
 			BlockSpace::UpdateBlocks(mainBall);
-			BallRectCollision(mainBall, mainRect);
+			BallPaddleCollision(mainBall, mainPaddle);
 			BallSpace::BallEdgeCollision(mainBall, player);
 		}
 		else
@@ -65,7 +65,7 @@ namespace GameplayScene
 
 	void Draw()
 	{
-		PaddleSpace::DrawPaddle(mainRect);
+		PaddleSpace::DrawPaddle(mainPaddle);
 		BallSpace::DrawBall(mainBall);
 		BlockSpace::DrawBlocks();
 		DrawUI();
@@ -83,9 +83,9 @@ namespace GameplayScene
 		}
 	}
 
-	void BallRectCollision(Ball& ball, Paddle& square)
+	void BallPaddleCollision(Ball& ball, Paddle& square)
 	{
-		int rectCenterPos = square.pos.x;
+		int paddleCenterPos = square.pos.x;
 		int topOrBottomRand = 0;
 
 		//ANGLES
@@ -154,9 +154,9 @@ namespace GameplayScene
 					ball.pos.y = sCorner1.y + ball.radius * 2;
 					BallSpace::Normalize360Angle(ball, GetRandomNum(maxAngleV - minAngleV, minAngleV));
 
-					if (ball.pos.x < rectCenterPos && ball.speed.x > 0)
+					if (ball.pos.x < paddleCenterPos && ball.speed.x > 0)
 						ball.speed.x *= -1;
-					else if (ball.pos.x > rectCenterPos && ball.speed.x < 0)
+					else if (ball.pos.x > paddleCenterPos && ball.speed.x < 0)
 						ball.speed.x *= -1;
 
 					if (ball.speed.y < 0)
@@ -189,7 +189,6 @@ namespace GameplayScene
 		lives.fontSize = 40;
 		lives.location.x = 20;
 		lives.location.y = lives.fontSize + lives.location.x;
-
 
 #pragma endregion
 #pragma region CREDITS_TEXT

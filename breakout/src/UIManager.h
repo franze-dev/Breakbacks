@@ -28,10 +28,12 @@ using namespace std;
 		//If there are two texts possibilities in the same button, these are the two alternatives.
 		string textAlt1;
 		string textAlt2;
-		Colors defaultColor;
 		//If the button is a switch, it's convenient for it to have two colors that differenciate the 
 		//status in which theyre in (on or off). I distinguish that with "defaultColor" and "secondDefaultColor"
+		Colors defaultColor;
 		Colors secondDefaultColor;
+		//is it one color or another?
+		bool activated = false;
 		Colors currentColor;
 		//This is the color when the user hovers the mouse over the button.
 		Colors highlightColor;

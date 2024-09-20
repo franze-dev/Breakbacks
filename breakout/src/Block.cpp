@@ -120,14 +120,12 @@ namespace BlockSpace
 
 	bool AreBlocksGone()
 	{
-		bool gone = true;
-
 		for (int y = rows - 1; y >= 0; y--)
 			for (int x = 0; x < cols; x++)
 				if (!blocks[y][x].dead)
-					gone = false;
+					return false;
 
-		return gone;
+		return true;
 	}
 
 	void CreateBlocks()

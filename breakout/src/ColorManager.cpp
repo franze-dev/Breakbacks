@@ -10,8 +10,6 @@ static Color blue;
 static Color purple;
 static Color black;
 
-static Color GetColor(int r, int g, int b);
-
 static Color GetColor(int r, int g, int b)
 {
 	Color myColor;
@@ -21,17 +19,6 @@ static Color GetColor(int r, int g, int b)
 	myColor.b = b;
 
 	return myColor;
-}
-
-void InitColors()
-{
-	white = GetColor(1.0, 1.0, 1.0);
-	red = GetColor(1.0, 0.0, 0.0);
-	yellow = GetColor(1.0, 1.0, 0.0);
-	green = GetColor(0.0, 1.0, 0.0);
-	blue = GetColor(0.0, 0.0, 1.0);
-	purple = GetColor(1.0, 0.0, 1.0);
-	black = GetColor(0.0, 0.0, 0.0);
 }
 
 Color GetColor(Colors color)
@@ -67,6 +54,18 @@ Color GetColor(Colors color)
 
 	return myColor;
 }
+
+void InitColors()
+{
+	white = GetColor(1.0, 1.0, 1.0);
+	red = GetColor(1.0, 0.0, 0.0);
+	yellow = GetColor(1.0, 1.0, 0.0);
+	green = GetColor(0.0, 1.0, 0.0);
+	blue = GetColor(0.0, 0.0, 1.0);
+	purple = GetColor(1.0, 0.0, 1.0);
+	black = GetColor(0.0, 0.0, 0.0);
+}
+
 
 void SetForeColor(Colors color)
 {

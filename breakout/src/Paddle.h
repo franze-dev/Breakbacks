@@ -12,7 +12,7 @@ struct Paddle
 namespace PaddleSpace
 {
 	Paddle GetDefaultPaddle();
-	void DrawPaddle(Paddle myRect);
-	void MovePaddle(Paddle& myRect);
+	void DrawPaddle(Paddle myPaddle);
+	void MovePaddle(Paddle& myPaddle);
 };
 
