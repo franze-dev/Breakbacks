@@ -84,10 +84,8 @@ namespace BlockSpace
 				{
 					ball.pos.y = sCorner1.y + ball.radius * 2;
 
-					/*if (ball.speed.y < 0)
-					{*/
-					ball.speed.y *= -1;
-					//}
+					if (ball.speed.y < 0)
+						ball.speed.y *= -1;
 				}
 
 				//bottom
@@ -95,10 +93,8 @@ namespace BlockSpace
 				{
 					ball.pos.y = sCorner2.y - ball.radius * 2;
 
-					/*if (ball.speed.y > 0)
-					{*/
-					ball.speed.y *= -1;
-					//}
+					if (ball.speed.y > 0)
+						ball.speed.y *= -1;
 				}
 			}
 			//HORIZONTAL

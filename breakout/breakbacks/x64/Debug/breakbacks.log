@@ -1,0 +1,53 @@
+﻿  Ball.cpp
+/src/Ball.cpp(1,1): error C1083: No se puede abrir el archivo origen: '..\src\Ball.cpp': No such file or directory
+  (compilando archivo de origen "/src/Ball.cpp")
+  
+  Block.cpp
+/src/Block.cpp(1,1): error C1083: No se puede abrir el archivo origen: '..\src\Block.cpp': No such file or directory
+  (compilando archivo de origen "/src/Block.cpp")
+  
+  Breakout.cpp
+/src/Breakout.cpp(1,1): error C1083: No se puede abrir el archivo origen: '..\src\Breakout.cpp': No such file or directory
+  (compilando archivo de origen "/src/Breakout.cpp")
+  
+  ColorManager.cpp
+/src/ColorManager.cpp(1,1): error C1083: No se puede abrir el archivo origen: '..\src\ColorManager.cpp': No such file or directory
+  (compilando archivo de origen "/src/ColorManager.cpp")
+  
+  GameplayScene.cpp
+/src/GameplayScene.cpp(1,1): error C1083: No se puede abrir el archivo origen: '..\src\GameplayScene.cpp': No such file or directory
+  (compilando archivo de origen "/src/GameplayScene.cpp")
+  
+  KeyManager.cpp
+/src/KeyManager.cpp(1,1): error C1083: No se puede abrir el archivo origen: '..\src\KeyManager.cpp': No such file or directory
+  (compilando archivo de origen "/src/KeyManager.cpp")
+  
+  main.cpp
+/src/main.cpp(1,1): error C1083: No se puede abrir el archivo origen: '..\src\main.cpp': No such file or directory
+  (compilando archivo de origen "/src/main.cpp")
+  
+  Player.cpp
+/src/Player.cpp(1,1): error C1083: No se puede abrir el archivo origen: '..\src\Player.cpp': No such file or directory
+  (compilando archivo de origen "/src/Player.cpp")
+  
+  Paddle.cpp
+/src/Paddle.cpp(1,1): error C1083: No se puede abrir el archivo origen: '..\src\Paddle.cpp': No such file or directory
+  (compilando archivo de origen "/src/Paddle.cpp")
+  
+  ResultScene.cpp
+/src/ResultScene.cpp(1,1): error C1083: No se puede abrir el archivo origen: '..\src\ResultScene.cpp': No such file or directory
+  (compilando archivo de origen "/src/ResultScene.cpp")
+  
+  SceneManager.cpp
+/src/SceneManager.cpp(1,1): error C1083: No se puede abrir el archivo origen: '..\src\SceneManager.cpp': No such file or directory
+  (compilando archivo de origen "/src/SceneManager.cpp")
+  
+  UIManager.cpp
+/src/UIManager.cpp(1,1): error C1083: No se puede abrir el archivo origen: '..\src\UIManager.cpp': No such file or directory
+  (compilando archivo de origen "/src/UIManager.cpp")
+  
+  Utils.cpp
+/src/Utils.cpp(1,1): error C1083: No se puede abrir el archivo origen: '..\src\Utils.cpp': No such file or directory
+  (compilando archivo de origen "/src/Utils.cpp")
+  
+  Generando código...

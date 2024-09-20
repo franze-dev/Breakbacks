@@ -15,94 +15,94 @@
     <Filter Include="Archivos de origen\Scenes">
       <UniqueIdentifier>{ee0ae5e8-89cb-411a-a5f9-e64fba774b04}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de origen\Archivos de encabezado">
+    <Filter Include="Archivos de encabezado">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Archivos de origen\Archivos de encabezado\Objects">
+    <Filter Include="Archivos de encabezado\Objects">
       <UniqueIdentifier>{a4006bd5-e063-49a3-8ef8-15b733792121}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de origen\Archivos de encabezado\Scenes">
+    <Filter Include="Archivos de encabezado\Scenes">
       <UniqueIdentifier>{3053a52e-9d6f-4f0f-b036-f333be9378a9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\main.cpp">
+    <ClCompile Include="src\Ball.cpp">
+      <Filter>Archivos de origen\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Block.cpp">
+      <Filter>Archivos de origen\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Breakout.cpp">
+      <Filter>Archivos de origen\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ColorManager.cpp">
+      <Filter>Archivos de origen\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameplayScene.cpp">
+      <Filter>Archivos de origen\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ResultScene.cpp">
+      <Filter>Archivos de origen\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\KeyManager.cpp">
+      <Filter>Archivos de origen\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Paddle.cpp">
+      <Filter>Archivos de origen\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Player.cpp">
+      <Filter>Archivos de origen\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SceneManager.cpp">
+      <Filter>Archivos de origen\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UIManager.cpp">
+      <Filter>Archivos de origen\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utils.cpp">
+      <Filter>Archivos de origen\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
       <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Ball.cpp">
-      <Filter>Archivos de origen\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Block.cpp">
-      <Filter>Archivos de origen\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Breakout.cpp">
-      <Filter>Archivos de origen\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ColorManager.cpp">
-      <Filter>Archivos de origen\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\KeyManager.cpp">
-      <Filter>Archivos de origen\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Paddle.cpp">
-      <Filter>Archivos de origen\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Utils.cpp">
-      <Filter>Archivos de origen\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\SceneManager.cpp">
-      <Filter>Archivos de origen\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\GameplayScene.cpp">
-      <Filter>Archivos de origen\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Player.cpp">
-      <Filter>Archivos de origen\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ResultScene.cpp">
-      <Filter>Archivos de origen\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\UIManager.cpp">
-      <Filter>Archivos de origen\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Ball.h">
-      <Filter>Archivos de origen\Archivos de encabezado\Objects</Filter>
+      <Filter>Archivos de encabezado\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Block.h">
-      <Filter>Archivos de origen\Archivos de encabezado\Objects</Filter>
+      <Filter>Archivos de encabezado\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ColorManager.h">
-      <Filter>Archivos de origen\Archivos de encabezado\Objects</Filter>
+      <Filter>Archivos de encabezado\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Breakout.h">
-      <Filter>Archivos de origen\Archivos de encabezado\Objects</Filter>
+      <Filter>Archivos de encabezado\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\KeyManager.h">
-      <Filter>Archivos de origen\Archivos de encabezado\Objects</Filter>
+      <Filter>Archivos de encabezado\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Paddle.h">
-      <Filter>Archivos de origen\Archivos de encabezado\Objects</Filter>
+      <Filter>Archivos de encabezado\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Utils.h">
-      <Filter>Archivos de origen\Archivos de encabezado\Objects</Filter>
+      <Filter>Archivos de encabezado\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\SceneManager.h">
-      <Filter>Archivos de origen\Archivos de encabezado\Scenes</Filter>
+      <Filter>Archivos de encabezado\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="..\src\GameplayScene.h">
-      <Filter>Archivos de origen\Archivos de encabezado\Scenes</Filter>
+      <Filter>Archivos de encabezado\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Player.h">
-      <Filter>Archivos de origen\Archivos de encabezado\Objects</Filter>
+      <Filter>Archivos de encabezado\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ResultScene.h">
-      <Filter>Archivos de origen\Archivos de encabezado\Scenes</Filter>
+      <Filter>Archivos de encabezado\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="..\src\UIManager.h">
-      <Filter>Archivos de origen\Archivos de encabezado\Objects</Filter>
+      <Filter>Archivos de encabezado\Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

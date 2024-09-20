@@ -116,8 +116,8 @@ namespace BallSpace
 
 	void MoveBall(Ball& ball)
 	{
-		int minAngle = 50;
-		int maxAngle = 80;
+		int minAngle = 20;
+		int maxAngle = 360 - minAngle;
 
 		if (ball.randomizeDirection)
 		{
