@@ -5,25 +5,25 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Archivos de encabezado">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="Archivos de recursos">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Archivos de encabezado\Objects">
-      <UniqueIdentifier>{a4006bd5-e063-49a3-8ef8-15b733792121}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\Scenes">
-      <UniqueIdentifier>{3053a52e-9d6f-4f0f-b036-f333be9378a9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Archivos de origen\Objects">
       <UniqueIdentifier>{dc68b1a1-5fee-41a5-b1f9-0eb2815119d2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Archivos de origen\Scenes">
       <UniqueIdentifier>{ee0ae5e8-89cb-411a-a5f9-e64fba774b04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Archivos de encabezado">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Archivos de origen\Archivos de encabezado\Objects">
+      <UniqueIdentifier>{a4006bd5-e063-49a3-8ef8-15b733792121}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Archivos de encabezado\Scenes">
+      <UniqueIdentifier>{3053a52e-9d6f-4f0f-b036-f333be9378a9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -69,40 +69,40 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Ball.h">
-      <Filter>Archivos de encabezado\Objects</Filter>
+      <Filter>Archivos de origen\Archivos de encabezado\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Block.h">
-      <Filter>Archivos de encabezado\Objects</Filter>
+      <Filter>Archivos de origen\Archivos de encabezado\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ColorManager.h">
-      <Filter>Archivos de encabezado\Objects</Filter>
+      <Filter>Archivos de origen\Archivos de encabezado\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Breakout.h">
-      <Filter>Archivos de encabezado\Objects</Filter>
+      <Filter>Archivos de origen\Archivos de encabezado\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\KeyManager.h">
-      <Filter>Archivos de encabezado\Objects</Filter>
+      <Filter>Archivos de origen\Archivos de encabezado\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Paddle.h">
-      <Filter>Archivos de encabezado\Objects</Filter>
+      <Filter>Archivos de origen\Archivos de encabezado\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Utils.h">
-      <Filter>Archivos de encabezado\Objects</Filter>
+      <Filter>Archivos de origen\Archivos de encabezado\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\SceneManager.h">
-      <Filter>Archivos de encabezado\Scenes</Filter>
+      <Filter>Archivos de origen\Archivos de encabezado\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="..\src\GameplayScene.h">
-      <Filter>Archivos de encabezado\Scenes</Filter>
+      <Filter>Archivos de origen\Archivos de encabezado\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Player.h">
-      <Filter>Archivos de encabezado\Objects</Filter>
+      <Filter>Archivos de origen\Archivos de encabezado\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ResultScene.h">
-      <Filter>Archivos de encabezado\Scenes</Filter>
+      <Filter>Archivos de origen\Archivos de encabezado\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="..\src\UIManager.h">
-      <Filter>Archivos de encabezado\Objects</Filter>
+      <Filter>Archivos de origen\Archivos de encabezado\Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
