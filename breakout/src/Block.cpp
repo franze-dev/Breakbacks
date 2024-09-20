@@ -28,15 +28,14 @@ namespace BlockSpace
 
 	void BlockBallCollision(Ball& ball, Block& square)
 	{
-		int blockCenterPos = square.pos.x;
-
+#pragma region CORNER_CALCULATIONS
 		//SQUARE CORNERS		//	c1----------------c3
 		Vector2 sCorner1; 		//	|				   |  
 		Vector2 sCorner2;		//	|		center	   |  
 		Vector2 sCorner3;		//	|				   |  
 		Vector2 sCorner4;		//	c2----------------c4  
-
-		//pos x and pos y of square is the center, thanks to sigil.
+		
+		//pos x and pos y of square is the center, thanks to sigil. I made these calculations to adaptate it
 		sCorner1.x = square.pos.x - square.width / 2;
 		sCorner1.y = square.pos.y + square.height / 2;
 
@@ -48,7 +47,9 @@ namespace BlockSpace
 
 		sCorner4.x = sCorner3.x;
 		sCorner4.y = sCorner2.y;
+#pragma endregion
 
+#pragma region DISTANCE_CALCULATIONS
 		Distances calculations;
 
 		calculations.pinPointX = (int)ball.pos.x;
@@ -71,9 +72,13 @@ namespace BlockSpace
 		calculations.distY = (int)ball.pos.y - calculations.pinPointY;
 		calculations.distance = sqrt((calculations.distX * calculations.distX) + (calculations.distY * calculations.distY));
 
+#pragma endregion
+
+
 		if (calculations.distance < ball.radius)
 		{
-
+			BallSpace::IncreaseSpeed(ball);
+			square.dead = true;
 			//Where does it come from? Is it partially inside the rect?
 			//VERTICAL
 			if (calculations.pinPointY == (int)sCorner1.y ||
@@ -108,32 +113,8 @@ namespace BlockSpace
 				else if (calculations.pinPointX == (int)sCorner3.x)
 					ball.pos.x = sCorner3.x + ball.radius * 2;
 
-				/*if ((ball.pos.x == sCorner1.x - ball.radius * 2 && ball.speed.x > 0) ||
-					(ball.pos.x == sCorner3.x + ball.radius * 2 && ball.speed.x < 0))*/
 				ball.speed.x *= -1;
 			}
-
-			//Is it completely inside the rect? 
-			if (ball.pos.y > sCorner2.y &&
-				ball.pos.y < sCorner1.y &&
-				ball.pos.x < sCorner3.x &&
-				ball.pos.x > sCorner1.x)
-			{
-				if (ball.speed.y < 0)
-					ball.pos.y = sCorner1.y + ball.radius * 2;
-				else if (ball.speed.y > 0)
-					ball.pos.y = sCorner2.y - ball.radius * 2;
-				ball.speed.y *= -1;
-
-				if (ball.speed.x < 0)
-					ball.pos.x = sCorner4.x + ball.radius * 2;
-				else if (ball.speed.x > 0)
-					ball.pos.x = sCorner2.x - ball.radius * 2;
-				ball.speed.x *= -1;
-			}
-
-			square.dead = true;
-			BallSpace::IncreaseSpeed(ball);
 		}
 	}
 
