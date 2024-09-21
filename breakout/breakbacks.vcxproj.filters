@@ -66,11 +66,11 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="MenuScene.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="src\RulesScene.cpp">
+      <Filter>Archivos de origen\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="RulesScene.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="src\MenuScene.cpp">
+      <Filter>Archivos de origen\Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -110,10 +110,10 @@
     <ClInclude Include="src\Utils.h">
       <Filter>Archivos de encabezado\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="RulesScene.h">
+    <ClInclude Include="src\RulesScene.h">
       <Filter>Archivos de encabezado\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="MenuScene.h">
+    <ClInclude Include="src\MenuScene.h">
       <Filter>Archivos de encabezado\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
