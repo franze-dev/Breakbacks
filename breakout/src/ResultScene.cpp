@@ -35,17 +35,7 @@ namespace ResultScene
 		exitButton.textShown = "EXIT";
 		exitButton.highlightColor = RED;
 #pragma endregion
-
-#pragma region RESULT_TEXT
-		resultText.alt1Color = RED;
-		resultText.alt2Color = YELLOW;
-		resultText.currentColor = resultText.alt1Color;
-		resultText.content = "YOU ";
-		resultText.fontSize = 50;
-		resultText.location.x = screenWidth / 2;
-		resultText.location.y = screenHeight / 2;
-#pragma endregion
-
+		resultText = UIManager::GetText(screenWidth / 2, screenHeight / 2, 50, "YOU ", RED, YELLOW);
 
 	}
 

@@ -6,7 +6,9 @@ namespace SceneManager
 	{
 		None,
 		Gameplay,
-		Result
+		Result,
+		Rules,
+		Menu
 	};
 
 	//changes the current scene

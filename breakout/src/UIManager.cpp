@@ -5,6 +5,8 @@
 namespace UIManager
 {
 	static int mainFont;
+	static int titleFont1;
+	static int titleFont2;
 	
 	bool IsMouseOnButton(Button button)
 	{
@@ -40,10 +42,79 @@ namespace UIManager
 		slSetTextAlign(align);
 		slText(myText.location.x, myText.location.y, myText.content.data());
 	}
+
+	void PrintText(Text myText, int align, Fonts font)
+	{
+		int fontUsed = 0;
+		switch (font)
+		{
+		case Fonts::mainFont:
+			fontUsed = mainFont;
+			break;
+		case Fonts::titleFont1:
+			fontUsed = titleFont1;
+			break;
+		case Fonts::titleFont2:
+			fontUsed = titleFont2;
+			break;
+		default:
+			fontUsed = mainFont;
+			break;
+		}
+
+		SetForeColor(myText.currentColor);
+		slSetFont(fontUsed, myText.fontSize);
+		slSetTextAlign(align);
+		slText(myText.location.x, myText.location.y, myText.content.data());
+	}
 	
-	void InitMainFont()
+	void InitFonts()
 	{
 		mainFont = slLoadFont("res/fonts/RubikMonoOne-Regular.ttf");
+		titleFont1 = slLoadFont("res/fonts/eddie.ttf");
+		titleFont2 = slLoadFont("res/fonts/DonGraffiti.otf");
+	}
+
+	Text GetText(float x, float y, int fontSize, string content, Colors color)
+	{
+		Text myText;
+
+		myText.currentColor = color;
+		myText.content = content;
+		myText.fontSize = fontSize;
+		myText.location.x = x;
+		myText.location.y = y;
+
+		return myText;
+	}
+
+	Text GetText(float x, float y, int fontSize, string content, Colors color1, Colors color2)
+	{
+		Text myText;
+
+		myText.fontSize = fontSize;
+		myText.alt1Color = color1;
+		myText.alt2Color = color2;
+		myText.currentColor = myText.alt1Color;
+		myText.content = content;
+		myText.location.x = x;
+		myText.location.y = y;
+
+		return myText;
+	}
+
+	Button GetButton(float x, float y, int width, int height, string content, Colors mainColor, Colors highlightColor)
+	{
+		Button myButton;
+		myButton.defaultColor = mainColor;
+		myButton.currentColor = myButton.defaultColor;
+		myButton.highlightColor = highlightColor;
+		myButton.shape.width = width;
+		myButton.shape.height = height;
+		myButton.shape.pos.x = x;
+		myButton.shape.pos.y = y;
+		myButton.textShown = content;
+		return myButton;
 	}
 }
 

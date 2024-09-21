@@ -1,6 +1,6 @@
 #include "SceneManager.h"
 
-static SceneManager::Scene currentScene = SceneManager::Gameplay;
+static SceneManager::Scene currentScene = SceneManager::Menu;
 
 void SceneManager::SetCurrentScene(Scene scene)
 {

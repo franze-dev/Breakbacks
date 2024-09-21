@@ -186,29 +186,15 @@ namespace GameplayScene
 
 	void InitUI()
 	{
-#pragma region LIVES_TEXT
-		lives.content = "LIVES: ";
-		lives.currentColor = WHITE;
-		lives.fontSize = defaultFontSize;
-		lives.location.x = textPadding;
-		lives.location.y = screenHeight -lives.fontSize;
-
-#pragma endregion
-#pragma region CREDITS_TEXT
-		credits.content = "By: S.Alvarez :)";
-		credits.currentColor = BLUE;
-		credits.fontSize = defaultFontSize / 2;
-		credits.location.x = screenWidth - textPadding;
-		credits.location.y = screenHeight - credits.fontSize;
-#pragma endregion
-
+		lives = UIManager::GetText(textPadding, screenHeight - defaultFontSize, defaultFontSize, "LIVES: ", WHITE);
+		credits = UIManager::GetText(screenWidth - textPadding, screenHeight - defaultFontSize / 2, defaultFontSize / 2, "By: S.Alvarez :)", BLUE);
 	}
 
 	void UpdateUI()
 	{
 		string playerLives = to_string(player.lives);
 		lives.content = "LIVES: " + playerLives;
-		
+
 	}
 
 	void DrawUI()

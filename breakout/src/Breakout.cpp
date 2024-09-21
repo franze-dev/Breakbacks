@@ -6,6 +6,7 @@
 #include "ColorManager.h"
 #include "ResultScene.h"
 #include "UIManager.h"
+#include "MenuScene.h"
 
 namespace Breakout
 {
@@ -33,12 +34,13 @@ namespace Breakout
 	{
 		slWindow(screenWidth, screenHeight, "BREAKBACKS", 0);
 
-		UIManager::InitMainFont();
+		UIManager::InitFonts();
 
 		InitColors();
 
 		GameplayScene::Init();
 		ResultScene::Init();
+		MenuScene::Init();
 	}
 
 	void Update()
@@ -48,6 +50,9 @@ namespace Breakout
 
 		if (SceneManager::GetCurrentScene() == SceneManager::Result)
 			ResultScene::Update();
+
+		if (SceneManager::GetCurrentScene() == SceneManager::Menu)
+			MenuScene::Update();
 	}
 
 	void Draw()
@@ -57,6 +62,9 @@ namespace Breakout
 
 		if (SceneManager::GetCurrentScene() == SceneManager::Result)
 			ResultScene::Draw();
+		
+		if (SceneManager::GetCurrentScene() == SceneManager::Menu)
+			MenuScene::Draw();
 	}
 
 	void Close()
