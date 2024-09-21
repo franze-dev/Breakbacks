@@ -28,6 +28,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\MenuScene.cpp" />
     <ClCompile Include="src\Paddle.cpp" />
+    <ClCompile Include="src\PauseMenu.cpp" />
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\ResultScene.cpp" />
     <ClCompile Include="src\RulesScene.cpp" />
@@ -44,6 +45,7 @@
     <ClInclude Include="src\KeyManager.h" />
     <ClInclude Include="src\MenuScene.h" />
     <ClInclude Include="src\Paddle.h" />
+    <ClInclude Include="src\PauseMenu.h" />
     <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\ResultScene.h" />
     <ClInclude Include="src\RulesScene.h" />
