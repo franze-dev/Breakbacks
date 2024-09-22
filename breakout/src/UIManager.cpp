@@ -43,25 +43,29 @@ namespace UIManager
 		slText(myText.location.x, myText.location.y, myText.content.data());
 	}
 
-	void PrintText(Text myText, int align, Fonts font)
+	static int GetFont(Fonts font)
 	{
-		int fontUsed = 0;
 		switch (font)
 		{
 		case Fonts::mainFont:
-			fontUsed = mainFont;
+			return mainFont;
 			break;
 		case Fonts::titleFont1:
-			fontUsed = titleFont1;
+			return titleFont1;
 			break;
 		case Fonts::titleFont2:
-			fontUsed = titleFont2;
+			return titleFont2;
 			break;
 		default:
-			fontUsed = mainFont;
+			return mainFont;
 			break;
 		}
+	}
 
+	void PrintText(Text myText, int align, Fonts font)
+	{
+		int fontUsed = GetFont(font);
+		
 		SetForeColor(myText.currentColor);
 		slSetFont(fontUsed, myText.fontSize);
 		slSetTextAlign(align);
