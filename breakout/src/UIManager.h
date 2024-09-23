@@ -58,6 +58,8 @@ namespace UIManager
 	void PrintText(Text myText, int align);
 	//When I need to use a specific font, this is used
 	void PrintText(Text myText, int align, Fonts font);
+	//If I just need to print a quick text in the center and witht the default font, I use this
+	void PrintText(Text myText);
 	//Inits the fonts
 	void InitFonts();
 	//Create texts
@@ -67,4 +69,9 @@ namespace UIManager
 	Text GetText(float x, float y, int fontSize, string content, Colors color1, Colors color2);
 	//Create buttons
 	Button GetButton(float x, float y, int width, int height, string content, Colors mainColor, Colors highlightColor);
+
+	//get the width of a text
+	double GetTextWidth(string content, int fontSize, Fonts font);
+	//get the height of a text
+	double GetTextHeight(string content, int fontSize, Fonts font);
 }

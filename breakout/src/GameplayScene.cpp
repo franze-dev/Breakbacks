@@ -20,8 +20,11 @@ namespace GameplayScene
 	static Text credits;
 	static int textPadding = 20;
 	static int defaultFontSize = 30;
+	
+	static bool paused = false;
 
 	bool CheckWin(Player& player);
+	bool isPaused();
 	void BallPaddleCollision(Ball& ball, Paddle& square);
 	void InitUI();
 	void UpdateUI();
@@ -40,19 +43,20 @@ namespace GameplayScene
 	{
 		if (!BlockSpace::AreBlocksGone() && IsAlive(player))
 		{
-			UpdateUI();
-			PaddleSpace::MovePaddle(mainPaddle);
-			BallSpace::CheckPlay(mainBall);
-			if (!mainBall.reset)
+			if (!paused)
 			{
-				BallSpace::MoveBall(mainBall);
-			}
-			else
-				BallSpace::ResetBall(mainBall, mainPaddle);
+				UpdateUI();
+				PaddleSpace::MovePaddle(mainPaddle);
+				BallSpace::CheckPlay(mainBall);
+				if (!mainBall.reset)
+					BallSpace::MoveBall(mainBall);
+				else
+					BallSpace::ResetBall(mainBall, mainPaddle);
 
-			BlockSpace::UpdateBlocks(mainBall);
-			BallPaddleCollision(mainBall, mainPaddle);
-			BallSpace::BallEdgeCollision(mainBall, player);
+				BlockSpace::UpdateBlocks(mainBall);
+				BallPaddleCollision(mainBall, mainPaddle);
+				BallSpace::BallEdgeCollision(mainBall, player);
+			}
 		}
 		else
 		{
@@ -201,6 +205,12 @@ namespace GameplayScene
 	{
 		UIManager::PrintText(lives, SL_ALIGN_LEFT);
 		UIManager::PrintText(credits, SL_ALIGN_RIGHT);
+	}
+
+	void PauseGame()
+	{
+		if (!paused)
+			paused = true;
 	}
 }
 

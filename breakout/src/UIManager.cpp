@@ -42,6 +42,14 @@ namespace UIManager
 		slSetTextAlign(align);
 		slText(myText.location.x, myText.location.y, myText.content.data());
 	}
+	
+	void PrintText(Text myText)
+	{
+		SetForeColor(myText.currentColor);
+		slSetFont(mainFont, myText.fontSize);
+		slSetTextAlign(SL_ALIGN_CENTER);
+		slText(myText.location.x, myText.location.y, myText.content.data());
+	}
 
 	static int GetFont(Fonts font)
 	{
@@ -119,6 +127,25 @@ namespace UIManager
 		myButton.shape.pos.y = y;
 		myButton.textShown = content;
 		return myButton;
+	}
+
+	double GetTextWidth(string content, int fontSize, Fonts font)
+	{
+		double width = 0;
+		int fontUsed = GetFont(font);
+		slSetFont(fontUsed, fontSize);
+
+		width = slGetTextWidth(content.data());
+
+		return width;
+	}
+	
+	double GetTextHeight(string content, int fontSize, Fonts font)
+	{
+		int fontUsed = GetFont(font);
+		slSetFont(fontUsed, fontSize);
+
+		return slGetTextHeight(content.data());
 	}
 }
 

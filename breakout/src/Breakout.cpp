@@ -7,9 +7,13 @@
 #include "ResultScene.h"
 #include "UIManager.h"
 #include "MenuScene.h"
+#include "RulesScene.h"
 
 namespace Breakout
 {
+	static SceneManager::Scene previousScene = SceneManager::None;
+	static bool restart = true;
+
 	void Init();
 	void Update();
 	void Draw();
@@ -18,10 +22,26 @@ namespace Breakout
 
 	void Play()
 	{
-		Init();
+		slWindow(screenWidth, screenHeight, "BREAKBACKS", 0);
 
 		while (!ShouldWindowClose())
 		{
+			//Here I try to verify that the values must be initialized again, this would only happen
+			//when I press a "backToMenu" button. They exist in Gameplay and Result.
+			if ((previousScene == SceneManager::Result || previousScene == SceneManager::Gameplay) &&
+				SceneManager::GetCurrentScene() != SceneManager::Result &&
+				SceneManager::GetCurrentScene() != SceneManager::Gameplay)
+			{
+				restart = true;
+				previousScene = SceneManager::None;
+			}
+
+			if (restart)
+			{
+				Init();
+				restart = false;
+			}
+
 			Update();
 			Draw();
 
@@ -32,7 +52,6 @@ namespace Breakout
 
 	void Init()
 	{
-		slWindow(screenWidth, screenHeight, "BREAKBACKS", 0);
 
 		UIManager::InitFonts();
 
@@ -41,18 +60,31 @@ namespace Breakout
 		GameplayScene::Init();
 		ResultScene::Init();
 		MenuScene::Init();
+		RulesScene::Init();
 	}
 
 	void Update()
 	{
 		if (SceneManager::GetCurrentScene() == SceneManager::Gameplay)
+		{
 			GameplayScene::Update();
 
+			if (previousScene != SceneManager::Gameplay)
+				previousScene = SceneManager::Gameplay;
+		}
+
 		if (SceneManager::GetCurrentScene() == SceneManager::Result)
+		{
 			ResultScene::Update();
+			if (previousScene != SceneManager::Result)
+				previousScene = SceneManager::Result;
+		}
 
 		if (SceneManager::GetCurrentScene() == SceneManager::Menu)
 			MenuScene::Update();
+
+		if (SceneManager::GetCurrentScene() == SceneManager::Rules)
+			RulesScene::Update();
 	}
 
 	void Draw()
@@ -65,6 +97,9 @@ namespace Breakout
 		
 		if (SceneManager::GetCurrentScene() == SceneManager::Menu)
 			MenuScene::Draw();
+
+		if (SceneManager::GetCurrentScene() == SceneManager::Rules)
+			RulesScene::Draw();
 	}
 
 	void Close()
