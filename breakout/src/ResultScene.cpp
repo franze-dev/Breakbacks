@@ -10,12 +10,16 @@ namespace ResultScene
 {
 	static Player savedPlayer;
 	static Button exitButton;
+	static Button backToMenuButton;
 	static Text resultText;
 	static string win = "WON!";
 	static string lose = "LOST!";
+	static short buttonsWidth = 150;
+	static short biggerButtonsWidth = buttonsWidth*3;
+	static short buttonsHeight = 40;
 
 	static int buttonsPadding = 20;
-	static int smallerFontSize = 15;
+	static int smallerFontSize = 30;
 	static int defaultFontSize = 40;
 
 	void SavePlayer(Player player)
@@ -25,31 +29,24 @@ namespace ResultScene
 
 	void Init()
 	{
-#pragma region EXIT_BUTTON
-		exitButton.defaultColor = BLACK;
-		exitButton.shape.width = 150;
-		exitButton.shape.height = 50;
-		exitButton.currentColor = exitButton.defaultColor;
-		exitButton.shape.pos.x = screenWidth /2 - exitButton.shape.width/2;
-		exitButton.shape.pos.y += exitButton.shape.height + buttonsPadding;
-		exitButton.textShown = "EXIT";
-		exitButton.highlightColor = RED;
-#pragma endregion
-		resultText = UIManager::GetText(screenWidth / 2, screenHeight / 2, 50, "YOU ", RED, YELLOW);
+		resultText = UIManager::GetText(screenWidth / 2, screenHeight / 2, defaultFontSize*2, "YOU ", RED, YELLOW);
 
+		exitButton = UIManager::GetButton(screenWidth / 2 - buttonsWidth / 2, buttonsHeight + buttonsPadding, buttonsWidth, buttonsHeight, "EXIT", BLACK, RED);
+		backToMenuButton = UIManager::GetButton(screenWidth / 2 - biggerButtonsWidth / 2, exitButton.shape.pos.y + exitButton.shape.height + buttonsPadding, biggerButtonsWidth, buttonsHeight, "BACK TO MENU", BLACK, PURPLE);
+	
 	}
 
 	void Update()
 	{
-		/*if (IsMouseOnButton(backToMenuButton))
+		if (UIManager::IsMouseOnButton(backToMenuButton))
 		{
 			backToMenuButton.currentColor = backToMenuButton.highlightColor;
 
-			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
-				SceneManager::SetCurrentScene(Menu);
+			if (slGetMouseButton(SL_MOUSE_BUTTON_LEFT))
+				SceneManager::SetCurrentScene(SceneManager::Menu);
 		}
 		else
-			backToMenuButton.currentColor = backToMenuButton.defaultColor;*/
+			backToMenuButton.currentColor = backToMenuButton.defaultColor;
 
 		if (UIManager::IsMouseOnButton(exitButton))
 		{
@@ -77,8 +74,12 @@ namespace ResultScene
 
 	void Draw()
 	{
+		UIManager::DrawButtonRect(backToMenuButton);
+		UIManager::DrawButtonText(backToMenuButton, WHITE, smallerFontSize);
+
 		UIManager::DrawButtonRect(exitButton);
-		UIManager::DrawButtonText(exitButton, WHITE, defaultFontSize);
-		UIManager::PrintText(resultText, SL_ALIGN_CENTER);
+		UIManager::DrawButtonText(exitButton, WHITE, smallerFontSize);
+	
+		UIManager::PrintText(resultText);
 	}
 }
