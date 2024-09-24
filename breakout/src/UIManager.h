@@ -72,6 +72,9 @@ namespace UIManager
 
 	//get the width of a text
 	double GetTextWidth(string content, int fontSize, Fonts font);
+	//in case I do have a text defined and I want to know the width
+	double GetTextWidth(Text text, Fonts font);
 	//get the height of a text
 	double GetTextHeight(string content, int fontSize, Fonts font);
+	double GetTextHeight(Text text, Fonts font);
 }

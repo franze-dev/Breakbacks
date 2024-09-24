@@ -1,5 +1,4 @@
 #include "Block.h"
-#include "ColorManager.h"
 #include <iostream>
 #include "sl.h"
 #include <math.h>
@@ -9,16 +8,36 @@ namespace BlockSpace
 	const int rows = 6;
 	const int cols = 10;
 
+	const int blocksToBreak = 10;
+	int blocksBroken = 0;
+
 	static Block blocks[rows][cols];
 
+	void PowerBall(Ball& ball);
+	Colors GetRandomColor();
 	Block GetBlock(Vector2 offSet);
 	void BlockBallCollision(Ball& ball, Block& square);
+
+	void PowerBall(Ball& ball)
+	{
+		PowerUps power = (PowerUps)GetRandomNum((int)PowerUps::NoBounce, 0);
+
+		BallSpace::SetPower(power, ball);
+	}
+
+	Colors GetRandomColor()
+	{
+		Colors color = RED;
+		color = (Colors)GetRandomNum(PINK, 0);
+		return color;
+	}
 
 	Block GetBlock(Vector2 offSet)
 	{
 		Block myBlock;
+		myBlock.color = GetRandomColor();
 		myBlock.height = 40;
-		myBlock.width = screenWidth/cols;
+		myBlock.width = screenWidth / cols;
 		myBlock.pos.x = 0;
 		myBlock.pos.y = 0;
 		myBlock.offSet = offSet;
@@ -34,7 +53,7 @@ namespace BlockSpace
 		Vector2 sCorner2;		//	|		center	   |  
 		Vector2 sCorner3;		//	|				   |  
 		Vector2 sCorner4;		//	c2----------------c4  
-		
+
 		//pos x and pos y of square is the center, thanks to sigil. I made these calculations to adaptate it
 		sCorner1.x = square.pos.x - square.width / 2;
 		sCorner1.y = square.pos.y + square.height / 2;
@@ -77,43 +96,56 @@ namespace BlockSpace
 
 		if (calculations.distance < ball.radius)
 		{
-			BallSpace::IncreaseSpeed(ball);
 			square.dead = true;
-			//Where does it come from? Is it partially inside the rect?
-			//VERTICAL
-			if (calculations.pinPointY == (int)sCorner1.y ||
-				calculations.pinPointY == (int)sCorner2.y)
+
+			blocksBroken++;
+
+			if (blocksBroken == blocksToBreak)
 			{
-				//top
-				if (calculations.pinPointY == (int)sCorner1.y)
-				{
-					ball.pos.y = sCorner1.y + ball.radius * 2;
-
-					if (ball.speed.y < 0)
-						ball.speed.y *= -1;
-				}
-
-				//bottom
-				if (calculations.pinPointY == (int)sCorner2.y)
-				{
-					ball.pos.y = sCorner2.y - ball.radius * 2;
-
-					if (ball.speed.y > 0)
-						ball.speed.y *= -1;
-				}
+				BallSpace::SetPower(PowerUps::None, ball);
+				blocksBroken = 0;
 			}
-			//HORIZONTAL
-			else if (calculations.pinPointX == (int)sCorner1.x ||
-				calculations.pinPointX == (int)sCorner3.x)
+			else if(ball.currentPower == PowerUps::None)
+				PowerBall(ball);
+			
+			if (ball.currentPower != PowerUps::NoBounce)
 			{
-				//left
-				if (calculations.pinPointX == (int)sCorner1.x)
-					ball.pos.x = sCorner1.x - ball.radius * 2;
-				//right
-				else if (calculations.pinPointX == (int)sCorner3.x)
-					ball.pos.x = sCorner3.x + ball.radius * 2;
+				//Where does it come from? Is it partially inside the rect?
+				//VERTICAL
+				if (calculations.pinPointY == (int)sCorner1.y ||
+					calculations.pinPointY == (int)sCorner2.y)
+				{
+					//top
+					if (calculations.pinPointY == (int)sCorner1.y)
+					{
+						ball.pos.y = sCorner1.y + ball.radius * 2;
 
-				ball.speed.x *= -1;
+						if (ball.speed.y < 0)
+							ball.speed.y *= -1;
+					}
+
+					//bottom
+					if (calculations.pinPointY == (int)sCorner2.y)
+					{
+						ball.pos.y = sCorner2.y - ball.radius * 2;
+
+						if (ball.speed.y > 0)
+							ball.speed.y *= -1;
+					}
+				}
+				//HORIZONTAL
+				else if (calculations.pinPointX == (int)sCorner1.x ||
+					calculations.pinPointX == (int)sCorner3.x)
+				{
+					//left
+					if (calculations.pinPointX == (int)sCorner1.x)
+						ball.pos.x = sCorner1.x - ball.radius * 2;
+					//right
+					else if (calculations.pinPointX == (int)sCorner3.x)
+						ball.pos.x = sCorner3.x + ball.radius * 2;
+
+					ball.speed.x *= -1;
+				}
 			}
 		}
 	}
@@ -169,7 +201,8 @@ namespace BlockSpace
 
 	void DrawBlock(Block block)
 	{
-		SetForeColor(GREEN);
+		SetForeColor(WHITE);
+		//SetForeColor(block.color);
 		slRectangleFill(block.pos.x, block.pos.y, block.width, block.height);
 		SetForeColor(PURPLE);
 		slRectangleOutline(block.pos.x, block.pos.y, block.width, block.height);

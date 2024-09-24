@@ -140,6 +140,17 @@ namespace UIManager
 		return width;
 	}
 	
+	double GetTextWidth(Text text, Fonts font)
+	{
+		double width = 0;
+		int fontUsed = GetFont(font);
+		slSetFont(fontUsed, text.fontSize);
+
+		width = slGetTextWidth(text.content.data());
+
+		return width;
+	}
+	
 	double GetTextHeight(string content, int fontSize, Fonts font)
 	{
 		int fontUsed = GetFont(font);
@@ -147,5 +158,15 @@ namespace UIManager
 
 		return slGetTextHeight(content.data());
 	}
+
+	double GetTextHeight(Text text, Fonts font)
+	{
+		int fontUsed = GetFont(font);
+		slSetFont(fontUsed, text.fontSize);
+
+		return slGetTextHeight(text.content.data());
+	}
+
+
 }
 

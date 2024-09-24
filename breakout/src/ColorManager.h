@@ -2,13 +2,15 @@
 
 enum Colors
 {
-	WHITE,
 	RED,
 	YELLOW,
 	GREEN,
 	BLUE,
 	PURPLE,
-	BLACK
+	PINK,
+	WHITE,
+	BLACK,
+	DARKGRAY
 };
 
 struct Color

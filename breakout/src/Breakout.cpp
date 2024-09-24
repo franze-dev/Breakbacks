@@ -24,6 +24,8 @@ namespace Breakout
 	{
 		slWindow(screenWidth, screenHeight, "BREAKBACKS", 0);
 
+		srand(time(0));
+
 		while (!ShouldWindowClose())
 		{
 			//Here I try to verify that the values must be initialized again, this would only happen

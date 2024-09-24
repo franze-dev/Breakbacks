@@ -9,11 +9,24 @@ static Color green;
 static Color blue;
 static Color purple;
 static Color black;
+static Color darkGray;
+static Color pink;
 
-static Color GetColor(int r, int g, int b)
+static Color GetColor(double r, double g, double b)
 {
 	Color myColor;
-	myColor.a = 1.0;
+	myColor.a = 1.0f;
+	myColor.r = r;
+	myColor.g = g;
+	myColor.b = b;
+
+	return myColor;
+}
+
+static Color GetColor(double r, double g, double b, double a)
+{
+	Color myColor;
+	myColor.a = a;
 	myColor.r = r;
 	myColor.g = g;
 	myColor.b = b;
@@ -48,6 +61,11 @@ Color GetColor(Colors color)
 	case BLACK:
 		myColor = black;
 		break;
+	case DARKGRAY:
+		myColor = darkGray;
+		break;
+	case PINK:
+		myColor = pink;
 	default:
 		break;
 	}
@@ -57,13 +75,15 @@ Color GetColor(Colors color)
 
 void InitColors()
 {
-	white = GetColor(1.0, 1.0, 1.0);
-	red = GetColor(1.0, 0.0, 0.0);
-	yellow = GetColor(1.0, 1.0, 0.0);
-	green = GetColor(0.0, 1.0, 0.0);
-	blue = GetColor(0.0, 0.0, 1.0);
-	purple = GetColor(1.0, 0.0, 1.0);
-	black = GetColor(0.0, 0.0, 0.0);
+	white = GetColor(1.0f, 1.0f, 1.0f);
+	red = GetColor(1.0f, 0.0f, 0.0f);
+	yellow = GetColor(1.0f, 1.0f, 0.0f);
+	green = GetColor(0.0f, 1.0f, 0.0f);
+	blue = GetColor(0.0f, 0.0f, 1.0f);
+	purple = GetColor(1.0f, 0.0f, 1.0f);
+	pink = GetColor(1.0f, 0.36f, 0.96f);
+	black = GetColor(0.0f, 0.0f, 0.0f);
+	darkGray = GetColor(0.42f, 0.42f, 0.42f, 0.98f);
 }
 
 

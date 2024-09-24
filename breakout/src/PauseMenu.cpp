@@ -1,6 +1,7 @@
 #include "PauseMenu.h"
 #include "UIManager.h"
 #include "SceneManager.h"
+#include "GameplayScene.h"
 #include "Utils.h"
 
 Text pauseTitle;
@@ -12,44 +13,24 @@ int buttonsPadding = 30;
 
 void PauseMenu::Init()
 {
-#pragma region PAUSE_TITLE
-	pauseTitle.currentColor = YELLOW;
-	pauseTitle.content = "PAUSED";
-	pauseTitle.fontSize = defaultFontSize;
-	pauseTitle.location.x = GetScreenWidth() * 2 / 8 - MeasureText(pauseTitle.content.data(), pauseTitle.fontSize) / 2;
-	pauseTitle.location.y = GetScreenHeight() / 2 + pauseTitle.fontSize / 2;
-#pragma endregion
 
-#pragma region CONTINUE_BUTTON
-	continueButton.defaultColor = DARKGRAY;
-	continueButton.currentColor = DARKGRAY;
-	continueButton.highlightColor = YELLOW;
-	continueButton.shape.width = MeasureText(pauseTitle.content.data(), pauseTitle.fontSize);
-	continueButton.shape.height = defaultFontSize;
-	continueButton.shape.x = GetScreenWidth() * 5 / 8;
-	continueButton.shape.y = pauseTitle.location.y - continueButton.shape.height + buttonsPadding;
-	continueButton.textShown = "CONTINUE";
+	pauseTitle = UIManager::GetText(screenWidth * 2 / 8, screenHeight / 2 + defaultFontSize*2, defaultFontSize, "PAUSED", WHITE);
 
-#pragma endregion
+	continueButton = UIManager::GetButton(screenWidth * 5 / 8, pauseTitle.location.y + pauseTitle.fontSize,
+								UIManager::GetTextWidth(pauseTitle, Fonts::mainFont), defaultFontSize, "CONTINUE", BLACK, PURPLE);
 
-#pragma region BACKTOMENU_BUTTON
-	backToMenuButton = continueButton;
-	backToMenuButton.shape.y += buttonsPadding + continueButton.shape.height;
-	backToMenuButton.highlightColor = BLUE;
-	backToMenuButton.textShown = "BACK TO MENU";
-
-#pragma endregion
-
+	backToMenuButton = UIManager::GetButton(screenWidth * 5 / 8, pauseTitle.location.y - pauseTitle.fontSize, 
+								UIManager::GetTextWidth(pauseTitle, Fonts::mainFont), defaultFontSize, "BACK TO MENU", BLACK, BLUE);
 
 }
 
-void PauseMenu::Update(BallSpace::Ball& ball)
+void PauseMenu::Update()
 {
 	if (UIManager::IsMouseOnButton(continueButton))
 	{
 		continueButton.currentColor = continueButton.highlightColor;
-		if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
-			ball.paused = false;
+		if (slGetMouseButton(SL_MOUSE_BUTTON_LEFT))
+			GameplayScene::UnPauseGame();
 	}
 	else
 		continueButton.currentColor = continueButton.defaultColor;
@@ -57,7 +38,7 @@ void PauseMenu::Update(BallSpace::Ball& ball)
 	if (UIManager::IsMouseOnButton(backToMenuButton))
 	{
 		backToMenuButton.currentColor = backToMenuButton.highlightColor;
-		if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
+		if (slGetMouseButton(SL_MOUSE_BUTTON_LEFT))
 			SceneManager::SetCurrentScene(SceneManager::Menu);
 	}
 	else
@@ -67,7 +48,7 @@ void PauseMenu::Update(BallSpace::Ball& ball)
 
 void PauseMenu::Draw()
 {
-	DrawText(pauseTitle.content.data(), pauseTitle.location.x, pauseTitle.location.y, pauseTitle.fontSize, pauseTitle.color);
+	UIManager::PrintText(pauseTitle);
 
 	UIManager::DrawButtonRect(continueButton);
 	UIManager::DrawButtonRect(backToMenuButton);

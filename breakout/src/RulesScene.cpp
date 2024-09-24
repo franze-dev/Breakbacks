@@ -26,7 +26,7 @@ namespace RulesScene
 		rulesTitle = UIManager::GetText(screenWidth / 2, screenHeight - titleSize*2, titleSize, "RULES", BLUE);
 		rule1 = UIManager::GetText(screenWidth / 2, rulesTitle.location.y - rulesPadding, titleSize / 2, "Move left to right with the ARROW KEYS", WHITE);
 		rule2 = UIManager::GetText(screenWidth / 2, rule1.location.y - rulesPadding, titleSize / 2, "Break all the blocks to win", WHITE);
-		rule3 = UIManager::GetText(screenWidth / 2, rule2.location.y - rulesPadding, titleSize / 2, "If you lose all 3 lives you lose", WHITE);
+		rule3 = UIManager::GetText(screenWidth / 2, rule2.location.y - rulesPadding, titleSize / 2, "If you miss the ball 3 times you lose", WHITE);
 	
 		backToMenuButton = UIManager::GetButton(screenWidth / 2 - buttonsWidth/2, titleSize, buttonsWidth, buttonsHeight, "BACK TO MENU", BLACK, PURPLE);
 	}
@@ -37,9 +37,7 @@ namespace RulesScene
 		{
 			backToMenuButton.currentColor = backToMenuButton.highlightColor;
 			if (slGetMouseButton(SL_MOUSE_BUTTON_LEFT))
-			{
 				SceneManager::SetCurrentScene(SceneManager::Menu);
-			}
 		}
 		else
 			backToMenuButton.currentColor = backToMenuButton.defaultColor;

@@ -3,13 +3,15 @@
 #include "Paddle.h"
 #include "Ball.h"
 #include "KeyManager.h"
-#include "math.h"
 #include "Block.h"
 #include "Player.h"
 #include "SceneManager.h"
 #include "ResultScene.h"
 #include "UIManager.h"
+#include "PauseMenu.h"
+
 #include <string>
+
 
 namespace GameplayScene
 {
@@ -23,8 +25,8 @@ namespace GameplayScene
 	
 	static bool paused = false;
 
+	void CheckPause();
 	bool CheckWin(Player& player);
-	bool isPaused();
 	void BallPaddleCollision(Ball& ball, Paddle& square);
 	void InitUI();
 	void UpdateUI();
@@ -37,6 +39,7 @@ namespace GameplayScene
 		BlockSpace::CreateBlocks();
 		player = InitDefaultPlayer();
 		InitUI();
+		PauseMenu::Init();
 	}
 
 	void Update()
@@ -45,6 +48,16 @@ namespace GameplayScene
 		{
 			if (!paused)
 			{
+				if (!mainBall.spedUp && mainBall.currentPower == PowerUps::Speed)
+				{
+					BallSpace::IncreaseSpeed(mainBall);
+					mainBall.spedUp = true;
+				}
+
+				if (mainBall.radius != mainBall.plusRadius && mainBall.currentPower == PowerUps::PlusSize)
+					BallSpace::IncreaseSize(mainBall);
+
+				CheckPause();
 				UpdateUI();
 				PaddleSpace::MovePaddle(mainPaddle);
 				BallSpace::CheckPlay(mainBall);
@@ -57,6 +70,8 @@ namespace GameplayScene
 				BallPaddleCollision(mainBall, mainPaddle);
 				BallSpace::BallEdgeCollision(mainBall, player);
 			}
+			else
+				PauseMenu::Update();
 		}
 		else
 		{
@@ -76,6 +91,14 @@ namespace GameplayScene
 		BallSpace::DrawBall(mainBall);
 		BlockSpace::DrawBlocks();
 		DrawUI();
+		if (paused)
+			PauseMenu::Draw();
+	}
+
+	void CheckPause()
+	{
+		if (slGetKey('P'))
+			paused = true;
 	}
 
 	bool CheckWin(Player& player)
@@ -211,6 +234,12 @@ namespace GameplayScene
 	{
 		if (!paused)
 			paused = true;
+	}
+
+	void UnPauseGame()
+	{
+		if (paused)
+			paused = false;
 	}
 }
 

@@ -1,6 +1,7 @@
 #pragma once
 #include "Utils.h"
 #include "Ball.h"
+#include "ColorManager.h"
 
 struct Block
 {
@@ -10,6 +11,7 @@ struct Block
 	int width;
 	//int lives;
 	bool dead;
+	Colors color;
 };
 
 namespace BlockSpace
