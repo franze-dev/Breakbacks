@@ -31,8 +31,8 @@ namespace ResultScene
 	{
 		resultText = UIManager::GetText(screenWidth / 2, screenHeight / 2, defaultFontSize*2, "YOU ", RED, YELLOW);
 
-		exitButton = UIManager::GetButton(screenWidth / 2 - buttonsWidth / 2, buttonsHeight + buttonsPadding, buttonsWidth, buttonsHeight, "EXIT", BLACK, RED);
-		backToMenuButton = UIManager::GetButton(screenWidth / 2 - biggerButtonsWidth / 2, exitButton.shape.pos.y + exitButton.shape.height + buttonsPadding, biggerButtonsWidth, buttonsHeight, "BACK TO MENU", BLACK, PURPLE);
+		exitButton = UIManager::GetButton(screenWidth *6/8 - buttonsWidth / 2, buttonsHeight + buttonsPadding, buttonsWidth, buttonsHeight, "EXIT", BLACK, RED);
+		backToMenuButton = UIManager::GetButton(screenWidth *2/8 - biggerButtonsWidth / 2, exitButton.shape.pos.y, biggerButtonsWidth, buttonsHeight, "BACK TO MENU", BLACK, PURPLE);
 	
 	}
 

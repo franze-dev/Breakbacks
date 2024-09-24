@@ -14,13 +14,13 @@ int buttonsPadding = 30;
 void PauseMenu::Init()
 {
 
-	pauseTitle = UIManager::GetText(screenWidth * 2 / 8, screenHeight / 2 + defaultFontSize*2, defaultFontSize, "PAUSED", WHITE);
+	pauseTitle = UIManager::GetText(screenWidth * 2 / 8, screenHeight / 2 + defaultFontSize*2, defaultFontSize, "PAUSED", BLACK);
 
 	continueButton = UIManager::GetButton(screenWidth * 5 / 8, pauseTitle.location.y + pauseTitle.fontSize,
-								UIManager::GetTextWidth(pauseTitle, Fonts::mainFont), defaultFontSize, "CONTINUE", BLACK, PURPLE);
+								UIManager::GetTextWidth(pauseTitle, Fonts::mainFont) + 10, defaultFontSize, "CONTINUE", BLACK, PURPLE);
 
 	backToMenuButton = UIManager::GetButton(screenWidth * 5 / 8, pauseTitle.location.y - pauseTitle.fontSize, 
-								UIManager::GetTextWidth(pauseTitle, Fonts::mainFont), defaultFontSize, "BACK TO MENU", BLACK, BLUE);
+								UIManager::GetTextWidth(pauseTitle, Fonts::mainFont) + 10, defaultFontSize, "BACK TO MENU", BLACK, BLUE);
 
 }
 

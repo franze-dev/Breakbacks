@@ -18,11 +18,13 @@ namespace GameplayScene
 	static Paddle mainPaddle;
 	static Ball mainBall;
 	static Player player;
-	static Text lives;
-	static Text credits;
+	static Text livesText;
+	static Text creditsText;
+	static Text pauseText;
+	static Text powerUpText;
 	static int textPadding = 20;
 	static int defaultFontSize = 30;
-	
+
 	static bool paused = false;
 
 	void CheckPause();
@@ -213,21 +215,49 @@ namespace GameplayScene
 
 	void InitUI()
 	{
-		lives = UIManager::GetText(textPadding, screenHeight - defaultFontSize, defaultFontSize, "LIVES: ", WHITE);
-		credits = UIManager::GetText(screenWidth - textPadding, screenHeight - defaultFontSize / 2, defaultFontSize / 2, "By: S.Alvarez :)", BLUE);
+		livesText = UIManager::GetText(textPadding, screenHeight - defaultFontSize, defaultFontSize, "LIVES: ", WHITE);
+		creditsText = UIManager::GetText(screenWidth - textPadding, screenHeight - defaultFontSize / 2, defaultFontSize / 2, "By: S.Alvarez :)", BLUE);
+		pauseText = UIManager::GetText(screenWidth - textPadding, defaultFontSize, defaultFontSize / 2, "Press 'P' to pause", PURPLE);
+		powerUpText = UIManager::GetText(textPadding, defaultFontSize, defaultFontSize / 2, "NO ACTIVE POWER UP!", WHITE);
+
 	}
 
 	void UpdateUI()
 	{
 		string playerLives = to_string(player.lives);
-		lives.content = "LIVES: " + playerLives;
+		livesText.content = "LIVES: " + playerLives;
+
+		switch (mainBall.currentPower)
+		{
+		case PowerUps::None:
+			powerUpText.content = "NO ACTIVE POWER UP!";
+			powerUpText.currentColor = WHITE;
+			break;
+		case PowerUps::NoBounce:
+			powerUpText.content = "CLEAR THE SCREEN!";
+			powerUpText.currentColor = BLUE;
+			break;
+		case PowerUps::Speed:
+			powerUpText.content = "SPEED OF LIGHT!";
+			powerUpText.currentColor = YELLOW;
+			break;
+		case PowerUps::PlusSize:
+			powerUpText.content = "THINK BIG!";
+			powerUpText.currentColor = RED;
+			break;
+
+		default:
+			break;
+		}
 
 	}
 
 	void DrawUI()
 	{
-		UIManager::PrintText(lives, SL_ALIGN_LEFT);
-		UIManager::PrintText(credits, SL_ALIGN_RIGHT);
+		UIManager::PrintText(livesText, SL_ALIGN_LEFT);
+		UIManager::PrintText(creditsText, SL_ALIGN_RIGHT);
+		UIManager::PrintText(pauseText, SL_ALIGN_RIGHT);
+		UIManager::PrintText(powerUpText, SL_ALIGN_LEFT);
 	}
 
 	void PauseGame()

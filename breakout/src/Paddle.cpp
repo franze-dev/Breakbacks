@@ -26,8 +26,8 @@ void PaddleSpace::MovePaddle(Paddle& myPaddle)
 {
 	float currentSpeed = myPaddle.speed * slGetDeltaTime();
 
-	int leftKey = 'A';
-	int rightKey = 'D';
+	int leftKey = SL_KEY_LEFT;
+	int rightKey = SL_KEY_RIGHT;
 
 	if (slGetKey(leftKey) && myPaddle.pos.x - myPaddle.width/2 > 0)
 		myPaddle.pos.x -= currentSpeed;

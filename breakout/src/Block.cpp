@@ -5,11 +5,23 @@
 
 namespace BlockSpace
 {
+	enum BallLocation
+	{
+		//it should NEVER stay as none. Only initialized as such.
+		none,
+		top,
+		bottom,
+		left,
+		right
+	};
+
 	const int rows = 6;
 	const int cols = 10;
 
 	const int blocksToBreak = 10;
 	int blocksBroken = 0;
+
+	int marginOfError = 10;
 
 	static Block blocks[rows][cols];
 
@@ -20,7 +32,7 @@ namespace BlockSpace
 
 	void PowerBall(Ball& ball)
 	{
-		PowerUps power = (PowerUps)GetRandomNum((int)PowerUps::NoBounce, 0);
+		PowerUps power = (PowerUps)GetRandomNum((int)PowerUps::NoBounce + 1, 0);
 
 		BallSpace::SetPower(power, ball);
 	}
@@ -66,36 +78,57 @@ namespace BlockSpace
 
 		sCorner4.x = sCorner3.x;
 		sCorner4.y = sCorner2.y;
+
 #pragma endregion
 
 #pragma region DISTANCE_CALCULATIONS
 		Distances calculations;
+		BallLocation locationY = none;
+		BallLocation locationX = none;
 
 		calculations.pinPointX = (int)ball.pos.x;
 		calculations.pinPointY = (int)ball.pos.y;
 
 
-		if ((int)ball.pos.x <= (int)sCorner1.x)
+		if ((int)ball.pos.x <= (int)sCorner1.x + marginOfError)
+		{
 			calculations.pinPointX = (int)sCorner1.x; //left
+			locationX = left;
+		}
 
-		else if ((int)ball.pos.x >= (int)sCorner3.x)
+		else if ((int)ball.pos.x >= (int)sCorner3.x - marginOfError)
+		{
 			calculations.pinPointX = (int)sCorner3.x; //right
+			locationX = right;
+		}
 
-		if ((int)ball.pos.y >= (int)sCorner1.y)
+		if ((int)ball.pos.y >= (int)sCorner1.y - marginOfError)
+		{
 			calculations.pinPointY = (int)sCorner1.y; //top
+			locationY = top;
+		}
 
-		else if ((int)ball.pos.y <= (int)sCorner2.y)
+		else if ((int)ball.pos.y <= (int)sCorner2.y + marginOfError)
+		{
 			calculations.pinPointY = (int)sCorner2.y; //bottom
+			locationY = bottom;
+		}
 
 		calculations.distX = (int)ball.pos.x - calculations.pinPointX;
 		calculations.distY = (int)ball.pos.y - calculations.pinPointY;
 		calculations.distance = sqrt((calculations.distX * calculations.distX) + (calculations.distY * calculations.distY));
 
+
 #pragma endregion
 
 
-		if (calculations.distance < ball.radius)
+		if (calculations.distance <= ball.radius)
 		{
+			if (locationY == none && locationX == none)
+			{
+				std::cout << "ERROR: NONE" << std::endl;
+			}
+
 			square.dead = true;
 
 			blocksBroken++;
@@ -105,18 +138,18 @@ namespace BlockSpace
 				BallSpace::SetPower(PowerUps::None, ball);
 				blocksBroken = 0;
 			}
-			else if(ball.currentPower == PowerUps::None)
+			else if (ball.currentPower == PowerUps::None)
 				PowerBall(ball);
-			
+
 			if (ball.currentPower != PowerUps::NoBounce)
 			{
 				//Where does it come from? Is it partially inside the rect?
 				//VERTICAL
-				if (calculations.pinPointY == (int)sCorner1.y ||
-					calculations.pinPointY == (int)sCorner2.y)
+				if (locationY == top ||
+					locationY == bottom)
 				{
 					//top
-					if (calculations.pinPointY == (int)sCorner1.y)
+					if (locationY == top)
 					{
 						ball.pos.y = sCorner1.y + ball.radius * 2;
 
@@ -125,7 +158,7 @@ namespace BlockSpace
 					}
 
 					//bottom
-					if (calculations.pinPointY == (int)sCorner2.y)
+					else if (locationY == bottom)
 					{
 						ball.pos.y = sCorner2.y - ball.radius * 2;
 
@@ -134,17 +167,31 @@ namespace BlockSpace
 					}
 				}
 				//HORIZONTAL
-				else if (calculations.pinPointX == (int)sCorner1.x ||
-					calculations.pinPointX == (int)sCorner3.x)
+				if (locationX == left || locationX == right)
 				{
 					//left
-					if (calculations.pinPointX == (int)sCorner1.x)
+					if (locationX == left)
+					{
 						ball.pos.x = sCorner1.x - ball.radius * 2;
+
+						if (ball.speed.x > 0)
+							ball.speed.x *= -1;
+					}
 					//right
-					else if (calculations.pinPointX == (int)sCorner3.x)
+					else if (locationX == right)
+					{
 						ball.pos.x = sCorner3.x + ball.radius * 2;
 
-					ball.speed.x *= -1;
+						if (ball.speed.x < 0)
+							ball.speed.x *= -1;
+					}
+				}
+
+				if (locationX == none && locationY == none)
+				{
+					//We don't know where it comes from but these have to change.
+					ball.speed.x *= -1.0f;
+					ball.speed.y *= -1.0f;
 				}
 			}
 		}

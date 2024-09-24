@@ -26,7 +26,7 @@ namespace BallSpace
 		ball.defaultRadius = ball.radius;
 		ball.plusRadius = ball.radius * 3;
 		ball.generalSpeed = 350.0f;
-		ball.increasePercentage = 50.0f;
+		ball.increasePercentage = 100.0f;
 		ball.speedIncrease = ball.generalSpeed * ball.increasePercentage / 100;
 		ball.pos = { (float)screenHalfWidth + ball.radius, (float)screenHalfHeight + ball.radius };
 		ball.speed = { ball.generalSpeed, ball.generalSpeed };
@@ -223,7 +223,6 @@ namespace BallSpace
 		ball.pos.y = myRect.pos.y + ball.radius * 2;
 		ball.reset = true;
 		ball.randomizeDirection = true;
-		ball.currentPower = PowerUps::None;
 		ball.color = WHITE;
 		ResetSpeed(ball);
 		if (ball.currentPower != PowerUps::None)
@@ -242,28 +241,36 @@ namespace BallSpace
 		{
 		case PowerUps::None:
 			ball.currentPower = PowerUps::None;
+			ball.color = WHITE;
 			std::cout << "NO POWER" << std::endl;
 			break;
 		case PowerUps::Speed:
 			ball.currentPower = PowerUps::Speed;
+			ball.color = YELLOW;
 			std::cout << "SPEED" << std::endl;
 			break;
 		case PowerUps::PlusSize:
 			ball.currentPower = PowerUps::PlusSize;
+			ball.color = RED;
 			std::cout << "SIZE" << std::endl;
 			break;
 		case PowerUps::NoBounce:
+			ball.color = BLUE;
 			ball.currentPower = PowerUps::NoBounce;
 			std::cout << "NO-BOUNCE" << std::endl;
 			break;
 		default:
 			ball.currentPower = PowerUps::None;
+			ball.color = WHITE;
 			std::cout << "NO POWER" << std::endl;
 			break;
 		}
 
 		if (ball.spedUp && ball.currentPower != PowerUps::Speed)
+		{
 			ball.spedUp = false;
+			ResetSpeed(ball);
+		}
 
 		if (ball.radius == ball.plusRadius && ball.currentPower != PowerUps::PlusSize)
 			ball.radius = ball.defaultRadius;
