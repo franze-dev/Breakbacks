@@ -73,8 +73,8 @@ namespace MenuScene
 		UIManager::DrawButtonRect(exitButton);
 		UIManager::DrawButtonRect(rulesButton);
 
-		UIManager::DrawButtonText(playButton, WHITE, defaultFontSize);
-		UIManager::DrawButtonText(exitButton, WHITE, defaultFontSize);
-		UIManager::DrawButtonText(rulesButton, WHITE, defaultFontSize);
+		UIManager::DrawButtonText(playButton);
+		UIManager::DrawButtonText(exitButton);
+		UIManager::DrawButtonText(rulesButton);
 	}
 }

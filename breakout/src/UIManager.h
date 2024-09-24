@@ -31,19 +31,16 @@ struct Text
 struct Button
 {
 	Rectangle shape;
-	string textShown;
+	Text textShown;
 	//If there are two texts possibilities in the same button, these are the two alternatives.
-	string textAlt1;
-	string textAlt2;
-	//If the button is a switch, it's convenient for it to have two colors that differenciate the 
-	//status in which theyre in (on or off). I distinguish that with "defaultColor" and "secondDefaultColor"
+	string contentAlt1;
+	string contentAlt2;
+	//default color is the color that is used at first, before I change it for highlighting.
 	Colors defaultColor;
-	Colors secondDefaultColor;
-	//is it one color or another?
-	bool activated = false;
-	Colors currentColor;
 	//This is the color when the user hovers the mouse over the button.
 	Colors highlightColor;
+	//The current color switches between the default color and the highlight
+	Colors currentColor;
 };
 
 namespace UIManager
@@ -51,7 +48,7 @@ namespace UIManager
 	//Detects the mouse inside the bounds of a button
 	bool IsMouseOnButton(Button button);
 	//Draws the text in a button, as well as automatically centering it.
-	void DrawButtonText(Button button, Colors color, int fontSize);
+	void DrawButtonText(Button button);
 	//Draws the square of the button
 	void DrawButtonRect(Button button);
 	//Prints a text

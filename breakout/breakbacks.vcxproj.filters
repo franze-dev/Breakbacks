@@ -45,9 +45,6 @@
     <ClCompile Include="src\ResultScene.cpp">
       <Filter>Archivos de origen\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="src\KeyManager.cpp">
-      <Filter>Archivos de origen\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="src\Paddle.cpp">
       <Filter>Archivos de origen\Objects</Filter>
     </ClCompile>
@@ -93,9 +90,6 @@
       <Filter>Archivos de encabezado\Objects</Filter>
     </ClInclude>
     <ClInclude Include="src\ColorManager.h">
-      <Filter>Archivos de encabezado\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="src\KeyManager.h">
       <Filter>Archivos de encabezado\Objects</Filter>
     </ClInclude>
     <ClInclude Include="src\Paddle.h">

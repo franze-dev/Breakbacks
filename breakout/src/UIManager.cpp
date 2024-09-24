@@ -20,13 +20,13 @@ namespace UIManager
 		return false;
 	}
 
-	void DrawButtonText(Button button, Colors textColor, int fontSize)
+	void DrawButtonText(Button button)
 	{
-		SetForeColor(textColor);
-		slSetFont(mainFont, fontSize);
+		SetForeColor(button.textShown.currentColor);
+		slSetFont(mainFont, button.textShown.fontSize);
 		double posX = button.shape.pos.x + button.shape.width / 2;
-		double posY = button.shape.pos.y + button.shape.height / 2 - fontSize * 2/5;
-		slText(posX, posY, button.textShown.data());
+		double posY = button.shape.pos.y + button.shape.height / 2 - button.textShown.fontSize * 2/5;
+		slText(posX, posY, button.textShown.content.data());
 	}
 
 	void DrawButtonRect(Button button)
@@ -125,7 +125,8 @@ namespace UIManager
 		myButton.shape.height = height;
 		myButton.shape.pos.x = x;
 		myButton.shape.pos.y = y;
-		myButton.textShown = content;
+		myButton.textShown.content = content;
+		myButton.textShown.fontSize = 40;
 		return myButton;
 	}
 

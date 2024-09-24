@@ -52,6 +52,6 @@ void PauseMenu::Draw()
 
 	UIManager::DrawButtonRect(continueButton);
 	UIManager::DrawButtonRect(backToMenuButton);
-	UIManager::DrawButtonText(continueButton, WHITE, defaultFontSize / 2);
-	UIManager::DrawButtonText(backToMenuButton, WHITE, defaultFontSize / 2);
+	UIManager::DrawButtonText(continueButton);
+	UIManager::DrawButtonText(backToMenuButton);
 }

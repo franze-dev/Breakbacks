@@ -75,10 +75,10 @@ namespace ResultScene
 	void Draw()
 	{
 		UIManager::DrawButtonRect(backToMenuButton);
-		UIManager::DrawButtonText(backToMenuButton, WHITE, smallerFontSize);
+		UIManager::DrawButtonText(backToMenuButton);
 
 		UIManager::DrawButtonRect(exitButton);
-		UIManager::DrawButtonText(exitButton, WHITE, smallerFontSize);
+		UIManager::DrawButtonText(exitButton);
 	
 		UIManager::PrintText(resultText);
 	}

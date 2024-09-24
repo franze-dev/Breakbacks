@@ -24,7 +24,6 @@
     <ClCompile Include="src\Breakout.cpp" />
     <ClCompile Include="src\ColorManager.cpp" />
     <ClCompile Include="src\GameplayScene.cpp" />
-    <ClCompile Include="src\KeyManager.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\MenuScene.cpp" />
     <ClCompile Include="src\Paddle.cpp" />
@@ -42,7 +41,6 @@
     <ClInclude Include="src\Breakout.h" />
     <ClInclude Include="src\ColorManager.h" />
     <ClInclude Include="src\GameplayScene.h" />
-    <ClInclude Include="src\KeyManager.h" />
     <ClInclude Include="src\MenuScene.h" />
     <ClInclude Include="src\Paddle.h" />
     <ClInclude Include="src\PauseMenu.h" />

@@ -51,6 +51,6 @@ namespace RulesScene
 		UIManager::PrintText(rule3);
 
 		UIManager::DrawButtonRect(backToMenuButton);
-		UIManager::DrawButtonText(backToMenuButton, WHITE, backToMenuButton.shape.height/2);
+		UIManager::DrawButtonText(backToMenuButton);
 	}
 }
