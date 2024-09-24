@@ -126,8 +126,9 @@
       <AdditionalDependencies>sigil.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)lib\*.dll"  "$(OutDir)" /y 
-xcopy "$(SolutionDir)res" "$(OutDir)res" /i /y</Command>
+      <Command>copy "$(SolutionDir)lib\*.dll" "$(OutDir)" /y
+  
+xcopy "$(SolutionDir)res\" "$(OutDir)res\" /i/y/s</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copiando recursos y DLLs...</Message>
@@ -153,8 +154,9 @@ xcopy "$(SolutionDir)res" "$(OutDir)res" /i /y</Command>
       <AdditionalDependencies>sigil.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)lib\*.dll"  "$(OutDir)" /y 
-xcopy "$(SolutionDir)res" "$(OutDir)res" /i /y</Command>
+      <Command>copy "$(SolutionDir)lib\*.dll" "$(OutDir)" /y
+  
+xcopy "$(SolutionDir)res\" "$(OutDir)res\" /i/y/s</Command>
       <Message>Copiando recursos y DLLs...</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
