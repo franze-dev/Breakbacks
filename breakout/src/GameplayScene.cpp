@@ -35,6 +35,7 @@ namespace GameplayScene
 
 	void Init()
 	{
+		paused = false;
 		mainPaddle = PaddleSpace::GetDefaultPaddle();
 		mainBall = BallSpace::GetDefaultBall();
 		BlockSpace::CreateBlocks();

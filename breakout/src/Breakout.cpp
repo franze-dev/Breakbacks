@@ -28,18 +28,9 @@ namespace Breakout
 
 		while (!ShouldWindowClose())
 		{
-			//Here I try to verify that the values must be initialized again, this would only happen
-			//when I press a "backToMenu" button. They exist in Gameplay and Result.
-			if ((previousScene == SceneManager::Result || previousScene == SceneManager::Gameplay) &&
-				SceneManager::GetCurrentScene() != SceneManager::Result &&
-				SceneManager::GetCurrentScene() != SceneManager::Gameplay)
-			{
-				restart = true;
-				previousScene = SceneManager::None;
-			}
-
 			if (restart)
 			{
+				previousScene = SceneManager::None;
 				Init();
 				restart = false;
 			}
@@ -69,6 +60,9 @@ namespace Breakout
 	{
 		if (SceneManager::GetCurrentScene() == SceneManager::Gameplay)
 		{
+			if (previousScene == SceneManager::Result)
+				restart = true;
+
 			GameplayScene::Update();
 
 			if (previousScene != SceneManager::Gameplay)
@@ -78,12 +72,21 @@ namespace Breakout
 		if (SceneManager::GetCurrentScene() == SceneManager::Result)
 		{
 			ResultScene::Update();
+
 			if (previousScene != SceneManager::Result)
 				previousScene = SceneManager::Result;
 		}
 
 		if (SceneManager::GetCurrentScene() == SceneManager::Menu)
+		{
+			if (previousScene == SceneManager::Result || previousScene == SceneManager::Gameplay)
+				restart = true;
+
 			MenuScene::Update();
+
+			if (previousScene != SceneManager::Menu)
+				previousScene = SceneManager::Menu;
+		}
 
 		if (SceneManager::GetCurrentScene() == SceneManager::Rules)
 			RulesScene::Update();
@@ -96,7 +99,7 @@ namespace Breakout
 
 		if (SceneManager::GetCurrentScene() == SceneManager::Result)
 			ResultScene::Draw();
-		
+
 		if (SceneManager::GetCurrentScene() == SceneManager::Menu)
 			MenuScene::Draw();
 
