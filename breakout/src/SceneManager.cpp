@@ -1,13 +1,17 @@
 #include "SceneManager.h"
 
-static SceneManager::Scene currentScene = SceneManager::Menu;
-
-void SceneManager::SetCurrentScene(Scene scene)
+namespace SceneManager
 {
-	currentScene = scene;
+	static Scene currentScene = SceneManager::Menu;
+
+	void SetCurrentScene(Scene scene)
+	{
+		currentScene = scene;
+	}
+
+	Scene GetCurrentScene()
+	{
+		return currentScene;
+	}
 }
 
-SceneManager::Scene SceneManager::GetCurrentScene()
-{
-	return currentScene;
-}

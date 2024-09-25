@@ -14,21 +14,21 @@
 
 namespace GameplayScene
 {
-	static Paddle mainPaddle;
-	static Ball mainBall;
-	static Player player;
-	static Text livesText;
-	static Text creditsText;
-	static Text pauseText;
-	static Text powerUpText;
+	static PaddleSpace::Paddle mainPaddle;
+	static BallSpace::Ball mainBall;
+	static PlayerSpace::Player player;
+	static UIManager::Text livesText;
+	static UIManager::Text creditsText;
+	static UIManager::Text pauseText;
+	static UIManager::Text powerUpText;
 	static int textPadding = 20;
 	static int defaultFontSize = 30;
 
 	static bool paused = false;
 
 	void CheckPause();
-	bool CheckWin(Player& player);
-	void BallPaddleCollision(Ball& ball, Paddle& square);
+	bool CheckWin(PlayerSpace::Player& player);
+	void BallPaddleCollision(BallSpace::Ball& ball, PaddleSpace::Paddle& square);
 	void InitUI();
 	void UpdateUI();
 	void DrawUI();
@@ -38,7 +38,7 @@ namespace GameplayScene
 		mainPaddle = PaddleSpace::GetDefaultPaddle();
 		mainBall = BallSpace::GetDefaultBall();
 		BlockSpace::CreateBlocks();
-		player = InitDefaultPlayer();
+		player = PlayerSpace::InitDefaultPlayer();
 		InitUI();
 		PauseMenu::Init();
 	}
@@ -49,13 +49,13 @@ namespace GameplayScene
 		{
 			if (!paused)
 			{
-				if (!mainBall.spedUp && mainBall.currentPower == PowerUps::Speed)
+				if (!mainBall.spedUp && mainBall.currentPower == BallSpace::PowerUps::Speed)
 				{
 					BallSpace::IncreaseSpeed(mainBall);
 					mainBall.spedUp = true;
 				}
 
-				if (mainBall.radius != mainBall.plusRadius && mainBall.currentPower == PowerUps::PlusSize)
+				if (mainBall.radius != mainBall.plusRadius && mainBall.currentPower == BallSpace::PowerUps::PlusSize)
 					BallSpace::IncreaseSize(mainBall);
 
 				CheckPause();
@@ -102,7 +102,7 @@ namespace GameplayScene
 			paused = true;
 	}
 
-	bool CheckWin(Player& player)
+	bool CheckWin(PlayerSpace::Player& player)
 	{
 		if (!IsAlive(player))
 		{
@@ -114,7 +114,7 @@ namespace GameplayScene
 		}
 	}
 
-	void BallPaddleCollision(Ball& ball, Paddle& square)
+	void BallPaddleCollision(BallSpace::Ball& ball, PaddleSpace::Paddle& square)
 	{
 		int paddleCenterPos = square.pos.x;
 		int topOrBottomRand = 0;
@@ -127,11 +127,11 @@ namespace GameplayScene
 		int minAngleH = 330;
 		int maxAngleH = 340;
 
-		//SQUARE CORNERS		//	c1----------------c3
-		Vector2 sCorner1; 		//	|				   |  
-		Vector2 sCorner2;		//	|		center	   |  
-		Vector2 sCorner3;		//	|				   |  
-		Vector2 sCorner4;		//	c2----------------c4  
+		//SQUARE CORNERS				//	c1----------------c3
+		Logic::Vector2 sCorner1; 		//	|				   |  
+		Logic::Vector2 sCorner2;		//	|		center	   |  
+		Logic::Vector2 sCorner3;		//	|				   |  
+		Logic::Vector2 sCorner4;		//	c2----------------c4  
 
 		//pos x and pos y of square is the center, thanks to sigil.
 		sCorner1.x = square.pos.x - square.width / 2;
@@ -146,7 +146,7 @@ namespace GameplayScene
 		sCorner4.x = sCorner3.x;
 		sCorner4.y = sCorner2.y;
 
-		Distances calculations;
+		BallSpace::Distances calculations;
 
 		calculations.pinPointX = (int)ball.pos.x;
 		calculations.pinPointY = (int)ball.pos.y;
@@ -183,7 +183,7 @@ namespace GameplayScene
 				if (calculations.pinPointY == (int)sCorner1.y)
 				{
 					ball.pos.y = sCorner1.y + ball.radius * 2;
-					BallSpace::Normalize360Angle(ball, GetRandomNum(maxAngleV - minAngleV, minAngleV));
+					BallSpace::Normalize360Angle(ball, Logic::GetRandomNum(maxAngleV - minAngleV, minAngleV));
 
 					if (ball.pos.x < paddleCenterPos && ball.speed.x > 0)
 						ball.speed.x *= -1;
@@ -214,10 +214,10 @@ namespace GameplayScene
 
 	void InitUI()
 	{
-		livesText = UIManager::GetText(textPadding, screenHeight - defaultFontSize, defaultFontSize, "LIVES: ", WHITE);
-		creditsText = UIManager::GetText(screenWidth - textPadding, screenHeight - defaultFontSize / 2, defaultFontSize / 2, "By: S.Alvarez :)", BLUE);
-		pauseText = UIManager::GetText(screenWidth - textPadding, defaultFontSize, defaultFontSize / 2, "Press 'P' to pause", PURPLE);
-		powerUpText = UIManager::GetText(textPadding, defaultFontSize, defaultFontSize / 2, "NO ACTIVE POWER UP!", WHITE);
+		livesText = UIManager::GetText(textPadding, Logic::screenHeight - defaultFontSize, defaultFontSize, "LIVES: ", ColorManager::WHITE);
+		creditsText = UIManager::GetText(Logic::screenWidth - textPadding, Logic::screenHeight - defaultFontSize / 2, defaultFontSize / 2, "By: S.Alvarez :)", ColorManager::BLUE);
+		pauseText = UIManager::GetText(Logic::screenWidth - textPadding, defaultFontSize, defaultFontSize / 2, "Press 'P' to pause", ColorManager::PURPLE);
+		powerUpText = UIManager::GetText(textPadding, defaultFontSize, defaultFontSize / 2, "NO ACTIVE POWER UP!", ColorManager::WHITE);
 
 	}
 
@@ -228,21 +228,21 @@ namespace GameplayScene
 
 		switch (mainBall.currentPower)
 		{
-		case PowerUps::None:
+		case BallSpace::PowerUps::None:
 			powerUpText.content = "NO ACTIVE POWER UP!";
-			powerUpText.currentColor = WHITE;
+			powerUpText.currentColor = ColorManager::WHITE;
 			break;
-		case PowerUps::NoBounce:
+		case BallSpace::PowerUps::NoBounce:
 			powerUpText.content = "CLEAR THE SCREEN!";
-			powerUpText.currentColor = BLUE;
+			powerUpText.currentColor = ColorManager::BLUE;
 			break;
-		case PowerUps::Speed:
+		case BallSpace::PowerUps::Speed:
 			powerUpText.content = "SPEED OF LIGHT!";
-			powerUpText.currentColor = YELLOW;
+			powerUpText.currentColor = ColorManager::YELLOW;
 			break;
-		case PowerUps::PlusSize:
+		case BallSpace::PowerUps::PlusSize:
 			powerUpText.content = "THINK BIG!";
-			powerUpText.currentColor = RED;
+			powerUpText.currentColor = ColorManager::RED;
 			break;
 
 		default:

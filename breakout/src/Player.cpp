@@ -1,25 +1,29 @@
 #include "Player.h"
 
-Player InitDefaultPlayer()
+namespace PlayerSpace
 {
-	Player myPlayer;
-	myPlayer.lives = 3;
-	myPlayer.won = false;
-	myPlayer.lost = false;
-	return myPlayer;
-}
-
-void LooseLife(Player& player)
-{
-	player.lives--;
-}
-
-bool IsAlive(Player player)
-{
-	if (player.lives <= 0)
+	Player InitDefaultPlayer()
 	{
-		player.lives = 0;
-		return false;
+		Player myPlayer;
+		myPlayer.lives = 3;
+		myPlayer.won = false;
+		myPlayer.lost = false;
+		return myPlayer;
 	}
-	return true;
+
+	void LooseLife(Player& player)
+	{
+		player.lives--;
+	}
+
+	bool IsAlive(Player player)
+	{
+		if (player.lives <= 0)
+		{
+			player.lives = 0;
+			return false;
+		}
+		return true;
+	}
+
 }

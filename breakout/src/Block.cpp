@@ -25,31 +25,22 @@ namespace BlockSpace
 
 	static Block blocks[rows][cols];
 
-	void PowerBall(Ball& ball);
-	Colors GetRandomColor();
-	Block GetBlock(Vector2 offSet);
-	void BlockBallCollision(Ball& ball, Block& square);
+	void PowerBall(BallSpace::Ball& ball);
+	Block GetBlock(Logic::Vector2 offSet);
+	void BlockBallCollision(BallSpace::Ball& ball, Block& square);
 
-	void PowerBall(Ball& ball)
+	void PowerBall(BallSpace::Ball& ball)
 	{
-		PowerUps power = (PowerUps)GetRandomNum((int)PowerUps::NoBounce + 1, 0);
+		BallSpace::PowerUps power = (BallSpace::PowerUps)Logic::GetRandomNum(((int)BallSpace::PowerUps::NoBounce + 1), 0);
 
 		BallSpace::SetPower(power, ball);
 	}
 
-	Colors GetRandomColor()
-	{
-		Colors color = RED;
-		color = (Colors)GetRandomNum(PINK, 0);
-		return color;
-	}
-
-	Block GetBlock(Vector2 offSet)
+	Block GetBlock(Logic::Vector2 offSet)
 	{
 		Block myBlock;
-		myBlock.color = GetRandomColor();
 		myBlock.height = 40;
-		myBlock.width = screenWidth / cols;
+		myBlock.width = Logic::screenWidth / cols;
 		myBlock.pos.x = 0;
 		myBlock.pos.y = 0;
 		myBlock.offSet = offSet;
@@ -57,14 +48,14 @@ namespace BlockSpace
 		return myBlock;
 	}
 
-	void BlockBallCollision(Ball& ball, Block& square)
+	void BlockBallCollision(BallSpace::Ball& ball, Block& square)
 	{
 #pragma region CORNER_CALCULATIONS
-		//SQUARE CORNERS		//	c1----------------c3
-		Vector2 sCorner1; 		//	|				   |  
-		Vector2 sCorner2;		//	|		center	   |  
-		Vector2 sCorner3;		//	|				   |  
-		Vector2 sCorner4;		//	c2----------------c4  
+		//SQUARE CORNERS				//	c1----------------c3
+		Logic::Vector2 sCorner1; 		//	|				   |  
+		Logic::Vector2 sCorner2;		//	|		center	   |  
+		Logic::Vector2 sCorner3;		//	|				   |  
+		Logic::Vector2 sCorner4;		//	c2----------------c4  
 
 		//pos x and pos y of square is the center, thanks to sigil. I made these calculations to adaptate it
 		sCorner1.x = square.pos.x - square.width / 2;
@@ -82,7 +73,7 @@ namespace BlockSpace
 #pragma endregion
 
 #pragma region DISTANCE_CALCULATIONS
-		Distances calculations;
+		BallSpace::Distances calculations;
 		BallLocation locationY = none;
 		BallLocation locationX = none;
 
@@ -135,13 +126,13 @@ namespace BlockSpace
 
 			if (blocksBroken == blocksToBreak)
 			{
-				BallSpace::SetPower(PowerUps::None, ball);
+				BallSpace::SetPower(BallSpace::PowerUps::None, ball);
 				blocksBroken = 0;
 			}
-			else if (ball.currentPower == PowerUps::None)
+			else if (ball.currentPower == BallSpace::PowerUps::None)
 				PowerBall(ball);
 
-			if (ball.currentPower != PowerUps::NoBounce)
+			if (ball.currentPower != BallSpace::PowerUps::NoBounce)
 			{
 				//Where does it come from? Is it partially inside the rect?
 				//VERTICAL
@@ -210,8 +201,8 @@ namespace BlockSpace
 	void CreateBlocks()
 	{
 		int offSetX = 0;
-		int offSetY = screenHeight * 4 / 5;
-		Vector2 thisOffSet = { offSetX,offSetY };
+		int offSetY = Logic::screenHeight * 4 / 5;
+		Logic::Vector2 thisOffSet = { offSetX,offSetY };
 
 		for (int y = 0; y < rows; y++)
 		{
@@ -229,7 +220,7 @@ namespace BlockSpace
 		}
 	}
 
-	void UpdateBlocks(Ball& ball)
+	void UpdateBlocks(BallSpace::Ball& ball)
 	{
 		for (int y = rows - 1; y >= 0; y--)
 			for (int x = 0; x < cols; x++)
@@ -248,10 +239,9 @@ namespace BlockSpace
 
 	void DrawBlock(Block block)
 	{
-		SetForeColor(WHITE);
-		//SetForeColor(block.color);
+		ColorManager::SetForeColor(ColorManager::WHITE);
 		slRectangleFill(block.pos.x, block.pos.y, block.width, block.height);
-		SetForeColor(PURPLE);
+		ColorManager::SetForeColor(ColorManager::PURPLE);
 		slRectangleOutline(block.pos.x, block.pos.y, block.width, block.height);
 	}
 

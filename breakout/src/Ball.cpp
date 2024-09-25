@@ -28,13 +28,13 @@ namespace BallSpace
 		ball.generalSpeed = 350.0f;
 		ball.increasePercentage = 100.0f;
 		ball.speedIncrease = ball.generalSpeed * ball.increasePercentage / 100;
-		ball.pos = { (float)screenHalfWidth + ball.radius, (float)screenHalfHeight + ball.radius };
+		ball.pos = { (float)Logic::screenHalfWidth + ball.radius, (float)Logic::screenHalfHeight + ball.radius };
 		ball.speed = { ball.generalSpeed, ball.generalSpeed };
 		ball.defaultSpeed = ball.speed;
 		ball.reset = true;
 		ball.randomizeDirection = false;
 		ball.spedUp = false;
-		ball.color = WHITE;
+		ball.color = ColorManager::WHITE;
 		ball.currentPower = PowerUps::None;
 
 		return ball;
@@ -66,7 +66,7 @@ namespace BallSpace
 
 	void DrawBall(Ball ball)
 	{
-		SetForeColor(ball.color);
+		ColorManager::SetForeColor(ball.color);
 		slCircleFill(ball.pos.x, ball.pos.y, ball.radius, ball.vertices);
 	}
 
@@ -74,9 +74,9 @@ namespace BallSpace
 	{
 		int angle = 0;
 		int magnitude = 0;
-		Vector2 direction;
+		Logic::Vector2 direction;
 
-		angle = GetRandomNum(360, 0);
+		angle = Logic::GetRandomNum(360, 0);
 
 		//To make sure the speed is not zero or a number I cannot work with, I set it to default to be safe.
 		ball.speed.y = ball.generalSpeed;
@@ -104,7 +104,7 @@ namespace BallSpace
 		//Explained this in the other version of the function.
 
 		int magnitude = 0;
-		Vector2 direction;
+		Logic::Vector2 direction;
 
 		ball.speed.x = ball.generalSpeed;
 		ball.speed.y = ball.generalSpeed;
@@ -131,7 +131,7 @@ namespace BallSpace
 
 		if (ball.randomizeDirection)
 		{
-			Normalize360Angle(ball, GetRandomNum(maxAngle - ballMinAngle, ballMinAngle));
+			Normalize360Angle(ball, Logic::GetRandomNum(maxAngle - ballMinAngle, ballMinAngle));
 			if (ball.speed.y < 0)
 				ball.speed.y *= -1;
 
@@ -142,9 +142,9 @@ namespace BallSpace
 		ball.pos.y += ball.speed.y * slGetDeltaTime();
 	}
 
-	void BallEdgeCollision(Ball& ball, Player& player)
+	void BallEdgeCollision(Ball& ball, PlayerSpace::Player& player)
 	{
-		Vector2 previousSpeed;
+		Logic::Vector2 previousSpeed;
 
 
 		//This is so it detects if the ball is going a bit too slow in that range
@@ -152,10 +152,10 @@ namespace BallSpace
 		float minimumNegSpeed = minimumPosSpeed * -1.0f;
 
 		// sides
-		if ((ball.pos.x >= (screenWidth - ball.radius)) || (ball.pos.x <= ball.radius))
+		if ((ball.pos.x >= (Logic::screenWidth - ball.radius)) || (ball.pos.x <= ball.radius))
 		{
-			if ((int)ball.pos.x >= (screenWidth - ball.radius))
-				ball.pos.x = screenWidth - ball.radius;
+			if ((int)ball.pos.x >= (Logic::screenWidth - ball.radius))
+				ball.pos.x = Logic::screenWidth - ball.radius;
 			else
 				ball.pos.x = ball.radius;
 
@@ -171,12 +171,12 @@ namespace BallSpace
 				//All of these problems are covered bellow.
 				BallSpace::Normalize360Angle(ball);
 
-				if (ball.pos.x > screenWidth / 2 && ball.speed.x < 0)
+				if (ball.pos.x > Logic::screenWidth / 2 && ball.speed.x < 0)
 				{
 					//turns RIGHT
 					ball.speed.x *= -1;
 				}
-				else if (ball.pos.x < screenWidth / 2 && ball.speed.x > 0)
+				else if (ball.pos.x < Logic::screenWidth / 2 && ball.speed.x > 0)
 				{
 					//turns LEFT
 					ball.speed.x *= -1;
@@ -200,12 +200,12 @@ namespace BallSpace
 		}
 
 		// top / bottom
-		if ((ball.pos.y >= (screenHeight - ball.radius)) || (ball.pos.y <= ball.radius))
+		if ((ball.pos.y >= (Logic::screenHeight - ball.radius)) || (ball.pos.y <= ball.radius))
 		{
 			//Teleports the ball inside the wall bounds to prevent it from glitching outside of the screen.
-			if ((int)ball.pos.y >= (screenHeight - ball.radius))
+			if ((int)ball.pos.y >= (Logic::screenHeight - ball.radius))
 			{
-				ball.pos.y = screenHeight - ball.radius;
+				ball.pos.y = Logic::screenHeight - ball.radius;
 				ball.speed.y *= -1.0f;
 			}
 			else
@@ -217,13 +217,13 @@ namespace BallSpace
 		}
 	}
 
-	void ResetBall(Ball& ball, Paddle myRect)
+	void ResetBall(Ball& ball, PaddleSpace::Paddle myRect)
 	{
 		ball.pos.x = myRect.pos.x;
 		ball.pos.y = myRect.pos.y + ball.radius * 2;
 		ball.reset = true;
 		ball.randomizeDirection = true;
-		ball.color = WHITE;
+		ball.color = ColorManager::WHITE;
 		ResetSpeed(ball);
 		if (ball.currentPower != PowerUps::None)
 			SetPower(PowerUps::None, ball);
@@ -241,27 +241,27 @@ namespace BallSpace
 		{
 		case PowerUps::None:
 			ball.currentPower = PowerUps::None;
-			ball.color = WHITE;
+			ball.color = ColorManager::WHITE;
 			std::cout << "NO POWER" << std::endl;
 			break;
 		case PowerUps::Speed:
 			ball.currentPower = PowerUps::Speed;
-			ball.color = YELLOW;
+			ball.color = ColorManager::YELLOW;
 			std::cout << "SPEED" << std::endl;
 			break;
 		case PowerUps::PlusSize:
 			ball.currentPower = PowerUps::PlusSize;
-			ball.color = RED;
+			ball.color = ColorManager::RED;
 			std::cout << "SIZE" << std::endl;
 			break;
 		case PowerUps::NoBounce:
-			ball.color = BLUE;
+			ball.color = ColorManager::BLUE;
 			ball.currentPower = PowerUps::NoBounce;
 			std::cout << "NO-BOUNCE" << std::endl;
 			break;
 		default:
 			ball.currentPower = PowerUps::None;
-			ball.color = WHITE;
+			ball.color = ColorManager::WHITE;
 			std::cout << "NO POWER" << std::endl;
 			break;
 		}

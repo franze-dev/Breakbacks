@@ -8,10 +8,10 @@ using namespace std;
 
 namespace ResultScene
 {
-	static Player savedPlayer;
-	static Button exitButton;
-	static Button backToMenuButton;
-	static Text resultText;
+	static PlayerSpace::Player savedPlayer;
+	static UIManager::Button exitButton;
+	static UIManager::Button backToMenuButton;
+	static UIManager::Text resultText;
 	static string win = "WON!";
 	static string lose = "LOST!";
 	static short buttonsWidth = 150;
@@ -22,17 +22,17 @@ namespace ResultScene
 	static int smallerFontSize = 30;
 	static int defaultFontSize = 40;
 
-	void SavePlayer(Player player)
+	void SavePlayer(PlayerSpace::Player player)
 	{
 		savedPlayer = player;
 	}
 
 	void Init()
 	{
-		resultText = UIManager::GetText(screenWidth / 2, screenHeight / 2, defaultFontSize*2, "YOU ", RED, YELLOW);
+		resultText = UIManager::GetText(Logic::screenWidth / 2, Logic::screenHeight / 2, defaultFontSize*2, "YOU ", ColorManager::RED, ColorManager::YELLOW);
 
-		exitButton = UIManager::GetButton(screenWidth *6/8 - buttonsWidth / 2, buttonsHeight + buttonsPadding, buttonsWidth, buttonsHeight, "EXIT", BLACK, RED);
-		backToMenuButton = UIManager::GetButton(screenWidth *2/8 - biggerButtonsWidth / 2, exitButton.shape.pos.y, biggerButtonsWidth, buttonsHeight, "BACK TO MENU", BLACK, PURPLE);
+		exitButton = UIManager::GetButton(Logic::screenWidth *6/8 - buttonsWidth / 2, buttonsHeight + buttonsPadding, buttonsWidth, buttonsHeight, "EXIT", ColorManager::BLACK, ColorManager::RED);
+		backToMenuButton = UIManager::GetButton(Logic::screenWidth *2/8 - biggerButtonsWidth / 2, exitButton.shape.pos.y, biggerButtonsWidth, buttonsHeight, "BACK TO MENU", ColorManager::BLACK, ColorManager::PURPLE);
 	
 	}
 

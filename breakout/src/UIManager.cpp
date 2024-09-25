@@ -87,7 +87,7 @@ namespace UIManager
 		titleFont2 = slLoadFont("res/fonts/DonGraffiti.otf");
 	}
 
-	Text GetText(float x, float y, int fontSize, string content, Colors color)
+	Text GetText(float x, float y, int fontSize, string content, ColorManager::Colors color)
 	{
 		Text myText;
 
@@ -100,7 +100,7 @@ namespace UIManager
 		return myText;
 	}
 
-	Text GetText(float x, float y, int fontSize, string content, Colors color1, Colors color2)
+	Text GetText(float x, float y, int fontSize, string content, ColorManager::Colors color1, ColorManager::Colors color2)
 	{
 		Text myText;
 
@@ -115,7 +115,7 @@ namespace UIManager
 		return myText;
 	}
 
-	Button GetButton(float x, float y, int width, int height, string content, Colors mainColor, Colors highlightColor)
+	Button GetButton(float x, float y, int width, int height, string content, ColorManager::Colors mainColor, ColorManager::Colors highlightColor)
 	{
 		Button myButton;
 		myButton.defaultColor = mainColor;

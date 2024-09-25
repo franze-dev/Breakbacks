@@ -22,7 +22,7 @@ namespace Breakout
 
 	void Play()
 	{
-		slWindow(screenWidth, screenHeight, "BREAKBACKS", 0);
+		slWindow(Logic::screenWidth, Logic::screenHeight, "BREAKBACKS", 0);
 
 		srand(time(0));
 
@@ -57,7 +57,7 @@ namespace Breakout
 
 		UIManager::InitFonts();
 
-		InitColors();
+		ColorManager::InitColors();
 
 		GameplayScene::Init();
 		ResultScene::Init();

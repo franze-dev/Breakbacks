@@ -3,22 +3,21 @@
 #include "Ball.h"
 #include "ColorManager.h"
 
-struct Block
-{
-	Vector2 offSet; //refers to a corner
-	Vector2 pos;
-	int height;
-	int width;
-	//int lives;
-	bool dead;
-	Colors color;
-};
-
 namespace BlockSpace
 {
+	struct Block
+	{
+		Logic::Vector2 offSet; //refers to a corner
+		Logic::Vector2 pos;
+		int height;
+		int width;
+		//int lives;
+		bool dead;
+	};
+
 	bool AreBlocksGone();
 	void CreateBlocks();
-	void UpdateBlocks(Ball& ball);
+	void UpdateBlocks(BallSpace::Ball& ball);
 	void DrawBlocks();
 	void DrawBlock(Block block);
 }

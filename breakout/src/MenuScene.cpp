@@ -7,12 +7,12 @@ using namespace std;
 
 namespace MenuScene
 {
-	static Button playButton;
-	static Button exitButton;
-	static Button rulesButton;
+	static UIManager::Button playButton;
+	static UIManager::Button exitButton;
+	static UIManager::Button rulesButton;
 
-	static Text titlePart1;
-	static Text titlePart2;
+	static UIManager::Text titlePart1;
+	static UIManager::Text titlePart2;
 
 	static short defaultFontSize = 40;
 	//space between buttons
@@ -23,12 +23,12 @@ namespace MenuScene
 
 	void Init()
 	{
-		titlePart1 = UIManager::GetText(screenWidth / 2, screenHeight - defaultFontSize * 2 - titlePadding, defaultFontSize * 2, "BREAK", PURPLE);
-		titlePart2 = UIManager::GetText(titlePart1.location.x, screenHeight - titlePart1.fontSize * 3 + titlePadding * 2, titlePart1.fontSize * 2, "BACKS", PURPLE);
+		titlePart1 = UIManager::GetText(Logic::screenWidth / 2, Logic::screenHeight - defaultFontSize * 2 - titlePadding, defaultFontSize * 2, "BREAK", ColorManager::PURPLE);
+		titlePart2 = UIManager::GetText(titlePart1.location.x, Logic::screenHeight - titlePart1.fontSize * 3 + titlePadding * 2, titlePart1.fontSize * 2, "BACKS", ColorManager::PURPLE);
 
-		playButton = UIManager::GetButton(screenWidth / 2 - buttonsWidth / 2, titlePart2.location.y - buttonsWidth / 2, buttonsWidth, buttonsHeight, "PLAY", BLACK, PURPLE);
-		exitButton = UIManager::GetButton(playButton.shape.pos.x, playButton.shape.pos.y - playButton.shape.height*2 - buttonsPadding, buttonsWidth, buttonsHeight, "EXIT", BLACK, RED);
-		rulesButton = UIManager::GetButton(playButton.shape.pos.x, exitButton.shape.pos.y + exitButton.shape.height + buttonsPadding/2, buttonsWidth, buttonsHeight, "RULES", BLACK, BLUE);
+		playButton = UIManager::GetButton(Logic::screenWidth / 2 - buttonsWidth / 2, titlePart2.location.y - buttonsWidth / 2, buttonsWidth, buttonsHeight, "PLAY", ColorManager::BLACK, ColorManager::PURPLE);
+		exitButton = UIManager::GetButton(playButton.shape.pos.x, playButton.shape.pos.y - playButton.shape.height*2 - buttonsPadding, buttonsWidth, buttonsHeight, "EXIT", ColorManager::BLACK, ColorManager::RED);
+		rulesButton = UIManager::GetButton(playButton.shape.pos.x, exitButton.shape.pos.y + exitButton.shape.height + buttonsPadding/2, buttonsWidth, buttonsHeight, "RULES", ColorManager::BLACK, ColorManager::BLUE);
 	}
 
 	void Update()
@@ -66,8 +66,8 @@ namespace MenuScene
 
 	void Draw()
 	{
-		UIManager::PrintText(titlePart1, SL_ALIGN_CENTER, Fonts::titleFont1);
-		UIManager::PrintText(titlePart2, SL_ALIGN_CENTER, Fonts::titleFont2);
+		UIManager::PrintText(titlePart1, SL_ALIGN_CENTER, UIManager::Fonts::titleFont1);
+		UIManager::PrintText(titlePart2, SL_ALIGN_CENTER, UIManager::Fonts::titleFont2);
 
 		UIManager::DrawButtonRect(playButton);
 		UIManager::DrawButtonRect(exitButton);

@@ -1,27 +1,31 @@
 #pragma once
 
-enum Colors
+namespace ColorManager
 {
-	RED,
-	YELLOW,
-	GREEN,
-	BLUE,
-	PURPLE,
-	PINK,
-	WHITE,
-	BLACK,
-	DARKGRAY
-};
+	enum Colors
+	{
+		RED,
+		YELLOW,
+		GREEN,
+		BLUE,
+		PURPLE,
+		PINK,
+		WHITE,
+		BLACK,
+		DARKGRAY
+	};
 
-struct Color
-{
-	double r;
-	double g;
-	double b;
-	double a;
-};
+	struct Color
+	{
+		double r;
+		double g;
+		double b;
+		double a;
+	};
 
-void InitColors();
-Color GetColor(Colors color);
-void SetForeColor(Colors color);
+	void InitColors();
+	Color GetColor(Colors color);
+	void SetForeColor(Colors color);
+}
+
 

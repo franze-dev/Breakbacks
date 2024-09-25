@@ -2,8 +2,12 @@
 #include <iostream>
 #include <ctime>
 
-int GetRandomNum(int max, int add)
+namespace Logic
 {
-	int random = (rand() % max) + add;
-	return random;
+	int GetRandomNum(int max, int add)
+	{
+		int random = (rand() % max) + add;
+		return random;
+	}
 }
+
