@@ -31,9 +31,8 @@ namespace ResultScene
 	{
 		resultText = UIManager::GetText(Logic::screenWidth / 2, Logic::screenHeight / 2, defaultFontSize*2, "YOU ", ColorManager::RED, ColorManager::YELLOW);
 
-		exitButton = UIManager::GetButton(Logic::screenWidth *6/8 - buttonsWidth / 2, buttonsHeight + buttonsPadding, buttonsWidth, buttonsHeight, "EXIT", ColorManager::BLACK, ColorManager::RED);
-		backToMenuButton = UIManager::GetButton(Logic::screenWidth *2/8 - biggerButtonsWidth / 2, exitButton.shape.pos.y, biggerButtonsWidth, buttonsHeight, "BACK TO MENU", ColorManager::BLACK, ColorManager::PURPLE);
-	
+		exitButton = UIManager::GetButton(Logic::screenWidth *6/8 - buttonsWidth / 2, buttonsHeight + buttonsPadding, buttonsWidth, buttonsHeight, "EXIT", defaultFontSize, ColorManager::BLACK, ColorManager::RED);
+		backToMenuButton = UIManager::GetButton(Logic::screenWidth * 3 / 8 - biggerButtonsWidth / 2, exitButton.shape.pos.y, UIManager::GetTextWidth("BACK TO MENU", defaultFontSize, UIManager::Fonts::mainFont), buttonsHeight, "BACK TO MENU", defaultFontSize, ColorManager::BLACK, ColorManager::PURPLE);
 	}
 
 	void Update()

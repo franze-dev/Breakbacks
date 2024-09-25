@@ -115,7 +115,7 @@ namespace UIManager
 		return myText;
 	}
 
-	Button GetButton(float x, float y, int width, int height, string content, ColorManager::Colors mainColor, ColorManager::Colors highlightColor)
+	Button GetButton(float x, float y, int width, int height, string content, int fontSize, ColorManager::Colors mainColor, ColorManager::Colors highlightColor)
 	{
 		Button myButton;
 		myButton.defaultColor = mainColor;
@@ -126,7 +126,8 @@ namespace UIManager
 		myButton.shape.pos.x = x;
 		myButton.shape.pos.y = y;
 		myButton.textShown.content = content;
-		myButton.textShown.fontSize = 40;
+		myButton.textShown.fontSize = fontSize;
+		myButton.textShown.currentColor = ColorManager::WHITE;
 		return myButton;
 	}
 

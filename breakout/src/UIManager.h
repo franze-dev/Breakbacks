@@ -65,7 +65,7 @@ namespace UIManager
 	//color1 is the current color.
 	Text GetText(float x, float y, int fontSize, string content, ColorManager::Colors color1, ColorManager::Colors color2);
 	//Create buttons
-	Button GetButton(float x, float y, int width, int height, string content, ColorManager::Colors mainColor, ColorManager::Colors highlightColor);
+	Button GetButton(float x, float y, int width, int height, string content, int fontSize, ColorManager::Colors mainColor, ColorManager::Colors highlightColor);
 
 	//get the width of a text
 	double GetTextWidth(string content, int fontSize, Fonts font);

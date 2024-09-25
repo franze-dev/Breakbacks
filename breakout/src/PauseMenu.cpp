@@ -16,13 +16,13 @@ namespace PauseMenu
 	void Init()
 	{
 
-		pauseTitle = UIManager::GetText(Logic::screenWidth * 2 / 8, Logic::screenHeight / 2 + defaultFontSize * 2, defaultFontSize, "PAUSED", ColorManager::BLACK);
+		pauseTitle = UIManager::GetText(Logic::screenWidth * 2 / 8, Logic::screenHeight / 2 + defaultFontSize * 2, defaultFontSize, "PAUSED", ColorManager::RED);
 
 		continueButton = UIManager::GetButton(Logic::screenWidth * 5 / 8, pauseTitle.location.y + pauseTitle.fontSize,
-			UIManager::GetTextWidth(pauseTitle, UIManager::Fonts::mainFont) + 10, defaultFontSize, "CONTINUE", ColorManager::BLACK, ColorManager::PURPLE);
+			UIManager::GetTextWidth(pauseTitle, UIManager::Fonts::mainFont) + 10, defaultFontSize, "CONTINUE", defaultFontSize / 2, ColorManager::RED, ColorManager::PURPLE);
 
 		backToMenuButton = UIManager::GetButton(Logic::screenWidth * 5 / 8, pauseTitle.location.y - pauseTitle.fontSize,
-			UIManager::GetTextWidth(pauseTitle, UIManager::Fonts::mainFont) + 10, defaultFontSize, "BACK TO MENU", ColorManager::BLACK, ColorManager::BLUE);
+			UIManager::GetTextWidth(pauseTitle, UIManager::Fonts::mainFont) + 10, defaultFontSize, "BACK TO MENU", defaultFontSize/2, ColorManager::RED, ColorManager::BLUE);
 
 	}
 
